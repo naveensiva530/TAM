@@ -58,7 +58,7 @@ const AboutUs = () => {
                   </div>
                   <div className="md_name">
                       <h4>Surender nath S P</h4>
-                      <p>Director</p>
+                      <p>Founder&Director</p>
                   </div>
               </div> 
             </div>

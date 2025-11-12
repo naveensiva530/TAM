@@ -51,6 +51,7 @@ import LP_Submit from './Containers/Submit/LP_Submit'
 import NewsDetail from './Components/Company/News/NewsDetail'
 import Lp2 from './Components/LP/Lp2'
 import Lp3 from './Components/LP/Lp3'
+import Lp4 from './Components/LP/Lp4'
 import ScheduleAdemolp from './Containers/RegForms/ScheduleAdemolp'
 import NotFound from './Components/Error Page/NotFound'
 
@@ -102,6 +103,7 @@ function App() {
       location.pathname === '/lp'
       ||  location.pathname === '/lp2'
       ||  location.pathname === '/lp3'
+      ||  location.pathname === '/lp4' || location.pathname === '/Lp4'
     ) {
       setFooter('');
     }
@@ -192,6 +194,8 @@ function App() {
           <Route path='/lp' element={<Lp />}></Route>
           <Route path='/lp2' element={<Lp2 />}></Route>
           <Route path='/lp3' element={<Lp3 />}></Route>
+          <Route path='/lp4' element={<Lp4 />}></Route>
+  
           <Route path='/blog' element={<Blog />}></Route>
           <Route path='/blog1' element={<Blog1 />}></Route>
           <Route path='/blog2' element={<Blog2 />}></Route>

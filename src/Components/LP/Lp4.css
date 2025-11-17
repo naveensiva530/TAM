@@ -82,6 +82,7 @@ body {
     letter-spacing: 0.01em;
     line-height: 1.6;
     text-align: left;
+    margin-top: 10px;
 }
 
 .lp-5-description-list {
@@ -89,7 +90,7 @@ body {
     padding: 0;
     margin: 0;
     text-align: left;
-    margin-left: 16%;
+    margin-left: 25%;
 }
 
 .lp-5-description-list li {
@@ -250,6 +251,18 @@ body {
     box-shadow: 0 4px 12px rgba(251, 183, 21, 0.3);
 }
 
+.lp-5-hero-button{
+    background-color: #fff;
+    color: #000;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    width: fit-content;
+    align-self: center;
+    box-shadow: 0 4px 8px rgba(255, 187, 8, 0.2);
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
     .lp-5-hero-content {
@@ -290,6 +303,11 @@ body {
         font-size: 20px;
         line-height: 1;
     }
+
+    .lp-5-hero-button{
+        font-size: 18px;
+        padding: 8px 16px;
+    }
 }
 /* Client Logos Section */
 .lp-5-client-logos-section {
@@ -300,7 +318,6 @@ body {
     gap: 16px;
     padding: 64px 32px;
     background: white;
-    margin-bottom: 32px;
 }
 
 .lp-5-client-logos-container {
@@ -309,6 +326,7 @@ body {
     width: 100%;
     align-items: center;
     gap: 32px;
+    margin-top: 15px;
 }
 
 .lp-5-separator {
@@ -349,7 +367,6 @@ body {
 
 /* Main Content Section */
 .new-lp5-main-content-section {
-    padding: 64px 32px;
     background: white;
     display: flex;
     justify-content: center;
@@ -359,11 +376,11 @@ body {
 }
 
 .new-lp5-main-content-card {
-    width: 70%;
+    width: 57%;
     margin: 0 auto;
     background: linear-gradient(to right, #fbb715, #f7d482);
     border-radius: 16px;
-    padding: 48px;
+    padding: 25px 0px;
     position: relative;
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
@@ -418,6 +435,35 @@ body {
     align-items: center;
     padding: 2px;
 }
+
+.lp5-titles {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffbb08;
+  margin: 0;
+  text-align: center;
+  padding-top: 40px !important;
+  font-family: 'Figtree', Helvetica;
+}
+.lp5-testimonials-title-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lp5-testimonials-title {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #000000;
+  margin: 0;
+  text-align: center;
+  padding-top: 40px !important;
+  font-family: 'Figtree', Helvetica;
+  width: fit-content;
+}
+
 
 .new-lp5-main-content-description {
     font-size: 28px;
@@ -488,15 +534,17 @@ body {
 /* Slider Wrappers */
 .lp-5-slider1-wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 64px 32px;
+    padding: 30px 32px;
     width: 100%;
     margin-bottom: 32px;
 }
 
 .lp-5-slider2-wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 64px 32px;
@@ -508,13 +556,40 @@ body {
     width: 90%;
 }
 
+.lp-5-cta-slider-btn {
+    display: block;
+    margin: 20px auto 0; /* Centers the button horizontally below the slider, with top margin for spacing */
+    padding: 12px 24px; /* Comfortable padding for a neat look */
+    border: 2px solid #ffbb08; /* Outlined border in the specified color */
+    background-color: #ffbb08; /* Transparent background for outlined style */
+    color: #fff; /* Text color matches the border */
+    font-size: 16px; /* Readable font size */
+    font-weight: 500; /* Slightly bold for emphasis */
+    text-transform: uppercase; /* Unique touch for aesthetics */
+    letter-spacing: 1px; /* Adds a neat, spaced-out feel */
+    border-radius: 10px; /* Rounded corners for a modern, aesthetic look */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth hover transition for uniqueness */
+    /* box-shadow: 0 4px 8px rgba(255, 187, 8, 0.2);  */
+}
+.lp-5-cta-slider-btn:hover {
+    background-color: #ffbb08; /* Fills on hover for interaction */
+    color: #fff; /* Text turns white for contrast */
+    box-shadow: 0 6px 12px rgba(255, 187, 8, 0.4); /* Enhanced shadow on hover */
+    transform: translateY(-2px); /* Slight lift for a dynamic feel */
+}
+.lp-5-cta-slider-btn:focus {
+    outline: none; /* Removes default outline */
+    box-shadow: 0 0 0 3px rgba(255, 187, 8, 0.5); /* Accessible focus ring */
+}
+
 /* Main Content Section (Testimonials) */
 .lp-5-main-content-section {
     width: 100%;
-    padding: 64px 32px;
-    margin-bottom: 32px;
+    padding: 0px 32px;
     display: flex;
     justify-content: center;
+    margin-top: 30px;
 }
 
 .lp-5-main-content-card {
@@ -731,7 +806,7 @@ body {
 
 /* Awards Section */
 .lp-5-awards-section {
-    padding: 64px 32px;
+    padding: 0px 32px;
     background: white;
     margin-bottom: 32px;
 }
@@ -745,8 +820,7 @@ body {
 .lp-5-awards-title {
     font-size: 36px;
     font-weight: 700;
-    color: #27375d;
-    margin-bottom: 48px;
+    color: #000000;
     text-align: center;
 }
 
@@ -756,6 +830,7 @@ body {
     align-items: center;
     gap: 32px;
     flex-wrap: wrap;
+    margin-top: 30px;
 }
 
 .lp-5-award-image {
@@ -796,13 +871,15 @@ body {
 
 @media (max-width: 480px) {
     .lp-5-awards-section {
-        padding: 24px 8px;
         margin-bottom: 8px;
+        padding: 0px 16px;
+        margin-bottom: 20px;
     }
 
     .lp-5-awards-title {
         font-size: 24px;
-        margin-bottom: 24px;
+        margin-bottom: 0px;
+        margin: 15px 0px;
     }
 
     .lp-5-awards-list {
@@ -813,6 +890,9 @@ body {
         width: 120px;
         height: 120px;
     }
+}
+.lp-5-client-logos-section{
+    gap: 0px;
 }
 
 
@@ -881,6 +961,46 @@ body {
     letter-spacing: 0.01em;
     line-height: 1.5;
     font-family: 'Inter', Helvetica;
+}
+.lp-5-call{
+    color: #171717;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 500;
+    font-family: 'Figtree', Helvetica;
+    text-align: left;
+    
+}
+.lp-5-call-text{
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.lp-5-call a{
+    text-decoration: none;
+    color: #171717;
+    
+
+}
+
+.lp-5-call a:hover{
+    text-decoration: underline;
+    color: #fbb715;
+}
+
+.lp-5-call a button{
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: 'Figtree', Helvetica;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #171717;
+    padding-top: 10px;
 }
 
 .lp-5-store-badges {
@@ -972,6 +1092,7 @@ body {
     .lp-5-hero-left,
     .lp-5-hero-form-card {
         max-width: 100%;
+        gap: 20px;
     }
 
     .lp-5-cta-content {
@@ -1021,8 +1142,12 @@ body {
     .lp-5-main-content-section,
     .new-lp5-faq-section,
     .lp-5-cta-section {
-        padding: 32px 16px;
-        margin-bottom: 16px;
+        padding: 0px;
+        margin-bottom: 0px;
+    }
+    .new-lp5-stats-section{
+        margin: 15px 0px;
+        padding: 15px 0px;
     }
 
     .lp-5-slider2 {
@@ -1031,7 +1156,7 @@ body {
 
     .new-lp5-main-content-card {
         width: 90%;
-        padding: 32px;
+        padding: 10px 32px;
     }
 
     .new-lp5-main-content-description {
@@ -1151,14 +1276,35 @@ body {
     .lp-5-client-logos-section,
     .new-lp5-main-content-section,
     .lp-5-videoWrapper,
-    .new-lp5-stats-section,
     .lp-5-slider1-wrapper,
     .lp-5-slider2-wrapper,
-    .lp-5-main-content-section,
-    .new-lp5-faq-section,
+    .lp-5-main-content-section    {
+        padding: 0px;
+        margin: 10px 0px;
+    }
     .lp-5-cta-section {
-        padding: 24px 8px;
-        margin-bottom: 8px;
+        padding: 15px;
+    }
+    .new-lp5-faq-section{
+        margin: 10px 0px;
+        padding: 15px 10px;
+    }
+    .lp-5-cta-left{
+        align-items: center;
+    }
+    .lp-5-app-download {
+        align-items: center;
+    }
+    .slider-content {
+        margin-bottom: 15px;
+    }
+
+    .lp-5-slider1-wrapper{
+        padding: 0px 4px;
+    }
+
+    .new-lp5-main-content-section {
+        padding: 25px 5px ;
     }
 
     .new-lp5-main-content-card {
@@ -1171,7 +1317,7 @@ body {
     }
 
     .lp-5-videoContainer {
-        width: 95%;
+        width: 90%;
     }
 
     .new-lp5-stats-container {
@@ -1185,8 +1331,6 @@ body {
     .new-lp5-stat-label {
         font-size: 12px;
     }
-
-    .lp-5-slider1-wrapper,
     .lp-5-slider2-wrapper {
         padding: 32px 8px;
     }
@@ -1214,6 +1358,12 @@ body {
     .lp-5-testimonial-nav {
         font-size: 28px;
         padding: 4px 12px;
+    }
+
+    .lp-5-cta-slider-btn{
+        font-size: 14px;
+        padding: 10px 20px;
+        margin: 0px;
     }
 
     .new-lp5-faq-main-title {

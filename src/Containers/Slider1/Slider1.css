@@ -170,3 +170,21 @@
     display: block; /* Show navigation on mobile */
   }
 }
+
+@media (max-width: 480px) {
+  .slider-tabs-container {
+    margin-bottom: 0px;
+  }
+
+  .slider-content {
+    gap: 0px;
+  }
+  .slider-title {
+    font-size: 24px;
+    text-align: center;
+  }
+  .slider-description {
+    font-size: 16px;
+    text-align: center;
+  }
+}

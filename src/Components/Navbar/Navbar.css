@@ -1,6 +1,6 @@
 .navbar-links {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Changed from space-between to align logo, links, and call button to the left */
     align-items: center;
     margin: 0;
     padding: 10px 25px;
@@ -23,10 +23,17 @@
 .nav_link_box1 {
     display: flex;
     align-items: center;
+    gap: 20px; /* Added gap for spacing between links and call button */
 }
 
 .slide-down {
     transform: translateY(0);
+}
+.navbar-logo-and-links{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 0px 15px;
 }
 
 .navbar-links_logo img {
@@ -592,4 +599,144 @@
         display: block !important;
         position: fixed !important;
     }
+}
+
+/* TAM Navbar Extension Styles */
+.tam-navbar-extension {
+  position: fixed;
+  top: 70px; /* Adjust this value to sit below your main navbar (estimate based on .navbar height; e.g., 60-80px). Test and tweak in browser dev tools. */
+  width: 100%;
+  background-color: #fff; /* White background */
+  border-top: 1px solid #ccc; /* Thin gray line between navbar and TAM extension */
+  z-index: 4; /* Below main navbar (z-index: 5) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  transition: transform 0.3s ease; /* Added for smooth slide animation */
+}
+
+.tam-navbar-extension.slide-up {
+  transform: translateY(-100%); /* Slide up to hide behind main navbar */
+}
+
+.tam-navbar-extension.slide-down {
+  transform: translateY(0); /* Slide down to show */
+}
+
+/* Rest of TAM extension styles remain the same */
+.tam-navbar-container {
+  width: 95%;
+  height: 100px;
+  background-color: #fff; /* White background */
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centered content */
+  padding: 10px 25px;
+}
+
+.tam-navbar-links {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Links centered */
+  gap: 25px; /* Minimal spacing between links */
+  /* Removed fixed width for flexible centering */
+}
+
+.tam-navbar-links a {
+  text-decoration: none;
+  color: #000; /* Black links */
+}
+
+.tam-navbar-links h5 {
+  color: #000; /* Black text */
+  font-family: "Poppins", sans-serif;
+  font-size: 12px !important;
+  font-weight: 500;
+  margin: 0; /* Ensure no extra margins */
+}
+
+/* Media Queries for TAM Extension */
+@media (max-width: 1510px) {
+  .tam-navbar-links h5 {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 780px) {
+  .tam-navbar-extension {
+    display: none; /* Hide on mobile/tablet; mobile nav is handled by TAM_mobile_nav */
+  }
+  .tam-navbar-links h5 {
+    font-size: 11px;
+    font-weight: 400;
+  }
+}
+
+/* TAM Navbar Features Dropdown */
+.tam-navbar-features {
+  position: relative;
+}
+
+.tam-navbar-features h5 {
+  color: #000; /* Black text */
+  font-family: "Poppins", sans-serif;
+  font-size: 12px !important;
+  font-weight: 500;
+  margin: 0;
+  cursor: pointer;
+}
+
+.tam-navbar-features-dropdown {
+  display: none !important;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  z-index: 10;
+  width: 200px;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #000;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tam-navbar-features-dropdown li {
+  padding: 8px 0;
+  list-style: none;
+  padding-left: 15px;
+}
+
+.tam-navbar-features-dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
+.tam-navbar-features-dropdown a {
+  text-decoration: none;
+  color: #000;
+  display: block;
+}
+
+.tam-navbar-features:hover .tam-navbar-features-dropdown {
+  display: block !important;
+}
+
+/* Media Queries for TAM Features Dropdown */
+@media (max-width: 1510px) {
+  .tam-navbar-features h5 {
+    font-size: 13px;
+  }
+  .tam-navbar-features-dropdown {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 780px) {
+  .tam-navbar-features-dropdown {
+    display: none; /* Hide dropdown on mobile/tablet */
+  }
 }

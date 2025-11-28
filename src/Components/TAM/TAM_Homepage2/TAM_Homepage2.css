@@ -2,6 +2,7 @@
 .TAM_Homepage2_wrapper {
   width: 100%;
   overflow-x: hidden;
+  margin-top: 150px;
 }
 
 /* ======================== NAVBAR ======================== */
@@ -470,6 +471,263 @@ gap: 50px;
   color: #4a5568;
   line-height: 1.45;
 }
+/* ... (your existing TAM_Homepage2 CSS remains the same) ... */
+
+/* ======================== MOBILE RESPONSIVE ADJUSTMENTS ======================== */
+
+@media screen and (max-width: 768px) {
+  /* Wrapper */
+  .TAM_Homepage2_wrapper {
+    margin-top: 100px; /* Reduced from 150px for better spacing with mobile navbar */
+  }
+
+  /* Navbar */
+  .TAM_Homepage2_navbar {
+    padding: 0.5rem 0; /* Reduced padding */
+  }
+
+  .TAM_Homepage2_nav_container {
+    padding: 0 1rem; /* Reduced horizontal padding */
+    flex-direction: column; /* Stack items vertically */
+    gap: 1rem; /* Add gap between stacked items */
+  }
+
+  .TAM_Homepage2_nav_links {
+    gap: 1rem; /* Reduced gap */
+    justify-content: center; /* Center links */
+    flex-wrap: wrap; /* Allow wrapping */
+  }
+
+  .TAM_Homepage2_nav_cta {
+    padding: 0.5rem 1rem; /* Reduced padding */
+    font-size: 0.9rem; /* Smaller font */
+  }
+
+  /* Hero Section */
+  .TAM_Homepage2_hero {
+    padding: 2rem 1rem; /* Reduced padding */
+    min-height: 400px; /* Reduced height */
+  }
+
+  .TAM_Homepage2_hero_container {
+    grid-template-columns: 1fr; /* Stack to single column */
+    gap: 2rem; /* Reduced gap */
+  }
+
+  .TAM_Homepage2_hero_content {
+    max-width: 100%; /* Full width */
+    gap: 1rem; /* Reduced gap */
+    text-align: center; /* Center align */
+  }
+
+  .TAM_Homepage2_hero_title {
+    font-size: 2.5rem; /* Reduced font size */
+    line-height: 1.3; /* Adjusted line height */
+  }
+
+  .TAM_Homepage2_hero_subtitle {
+    font-size: 1.2rem; /* Reduced font size */
+    line-height: 1.6; /* Adjusted line height */
+  }
+
+  .TAM_Homepage2_hero_buttons {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 0.5rem; /* Reduced gap */
+  }
+
+  .TAM_Homepage2_btn_primary,
+  .TAM_Homepage2_btn_secondary {
+    padding: 0.8rem 1.5rem; /* Reduced padding */
+    font-size: 1rem; /* Smaller font */
+  }
+
+  .TAM_Homepage2_hero_visual {
+    height: 300px; /* Reduced height */
+  }
+
+  .TAM_Homepage2_phone_frame {
+    width: 150px; /* Smaller frame */
+    height: 300px; /* Smaller height */
+  }
+
+  .TAM_Homepage2_dashboard_preview {
+    width: 70%; /* Adjusted width */
+    height: 70%; /* Adjusted height */
+  }
+
+  /* Trusted Section */
+  .TAM_Homepage2_trusted {
+    padding: 2rem 1rem; /* Reduced padding */
+  }
+
+  .TAM_Homepage2_logos_grid {
+    gap: 20px; /* Reduced gap */
+    flex-wrap: wrap; /* Allow wrapping */
+  }
+
+  .TAM_Homepage2_logo_item {
+    width: 100px; /* Smaller width */
+    height: 40px; /* Smaller height */
+  }
+
+  /* Sliders */
+  .TAM_Homepage2_slider1 {
+    padding: 30px 15px; /* Reduced padding */
+    margin-top: 30px; /* Reduced margin */
+  }
+
+  .TAM_Homepage2_slider2 {
+    padding: 15px 40px; /* Reduced padding */
+  }
+
+  .ts-wrapper {
+    max-width: 100%; /* Full width */
+  }
+
+  .ts-description {
+    font-size: 18px; /* Smaller font */
+    line-height: 1.5; /* Adjusted line height */
+    min-height: 80px; /* Reduced min height */
+  }
+
+  .ts-user {
+    flex-direction: column; /* Stack user info */
+    gap: 10px; /* Reduced gap */
+  }
+
+  .ts-user-info {
+    text-align: center; /* Center align */
+  }
+
+  .ts-dots {
+    margin-top: 20px; /* Reduced margin */
+  }
+
+  /* Stats Section */
+  .TAM_homepage-section {
+    padding: 40px 10px; /* Reduced padding */
+  }
+
+  .TAM_homepage-stats-title {
+    font-size: 24px; /* Smaller font */
+  }
+
+  .TAM_homepage-stats-container {
+    gap: 40px; /* Reduced gap */
+  }
+
+  .TAM_homepage-stat-box {
+    max-width: 200px; /* Smaller max width */
+  }
+
+  .TAM_homepage-number {
+    font-size: 36px; /* Smaller font */
+  }
+
+  .TAM_homepage-caption {
+    font-size: 14px; /* Smaller font */
+  }
+
+  .tam-homepage-awards-title {
+    font-size: 14px; /* Smaller font */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Further reductions for very small screens */
+  .TAM_Homepage2_wrapper {
+    margin-top: 70px; /* Further reduced */
+  }
+
+  .TAM_Homepage2_hero {
+    padding: 1.5rem 0.5rem; /* Minimal padding */
+  }
+
+  .TAM_Homepage2_hero_title {
+    font-size: 2rem; /* Even smaller */
+  }
+
+  .TAM_Homepage2_hero_subtitle {
+    font-size: 1rem; /* Smaller */
+  }
+
+  .TAM_Homepage2_btn_primary,
+  .TAM_Homepage2_btn_secondary {
+    padding: 0.6rem 1rem; /* Smaller padding */
+    font-size: 0.9rem; /* Smaller font */
+  }
+
+  .TAM_Homepage2_phone_frame {
+    width: 120px; /* Smaller */
+    height: 240px; /* Smaller */
+  }
+
+  .TAM_Homepage2_trusted {
+    padding: 1.5rem 0.5rem; /* Minimal padding */
+  }
+
+  .TAM_Homepage2_logos_grid {
+    gap: 15px; /* Smaller gap */
+  }
+
+  .TAM_Homepage2_logo_item {
+    width: 80px; /* Smaller */
+    height: 35px; /* Smaller */
+  }
+
+  .TAM_Homepage2_slider1 {
+    padding: 20px 10px; /* Minimal padding */
+    margin-top: 20px; /* Smaller margin */
+  }
+
+  .TAM_Homepage2_slider2 {
+    padding: 10px 20px; /* Minimal padding */
+  }
+
+  .ts-description {
+    font-size: 16px; /* Smaller */
+    min-height: 60px; /* Smaller */
+  }
+
+  .ts-avatar {
+    width: 50px; /* Smaller */
+    height: 50px; /* Smaller */
+    font-size: 16px; /* Smaller */
+  }
+
+  .ts-user-name {
+    font-size: 16px; /* Smaller */
+  }
+
+  .ts-user-role {
+    font-size: 12px; /* Smaller */
+  }
+
+  .TAM_homepage-section {
+    padding: 30px 5px; /* Minimal padding */
+  }
+
+  .TAM_homepage-stats-title {
+    font-size: 20px; /* Smaller */
+  }
+
+  .TAM_homepage-stats-container {
+    gap: 20px; /* Smaller gap */
+  }
+
+  .TAM_homepage-number {
+    font-size: 28px; /* Smaller */
+  }
+
+  .TAM_homepage-caption {
+    font-size: 12px; /* Smaller */
+  }
+
+  .tam-homepage-awards-title {
+    font-size: 12px; /* Smaller */
+  }
+}
+
 
 
 

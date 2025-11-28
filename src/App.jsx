@@ -140,7 +140,7 @@ function App() {
       <div className="navbars">
         {navbar}
       </div>
-      {additionalNavbar}
+      {/* {additionalNavbar} */}
       <div className="routes" id='routes'>
         {shorticons && <div className="icons">
           <a href="tel:+91%207401600600">

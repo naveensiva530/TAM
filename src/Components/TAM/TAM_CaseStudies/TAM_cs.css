@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 150px;
 }
 .TAM_cases-img{
     width: 100%;
@@ -52,6 +53,9 @@
 }
 
 @media (max-width: 500px){
+    .TAM_cases{
+        margin-top: 0px;
+    }
     .TAM_cases-img{
         width: -webkit-fill-available;
     }

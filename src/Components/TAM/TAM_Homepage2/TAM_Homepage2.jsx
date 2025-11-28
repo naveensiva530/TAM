@@ -64,22 +64,6 @@ export default function TAM_Homepage2() {
 
   return (
     <div className="TAM_Homepage2_wrapper">
-      {/* Navigation Bar */}
-      <nav className="TAM_Homepage2_navbar">
-        <div className="TAM_Homepage2_nav_container">
-          <div className="TAM_Homepage2_logo">
-            <span className="TAM_Homepage2_logo_icon">TAM</span>
-          </div>
-          <ul className="TAM_Homepage2_nav_links">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-          <button className="TAM_Homepage2_nav_cta">Get Started</button>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section className="TAM_Homepage2_hero">
         <div className="TAM_Homepage2_hero_container">

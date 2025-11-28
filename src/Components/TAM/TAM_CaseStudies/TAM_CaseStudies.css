@@ -1,6 +1,7 @@
 .TAM_CaseStudies{
     background:url( '../../../assets/TAM/TAM_bg.svg') no-repeat;
     background-size:contain;
+    margin-top: 150px;
 }
 .TAM_CaseStudies_head{
     padding-top: 50px;
@@ -45,6 +46,9 @@
     }
 }
 @media screen and (max-width: 550px){
+    .TAM_CaseStudies{
+        margin-top: 70px;
+    }
     .TAM_CaseStudies_head img{
         width: 400px;
     }

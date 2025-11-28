@@ -1,6 +1,7 @@
 .TAM_Pricing{
     background:url('../../../assets/TAM/TAM_bg.svg') no-repeat;
     background-size:contain;
+      margin-top: 150px;
 }
 .TAM_Pricing_head{
     padding-top: 50px;
@@ -200,5 +201,8 @@
     .TAM_Pricing_head img{
         z-index: 2;
         margin-top: 50px;
+    }
+    .TAM_Pricing{
+        margin-top: 70px;
     }
 }   

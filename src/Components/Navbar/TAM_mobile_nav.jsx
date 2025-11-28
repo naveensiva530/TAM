@@ -8,15 +8,17 @@ import TAM_form from '../../Containers/RegForms/TAM_form';
 
 const TAM_mobile_nav = () => {
     const [toggleMenu, setToggleMenu] = useState(false)
-         const [isModalOpen, setIsModalOpen] = useState(false);
+    const [featuresdd, setFeaturesdd] = useState(false)  // State for Features dropdown
+    const [isModalOpen, setIsModalOpen] = useState(false);
     
-         const openModal = () => {
-           setIsModalOpen(true);
-         };
-       
-         const closeModal = () => {
-           setIsModalOpen(false);
-         };
+    const openModal = () => {
+      setIsModalOpen(true);
+    };
+   
+    const closeModal = () => {
+      setIsModalOpen(false);
+    };
+
   return (
     <div>
        <RiMenu3Line color='black' size={27} onClick={() =>  setToggleMenu(true)} />
@@ -36,24 +38,31 @@ const TAM_mobile_nav = () => {
                           <p>NoQu Home</p>
                       </div>
                   </li></Link>
-                  <Link to="/tam-time-and-attendance-management" onClick={() =>  setToggleMenu(false)}><li className='Navbar_menu_product'>
+                  <li className='Navbar_menu_company' onClick={() => setFeaturesdd(featuresdd ? false : true)}>  {/* Changed to Company-style dropdown for direct listing */}
                       <div className="Navbar_menu_items">
-                          <p>Attendance Management</p>
+                          <p>Features</p>
                       </div>
-                  </li></Link>
-                  <Link to="/tam-pricing" onClick={() =>  setToggleMenu(false)}><li className='Navbar_menu_company'>
-                        <div className="Navbar_menu_items">
-                            <p>Pricing</p>
-                        </div>
-                  </li></Link>
-                  <Link to="/tam-casestudies" onClick={() =>  setToggleMenu(false)}><li>
+                      <ul className="Navbar_menu_company_dropdown" style={{ display: featuresdd ? 'block' : 'none' }}>
+                          <Link to="/tam-time-and-attendance-management" onClick={() => setToggleMenu(false)}><li><span>|</span>Time Tracking</li></Link>
+                          <Link to="/tam-time-and-attendance-management" onClick={() => setToggleMenu(false)}><li><span>|</span>Attendance Monitoring</li></Link>
+                          <Link to="/tam-time-and-attendance-management" onClick={() => setToggleMenu(false)}><li><span>|</span>Reporting & Analytics</li></Link>
+                          <Link to="/tam-time-and-attendance-management" onClick={() => setToggleMenu(false)}><li><span>|</span>Integration</li></Link>
+                          <Link to="/tam-time-and-attendance-management" onClick={() => setToggleMenu(false)}><li><span>|</span>Mobile Access</li></Link>
+                      </ul>
+                  </li>
+                  <Link to="/tam-pricing" onClick={() =>  setToggleMenu(false)}><li>
                       <div className="Navbar_menu_items">
-                            <p>Case Studies</p>
+                          <p>Pricing</p>
                       </div>
                   </li></Link>
                   <Link to="/tam-support" onClick={() =>  setToggleMenu(false)}><li>
                       <div className="Navbar_menu_items">
-                            <p>Support</p>
+                          <p>Support</p>
+                      </div>
+                  </li></Link>
+                  <Link to="/tam-casestudies" onClick={() =>  setToggleMenu(false)}><li>
+                      <div className="Navbar_menu_items">
+                          <p>Case Studies</p>
                       </div>
                   </li></Link>
                   <li>              

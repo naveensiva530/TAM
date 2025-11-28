@@ -1,6 +1,7 @@
 .TAM_Support{
     background:url('../../../assets/TAM/TAM_bg.svg') no-repeat;
     background-size:cover;
+      margin-top: 150px;
 }
 .TAM_Support_head h5{
     color: #27375d;
@@ -89,6 +90,9 @@
     }
 }
 @media screen and (max-width: 550px){
+    .TAM_Support{
+        margin-top: 70px;
+    }
     .TAM_Support_head-container{
         flex-direction: column;
     }

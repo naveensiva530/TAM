@@ -33,7 +33,7 @@ const slides = [
   },
 ];
 
-export default function Slider() {
+export default function Slider({color}) {
   const [activeSlide, setActiveSlide] = useState(3);
   const [tabSlide, setTabSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -65,7 +65,6 @@ export default function Slider() {
       <div className="slider-tabs-container">
         <div className="slider-tabs">
           {currentTabs.map((slide, index) => {
-            const TabIcon = slide.icon;
             const globalIndex = isMobile ? tabSlide * tabsPerSlide + index : index;
             return (
               <button
@@ -73,9 +72,6 @@ export default function Slider() {
                 onClick={() => setActiveSlide(globalIndex)}
                 className={`slider-tab ${activeSlide === globalIndex ? 'active' : ''}`}
               >
-                <div className="slider-tab-icon">
-                  <TabIcon size={32} />
-                </div>
                 <div className="slider-tab-text">
                   <div className="slider-tab-title">{slide.title}</div>
                 </div>

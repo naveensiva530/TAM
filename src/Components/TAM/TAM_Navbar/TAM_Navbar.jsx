@@ -46,7 +46,7 @@ const TAM_Navbar = () => {
 
   return (
 <>
-    <div className={`TAM_Navbar ${visible ? 'slide-down' : 'slide-up'}`}>
+    <div className={`TAM_Navbar`}>
         <div className='TAM_Navbar-container'> 
              <div className="TAM_Navbar-logo">
                   <img src={logo} alt=""/>

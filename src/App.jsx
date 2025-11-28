@@ -54,6 +54,7 @@ import Lp3 from './Components/LP/Lp3'
 import Lp4 from './Components/LP/Lp4'
 import ScheduleAdemolp from './Containers/RegForms/ScheduleAdemolp'
 import NotFound from './Components/Error Page/NotFound'
+import TAM_Homepage2 from './Components/TAM/TAM_Homepage2/TAM_Homepage2'
 
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, ArcElement, BarElement, Title, Tooltip, Legend);
@@ -63,6 +64,7 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, ArcEleme
 
 function App() {
   const [navbar, setNavbar] = useState(<Navbar />);
+  const [additionalNavbar, setAdditionalNavbar] = useState(null);
   const [footer, setFooter] = useState(<Footer2 />);
   const [shorticons, setShorticons] = useState(true)
   const [callicon, setCallicon] = useState(false)
@@ -92,11 +94,11 @@ function App() {
       || location.pathname === '/manufacturing-industry'
       || location.pathname === '/tam-form-demo'
     ) {
-      setNavbar(<TAM_Navbar />);
+      setAdditionalNavbar(<TAM_Navbar />);
     } else if (
       location.pathname === '/Admin'
     ) {
-      setNavbar('');
+      setAdditionalNavbar(null);
       setFooter('');
       setShorticons(false);
     } else if (
@@ -138,6 +140,7 @@ function App() {
       <div className="navbars">
         {navbar}
       </div>
+      {additionalNavbar}
       <div className="routes" id='routes'>
         {shorticons && <div className="icons">
           <a href="tel:+91%207401600600">
@@ -174,7 +177,7 @@ function App() {
           <Route path='/contact' element={<Contact />}></Route>
           <Route path='/news' element={<News />}></Route>
           <Route path='/career-form' element={<CareerForm />}></Route>
-          <Route path='/tam-time-and-attendance-management' element={<TAM_home_page />}></Route>
+          <Route path='/tam-time-and-attendance-management' element={<TAM_Homepage2 />}></Route>
           <Route path="/tam" element={<Navigate to="/tam-time-and-attendance-management" replace />} />
           <Route path='/tam-pricing' element={<TamPricing />}></Route>
           <Route path='/tam-casestudies' element={<TAM_CaseStudies />}></Route>
@@ -195,7 +198,7 @@ function App() {
           <Route path='/lp2' element={<Lp2 />}></Route>
           <Route path='/lp3' element={<Lp3 />}></Route>
           <Route path='/lp4' element={<Lp4 />}></Route>
-  
+          {/* <Route path='/TAM_Homepage2' element={<TAM_Homepage2 />}></Route> */}
           <Route path='/blog' element={<Blog />}></Route>
           <Route path='/blog1' element={<Blog1 />}></Route>
           <Route path='/blog2' element={<Blog2 />}></Route>

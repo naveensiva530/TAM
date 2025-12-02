@@ -11,40 +11,66 @@ import Slider2 from '../../../Containers/Slider2/Slider2';
 import award1 from '../../../assets/awards1.jpg';
 import award2 from '../../../assets/awards2.jpeg';
 import award3 from '../../../assets/awards3.jpeg';
+import adv from '../../../assets/career_adv2.png';
 
 export default function TAM_Homepage2() {
   const [email, setEmail] = useState('');
-      const statsData = [
-        { number: "2000+", label: "Happy Clients" },
-        { number: "143000+", label: "Active Users" },
-        { number: "3+", label: "Years of Excellence" },
-    ];
-    const testimonials = [
+  const statsData = [
+    { number: "2000+", label: "Happy Clients" },
+    { number: "143000+", label: "Active Users" },
+    { number: "3+", label: "Years of Excellence" },
+  ];
+
+const features = [
   {
-    msg: "We love this App! It’s user-friendly, efficient, and accurate for tracking attendance. The GPS feature provides real-time updates, and the customizable options fit our needs perfectly. Managing teams and generating reports is a breeze.",
-    avatar: "GW",
-    name: "Dilip",
-    role: "Managing Director / Project Delivery",
+    title: "Fast Performance",
+    description: "Experience optimized performance with quicker load times and smooth workflows.",
+    image: adv,
   },
   {
-    msg: "This platform has helped us streamline attendance and payroll. Reports are accurate and it reduced manual work drastically. A must-have for modern workforce management.",
-    avatar: "RK",
-    name: "Rahul Kumar",
-    role: "HR Operations Specialist",
+    title: "Secure Platform",
+    description: "Enterprise-grade protection that keeps your data safe at all times.",
+    image: adv,
   },
   {
-    msg: "Fantastic UI & easy onboarding. The mobile GPS feature transformed our remote team coordination. Customer support is also excellent and responsive.",
-    avatar: "SM",
-    name: "Sangeetha M",
-    role: "Project Manager",
+    title: "Easy Integration",
+    description: "Seamlessly connect with your internal tools and third-party systems.",
+    image: adv,
   },
   {
-    msg: "This solution has elevated our productivity. Insightful reports and excellent performance tracking. Worth every penny!",
-    avatar: "AP",
-    name: "Ajith Prasad",
-    role: "Team Lead",
+    title: "24/7 Support",
+    description: "Our support team is available round-the-clock for your needs.",
+    image: adv,
   },
-];  
+];
+
+
+  const testimonials = [
+    {
+      msg: "We love this App! It’s user-friendly, efficient, and accurate for tracking attendance. The GPS feature provides real-time updates, and the customizable options fit our needs perfectly. Managing teams and generating reports is a breeze.",
+      avatar: "GW",
+      name: "Dilip",
+      role: "Managing Director / Project Delivery",
+    },
+    {
+      msg: "This platform has helped us streamline attendance and payroll. Reports are accurate and it reduced manual work drastically. A must-have for modern workforce management.",
+      avatar: "RK",
+      name: "Rahul Kumar",
+      role: "HR Operations Specialist",
+    },
+    {
+      msg: "Fantastic UI & easy onboarding. The mobile GPS feature transformed our remote team coordination. Customer support is also excellent and responsive.",
+      avatar: "SM",
+      name: "Sangeetha M",
+      role: "Project Manager",
+    },
+    {
+      msg: "This solution has elevated our productivity. Insightful reports and excellent performance tracking. Worth every penny!",
+      avatar: "AP",
+      name: "Ajith Prasad",
+      role: "Team Lead",
+    },
+  ];
 
   const [active, setActive] = useState(0);
 
@@ -103,101 +129,127 @@ export default function TAM_Homepage2() {
         <div className="TAM_Homepage2_trusted_container">
           <p className="TAM_Homepage2_trusted_label">Trusted by leading organizations</p>
           <div className="TAM_Homepage2_logos_grid">
-                <img className='TAM_Homepage2_logo_item' src={client1} alt="" />
-                <img className='TAM_Homepage2_logo_item' src={client2} alt="" />
-                <img className='TAM_Homepage2_logo_item' src={client3} alt="" />
-                <img className='TAM_Homepage2_logo_item' src={client4} alt="" />
-                <img className='TAM_Homepage2_logo_item' src={client5} alt="" />
+            <img className='TAM_Homepage2_logo_item' src={client1} alt="" />
+            <img className='TAM_Homepage2_logo_item' src={client2} alt="" />
+            <img className='TAM_Homepage2_logo_item' src={client3} alt="" />
+            <img className='TAM_Homepage2_logo_item' src={client4} alt="" />
+            <img className='TAM_Homepage2_logo_item' src={client5} alt="" />
           </div>
         </div>
       </section>
 
       <div className='TAM_Homepage2_slider1'>
-      <Slider color="#4f7df0"/>
+        <Slider color="#4f7df0" />
       </div>
 
-    <div className="TAM_homepage-section">
-      <h2 className="TAM_homepage-stats-title">
-        AI Attendance that grows with your business worldwide
+      <div className="TAM_homepage-section">
+        <h2 className="TAM_homepage-stats-title">
+          AI Attendance that grows with your business worldwide
+        </h2>
+
+        <a href="#" className="TAM_homepage-learnmore">Learn more</a>
+
+        <div className="TAM_homepage-stats-container">
+          <div className="TAM_homepage-stat-box">
+            <h3 className="TAM_homepage-number TAM_homepage-blue">1000+</h3>
+            <p className="TAM_homepage-caption">
+              Serving diverse organizations with reliable solutions.
+            </p>
+          </div>
+
+          <div className="TAM_homepage-stat-box">
+            <h3 className="TAM_homepage-number TAM_homepage-green">30000+</h3>
+            <p className="TAM_homepage-caption">
+              Supporting professionals with seamless workforce management
+            </p>
+          </div>
+
+          <div className="TAM_homepage-stat-box">
+            <h3 className="TAM_homepage-number TAM_homepage-purple">12+</h3>
+            <p className="TAM_homepage-caption">
+              Extending trusted AI attendance across global markets.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div className="ts-wrapper">
+        <h2 style={{ fontSize: '25px' }}>Testimonials</h2>
+        <div className="ts-quote-icon">❝❞</div>
+
+        <p className="ts-description">{testimonials[active].msg}</p>
+
+        <div className="ts-user">
+          <div className="ts-avatar">{testimonials[active].avatar}</div>
+          <div className="ts-user-info">
+            <div className="ts-user-name">{testimonials[active].name}</div>
+            <div className="ts-user-role">{testimonials[active].role}</div>
+          </div>
+        </div>
+
+
+        <div className="ts-dots">
+          {testimonials.map((_, index) => (
+            <div
+              key={index}
+              className={`ts-dot ${active === index ? "active" : ""}`}
+              onClick={() => goToSlide(index)}
+            ></div>
+          ))}
+        </div>
+      </div>
+
+
+
+
+
+
+      <div className='TAM_Homepage2_slider2'>
+        <Slider2 color="#4f7df0" />
+      </div>
+      <section className="lp-5-awards-section">
+        <div className="lp-5-awards-container">
+          <h2 className="tam-homepage-awards-title">We're leading the competition in every category</h2>
+          <div className="lp-5-awards-list">
+            <img src={award1} alt="Award 1" className="lp-5-award-image" />
+            <img src={award2} alt="Award 2" className="lp-5-award-image" />
+            <img src={award3} alt="Award 3" className="lp-5-award-image" />
+            <img src="https://www.softwaresuggest.com/award_logo/highly-recommended-winter-2024.png" alt="Award 4" className="lp-5-award-image" />
+          </div>
+        </div>
+      </section>
+      <div className="feature-section">
+
+  <div className="tam-homepage2-wrapper">
+
+      <h2 className="tam-homepage2-title">
+        Trusted Attendance <br /> for Modern Teams
       </h2>
 
-      <a href="#" className="TAM_homepage-learnmore">Learn more</a>
+      <p className="tam-homepage2-subtitle">
+        No Qr TAM brings everything together in one place, making work easier, faster, and more organized.
+      </p>
 
-      <div className="TAM_homepage-stats-container">
-        <div className="TAM_homepage-stat-box">
-          <h3 className="TAM_homepage-number TAM_homepage-blue">1000+</h3>
-          <p className="TAM_homepage-caption">
-            Serving diverse organizations with reliable solutions.
-          </p>
-        </div>
+      <div className="tam-homepage2-container">
+        {features.map((f, i) => (
+          <div key={i} className="tam-homepage2-card">
 
-        <div className="TAM_homepage-stat-box">
-          <h3 className="TAM_homepage-number TAM_homepage-green">30000+</h3>
-          <p className="TAM_homepage-caption">
-            Supporting professionals with seamless workforce management
-          </p>
-        </div>
+            <div className="tam-homepage2-image-wrapper">
+              <img src={f.image} alt={f.title} className="tam-homepage2-image" />
+            </div>
 
-        <div className="TAM_homepage-stat-box">
-          <h3 className="TAM_homepage-number TAM_homepage-purple">12+</h3>
-          <p className="TAM_homepage-caption">
-            Extending trusted AI attendance across global markets.
-          </p>
-        </div>
-      </div>
-    </div>
+            <h3 className="tam-homepage2-feature-title">{f.title}</h3>
 
+            <p className="tam-homepage2-feature-desc">{f.description}</p>
 
-
-
-<div className="ts-wrapper">
-      <h2 style={{fontSize: '25px'}}>Testimonials</h2>
-      <div className="ts-quote-icon">❝❞</div>
-
-      <p className="ts-description">{testimonials[active].msg}</p>
-
-      <div className="ts-user">
-        <div className="ts-avatar">{testimonials[active].avatar}</div>
-        <div className="ts-user-info">
-          <div className="ts-user-name">{testimonials[active].name}</div>
-          <div className="ts-user-role">{testimonials[active].role}</div>
-        </div>
-      </div>
-
-
-      <div className="ts-dots">
-        {testimonials.map((_, index) => (
-          <div
-            key={index}
-            className={`ts-dot ${active === index ? "active" : ""}`}
-            onClick={() => goToSlide(index)}
-          ></div>
+          </div>
         ))}
       </div>
     </div>
-
-
-
-
-
-      
-      <div className='TAM_Homepage2_slider2'>
-      <Slider2 color="#4f7df0"/>
       </div>
-                  <section className="lp-5-awards-section">
-                      <div className="lp-5-awards-container">
-                          <h2 className="tam-homepage-awards-title">We're leading the competition in every category</h2>
-                          <div className="lp-5-awards-list">
-                              <img src={award1} alt="Award 1" className="lp-5-award-image" />
-                              <img src={award2} alt="Award 2" className="lp-5-award-image" />
-                              <img src={award3} alt="Award 3" className="lp-5-award-image" />
-                              <img src="https://www.softwaresuggest.com/award_logo/highly-recommended-winter-2024.png" alt="Award 4" className="lp-5-award-image" />
-                          </div>
-                      </div>
-                  </section>
-
-
-
     </div>
   );
 }

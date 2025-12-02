@@ -209,7 +209,7 @@
   }
 
   .tabs-container {
-    width: 90vw; /* 90% of viewport width */
+    width: auto; /* 90% of viewport width */
     overflow-x: auto;
     flex-wrap: nowrap;
     justify-content: flex-start; /* Ensure tabs start from left */

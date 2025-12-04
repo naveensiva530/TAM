@@ -78,19 +78,20 @@
 /* ======================== HERO SECTION ======================== */
 .TAM_Homepage2_hero {
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #f0f4ff 0%, #f5f3ff 100%);
-  min-height: 600px;
+  /* background: linear-gradient(135deg, #f0f4ff 0%, #f5f3ff 100%); */
+  height: 450px;
   display: flex;
   align-items: center;
+  padding-bottom: 0px ;
+  padding-top: 50px;
 }
 
 .TAM_Homepage2_hero_container {
   max-width: 1400px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   gap: 3rem;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
 }
 
@@ -98,7 +99,9 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-width: 80%;
+  width: 50%;
+  padding-top: 100px;
+  margin-right: 50px;
 }
 
 .TAM_Homepage2_hero_title {
@@ -161,6 +164,7 @@
 }
 
 .TAM_Homepage2_hero_visual {
+  width: 60%;
   position: relative;
   height: 500px;
   display: flex;
@@ -172,42 +176,13 @@
   position: relative;
   width: 100%;
   height: 100%;
+  padding-top: 50px;
 }
-
-.TAM_Homepage2_phone_frame {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 200px;
-  height: 400px;
-  background: #000;
-  border-radius: 40px;
-  padding: 12px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  transform: translateX(-50%);
-}
-
-.TAM_Homepage2_phone_screen {
+.TAM_Homepage2_hero_image_wrapper img {
   width: 100%;
-  height: 100%;
-  border-radius: 30px;
-  overflow: hidden;
 }
 
-.TAM_Homepage2_dashboard_preview {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 60%;
-  height: 60%;
-}
 
-.TAM_Homepage2_woman_avatar {
-  position: absolute;
-  top: 50%;
-  left: 20%;
-  transform: translate(-50%, -50%);
-}
 
 /* ======================== TRUSTED SECTION ======================== */
 .TAM_Homepage2_trusted {
@@ -215,6 +190,7 @@
   background: var(--bg-white);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
+  margin-bottom: 20px;
 }
 
 .TAM_Homepage2_trusted_container {
@@ -258,11 +234,14 @@ gap: 50px;
   box-shadow: var(--shadow-md);
 }
 .TAM_Homepage2_slider1{
-  padding: 50px 30px;
-  margin-top: 50px;
+  padding: 30px 30px;
 }
 .TAM_Homepage2_slider2{
   padding: 20px 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .ts-wrapper {
@@ -399,6 +378,13 @@ gap: 50px;
   background: #4f7df0;
   border-radius: 10px;
 }
+.tam-homepage2-awards{
+  width: 100%;
+  padding: 0 20%;
+  margin-top: 20px;
+}
+
+
 .TAM_homepage-section {
   width: 100%;
   max-width: 1300px;
@@ -470,8 +456,165 @@ gap: 50px;
   font-weight: 400;
   color: #4a5568;
   line-height: 1.45;
+  padding-top: 20px;
 }
-/* ... (your existing TAM_Homepage2 CSS remains the same) ... */
+.tam-award-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.tam-award-box img{
+  width: 250px;
+  height: auto;
+}
+.tam-rating-box{
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.tam-rating-box img{
+  width: 22px;
+  height: 22px;
+}
+.tam-hp-slider2-container {
+  width: 73%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  background: #fff;
+}
+
+.tam-hp-slider2-hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.tam-hp-slider2-title {
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Tabs */
+.tam-hp-slider2-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #e5e7eb;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.tam-hp-slider2-tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex: 1;
+  scroll-snap-align: start;
+  border-bottom: 3px solid transparent;
+  transition: 0.3s ease;
+}
+
+.tam-hp-slider2-tab:hover {
+  background: #f9fafb;
+}
+
+.tam-hp-slider2-tab-active {
+  background: #ffbb08;
+  border-bottom-color: #ffbb08;
+}
+
+.tam-hp-slider2-tab-icon {
+  color: #374151;
+}
+
+.tam-hp-slider2-tab-active .tam-hp-slider2-tab-icon {
+  color: #000;
+}
+
+.tam-hp-slider2-tab-label {
+  font-size: 15px;
+  color: #374151;
+}
+
+.tam-hp-slider2-tab-active .tam-hp-slider2-tab-label {
+  color: #000;
+  font-weight: 600;
+}
+
+/* Content Grid */
+.tam-hp-slider2-content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 60px;
+}
+
+.tam-hp-slider2-section-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.tam-hp-slider2-paragraph {
+  color: #374151;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.tam-hp-slider2-feature-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tam-hp-slider2-feature-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.tam-hp-slider2-check {
+  background: #ffbb08;
+  color: #000;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tam-hp-slider2-feature-text{
+  font-size: 16px;
+  color: #374151;
+}
+
+.tam-hp-slider2-image-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tam-hp-slider2-image {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 14px;
+  object-fit: cover;
+  background: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  height: 3px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ffbb08;
+}
+
 
 /* ======================== MOBILE RESPONSIVE ADJUSTMENTS ======================== */
 
@@ -510,14 +653,16 @@ gap: 50px;
   }
 
   .TAM_Homepage2_hero_container {
-    grid-template-columns: 1fr; /* Stack to single column */
+    flex-direction: column;
     gap: 2rem; /* Reduced gap */
+    align-items: center;
   }
 
   .TAM_Homepage2_hero_content {
     max-width: 100%; /* Full width */
     gap: 1rem; /* Reduced gap */
     text-align: center; /* Center align */
+    margin-right: 0px;
   }
 
   .TAM_Homepage2_hero_title {
@@ -641,6 +786,17 @@ gap: 50px;
 
   .TAM_Homepage2_hero {
     padding: 1.5rem 0.5rem; /* Minimal padding */
+    flex-direction: column;
+  }
+  .TAM_Homepage2_hero_content{
+    width: 100%;
+    padding-top: 0px;
+  }
+  .TAM_Homepage2_hero_visual{
+    width: 90%;
+  }
+  .TAM_Homepage2_hero_image_wrapper{
+    padding-top: 0px;
   }
 
   .TAM_Homepage2_hero_title {
@@ -753,120 +909,404 @@ gap: 50px;
 /* SUBTITLE */
 .tam-homepage2-subtitle {
   font-size: 18px;
-  max-width: 550px;
+  max-width: 70%;
   opacity: 0.8;
   text-align: center;
-  margin-bottom: 45px;
+  margin-bottom: 15px;
 }
 
 /* FLEX GRID */
+/* container */
 .tam-homepage2-container {
-  width: 90%;
+  width: 92%;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 40px;
+  gap: 30px;
+  padding-bottom: 40px;
+  box-sizing: border-box;
 }
 
-/* CARD */
+/* each card */
 .tam-homepage2-card {
-  width: 250px;
-  height: 250px;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0px 6px 20px rgba(0,0,0,0.08);
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.35s ease;
+  min-width: 300px;
+  max-width: 320px;
+  min-height: 320px; /* ensures room for desc when revealed */
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(16,24,40,0.06);
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* let the absolutely positioned image move freely */
+  transition: transform 260ms ease, box-shadow 260ms ease;
   cursor: pointer;
 }
 
-/* IMAGE */
-.tam-homepage2-image-wrapper {
-  width: 100%;
-  height: 150px;
+/* hover lift */
+.tam-homepage2-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 36px rgba(16,24,40,0.12);
+}
+
+/* inner padding area (keeps content readable) */
+.tam-homepage2-card-inner {
+  padding: 28px 24px 28px 24px;
+  box-sizing: border-box;
+  position: relative; /* anchor for absolute image */
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+/* IMAGE - absolutely positioned so it can animate to corner */
+.tam-homepage2-image-wrapper {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+  display: flex;
   align-items: center;
-  transition: all 0.35s ease;
+  justify-content: center;
+  transition:
+    width 320ms cubic-bezier(.2,.9,.2,1),
+    height 320ms cubic-bezier(.2,.9,.2,1),
+    top 320ms cubic-bezier(.2,.9,.2,1),
+    left 320ms cubic-bezier(.2,.9,.2,1),
+    transform 320ms cubic-bezier(.2,.9,.2,1);
+  pointer-events: none; /* avoid hover flicker when image is on top */
+  background: transparent;
+  z-index: 2;
 }
 
 .tam-homepage2-image {
-  width: 120px;
-  height: 120px;
+  width: 88%;
+  height: 88%;
   object-fit: contain;
-  transition: all 0.35s ease;
+  display: block;
+}
+
+/* HEADER area: reserve space at top so absolute image doesn't overlap text awkwardly */
+.tam-homepage2-header {
+  padding-top: 200px; /* equal (or slightly larger) than image height+top so title starts below image initially */
+  display: flex;
+  align-items: center;
+  transition: padding-top 320ms ease, justify-content 320ms ease; /* Added justify-content transition */
+  justify-content: center;
+}
+
+/* TITLE: centered initially, shifts left and aligns next to image on hover */
+.tam-homepage2-feature-title {
+  font-size: 20px;
+  line-height: 1.15;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  text-align: center;
+  transition: margin-left 320ms cubic-bezier(.2,.9,.2,1), text-align 320ms ease;
+  z-index: 1;
+}
+
+/* BODY (hidden initially) */
+.tam-homepage2-body {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Left-aligned */
+  transition: padding-top 320ms ease;
+}
+
+/* description hidden initially */
+.tam-homepage2-feature-desc {
+  font-size: 15px;
+  color: #4b5563;
+  line-height: 1.6;
+  text-align: left; /* Left-aligned */
+  margin: 14px 0 0; /* No side margins */
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 300ms ease, max-height 360ms ease, margin-top 300ms ease;
+}
+
+/* points hidden initially */
+.tam-homepage2-feature-points {
+  list-style: disc;
+  padding-left: 22px;
+  margin: 12px 0 0 0;
+  width: 100%;
+  color: #374151;
+  text-align: left;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 300ms ease, max-height 360ms ease;
+}
+
+/* individual point */
+.tam-homepage2-point-item {
+  margin: 6px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* =========== HOVER STATE =========== */
+/* move image to top-left, shrink it */
+.tam-homepage2-card:hover .tam-homepage2-image-wrapper {
+  width: 56px;
+  height: 56px;
+  top: 16px;
+  left: 16px;
+  transform: none;
+}
+
+/* title moves to the right of the small image and aligns left */
+.tam-homepage2-card:hover .tam-homepage2-header {
+  padding-top: 0px; /* reduce reserved space so header sits near top */
+  justify-content: flex-start; /* Align header to start for proper title positioning */
+}
+
+.tam-homepage2-card:hover .tam-homepage2-feature-title {
+  margin-left: 78px; /* image width + left gap (16px + 56px + 6px gap) */
+  text-align: left;
+}
+
+/* body reveals (left-aligned block below header) */
+.tam-homepage2-card:hover .tam-homepage2-feature-desc {
+  opacity: 1;
+  max-height: 240px;
+  margin-top: 18px;
+}
+
+/* show bullets */
+.tam-homepage2-card:hover .tam-homepage2-feature-points {
+  opacity: 1;
+  max-height: 400px; /* Increased to ensure visibility if many points */
+  margin-top: 10px;
+}
+
+/* ensure text stays left-aligned as a block under header when visible */
+.tam-homepage2-card:hover .tam-homepage2-body {
+  align-items: flex-start;
+  padding-top: 8px;
+}
+
+/* =========== Responsiveness =========== */
+@media (max-width: 900px) {
+  .tam-homepage2-card { width: 280px; min-height: 340px; }
+  .tam-homepage2-header { padding-top: 160px; }
+  .tam-homepage2-image-wrapper { width: 110px; height: 110px; top: 22px; }
+  .tam-homepage2-card:hover .tam-homepage2-feature-title { margin-left: 72px; }
+}
+
+@media (max-width: 480px) {
+  .tam-homepage2-card { width: 100%; max-width: 420px; }
+  .tam-homepage2-header { padding-top: 140px; }
+  .tam-homepage2-image-wrapper { width: 100px; height: 100px; top: 18px; }
+  .tam-homepage2-card:hover .tam-homepage2-feature-title { margin-left: 64px; }
+  .tam-homepage2-container { gap: 18px; }
+}
+
+.slider1-container {
+  width: 80%;
+  margin: auto;
+}
+
+/* ---------- TABS ---------- */
+.slider1-tabs-wrapper {
+  margin-bottom: 50px;
+}
+
+.slider1-tabs-flex {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.slider1-tab {
+  width: 180px;
+  height: 130px;
+  border-radius: 16px;
+  border: none;
+  background: #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  gap: 10px;
+  transition: all 0.3s ease;
+  padding: 10px;
+}
+
+.slider1-tab:hover {
+  background: #d1d5db;
+}
+
+.slider1-tab.active {
+  background: #ffbb08;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.slider1-tab-title {
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.2;
+
+}
+/* ---------- CONTENT GRID ---------- */
+.slider1-content {
+  display: flex;
+  align-items: center;
+}
+
+.slider1-image-box {
+  flex: 1;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.slider1-image {
+  height: 320px;
+  object-fit: contain;
+  border-radius: 16px !important;
+}
+
+/* ---------- TEXT CONTENT ---------- */
+.slider1-text-box {
+  flex: 1;
+}
+
+.slider1-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.slider1-description {
+  font-size: 18px;
+  color: #444;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.slider1-points {
+  list-style: disc;
+  padding-left: 20px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .slider1-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .slider1-points {
+    text-align: left;
+    margin: auto;
+    max-width: 80%;
+  }
+}
+
+/* SECTION WRAPPER */
+.tam-hp2-business-section {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 60px 20px 80px;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 /* TITLE */
-.tam-homepage2-feature-title {
-  font-size: 20px;
+.tam-hp2-business-title {
+  font-size: 32px;
   font-weight: 700;
-  margin-top: 10px;
-  opacity: 1;
-  transition: all 0.3s ease;
+  color: #0f172a;
+  margin-bottom: 60px;
+  letter-spacing: -0.3px;
 }
 
-/* DESCRIPTION – HIDDEN INITIALLY */
-.tam-homepage2-feature-desc {
-  font-size: 15px;
-  opacity: 0;
-  margin-top: 12px;
-  text-align: center;
-  line-height: 1.4;
-  max-height: 0;
-  overflow: hidden;
-  transition: opacity 0.35s ease, max-height 0.35s ease;
-}
-
-
-/* HOVER BEHAVIOR */
-.tam-homepage2-card:hover .tam-homepage2-image-wrapper {
-  height: auto;
-}
-
-
-.tam-homepage2-card:hover .tam-homepage2-image-wrapper {
-  justify-content: flex-start;
+/* GRID */
+.tam-hp2-business-grid {
+  display: flex;
+  justify-content: space-between;
   align-items: flex-start;
+  gap: 40px;
+  width: 100%;
 }
 
-.tam-homepage2-card:hover .tam-homepage2-image {
-  width: 55px !important;
-  height: 55px !important;
-  transform: translate(0, 0);
-  
-}
-
-/* SHOW DESCRIPTION ON HOVER */
-.tam-homepage2-card:hover .tam-homepage2-feature-desc {
-  opacity: 1;
-  max-height: 200px;
-}
-
-/* CENTER TITLE + DESCRIPTION AFTER IMAGE SHRINKS */
-.tam-homepage2-card:hover .tam-homepage2-feature-title {
-  margin-top: 15px;
+/* ITEM */
+.tam-hp2-business-item {
+  flex: 1;
+  min-width: 250px;
+  max-width: 270px;
   text-align: center;
+  margin: 0 auto;
 }
 
-@media screen and (max-width: 480px){
-  .tam-homepage2-wrapper {
-    margin-top: 50px;
-    padding-bottom: 20px;
-  }
-  .tam-homepage2-title{
-    font-size: 24px !important;
-  }
-  .tam-homepage2-subtitle {
-  font-size: 14px;
-  max-width: 90%;
+/* ICONS */
+.tam-hp2-business-icon {
+  font-size: 32px;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 18px;
 }
+
+/* ICON COLORS */
+.tam-hp2-business-icon-green {
+  color: #22c55e;
 }
+
+.tam-hp2-business-icon-blue {
+  color: #3b82f6;
+}
+
+.tam-hp2-business-icon-purple {
+  color: #a855f7;
+}
+
+.tam-hp2-business-icon-orange {
+  color: #fb923c;
+}
+
+/* ITEM TITLES */
+.tam-hp2-business-item-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #0f172a;
+}
+
+/* DESCRIPTIONS */
+.tam-hp2-business-item-desc {
+  font-size: 15px;
+  color: #4b5563;
+  line-height: 1.55;
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .tam-hp2-business-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+  }
+}
+
+
+
 
 
 

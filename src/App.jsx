@@ -95,6 +95,7 @@ function App() {
       || location.pathname === '/tam-form-demo'
     ) {
       setAdditionalNavbar(<TAM_Navbar />);
+      setFooter('')
     } else if (
       location.pathname === '/Admin'
     ) {
@@ -106,6 +107,19 @@ function App() {
       ||  location.pathname === '/lp2'
       ||  location.pathname === '/lp3'
       ||  location.pathname === '/lp4' || location.pathname === '/Lp4'
+      || location.pathname === '/tam-time-and-attendance-management'
+      || location.pathname === '/tam-support'
+      || location.pathname === '/tam'
+      || location.pathname === '/tam-casestudies'
+      || location.pathname === '/tam-pricing'
+      || location.pathname === '/health-care-industry'
+      || location.pathname === '/financial-institutions'
+      || location.pathname === '/supply-chain-and-logistics-industry'
+      || location.pathname === '/construction-industry'
+      || location.pathname === '/manpower-and-staffing-industry'
+      || location.pathname === '/retail-chain'
+      || location.pathname === '/manufacturing-industry'
+      || location.pathname === '/tam-form-demo'
     ) {
       setFooter('');
     }

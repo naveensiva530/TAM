@@ -1210,6 +1210,14 @@ gap: 50px;
     text-align: center;
   }
 
+  .slider1-tab{
+    width: 100px;
+    height: 100px;
+  }
+  .slider1-tab-title{
+    font-size: 8px;
+  }
+
   .slider1-points {
     text-align: left;
     margin: auto;

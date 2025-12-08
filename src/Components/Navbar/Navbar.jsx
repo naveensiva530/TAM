@@ -136,11 +136,19 @@ const Navbar = () => {
               <div className="tam-navbar-features">
                 <h5>Features</h5>
                 <ul className="tam-navbar-features-dropdown">
-                  <li><Link to="/tam-time-and-attendance-management">Time Tracking</Link></li>
-                  <li><Link to="/tam-time-and-attendance-management">Attendance Monitoring</Link></li>
-                  <li><Link to="/tam-time-and-attendance-management">Reporting & Analytics</Link></li>
-                  <li><Link to="/tam-time-and-attendance-management">Integration</Link></li>
-                  <li><Link to="/tam-time-and-attendance-management">Mobile Access</Link></li>
+                  <li><Link to="/tam-time-and-attendance-management">Multi-Channel Attendance</Link></li>
+                  <li><Link to="/tam-time-and-attendance-management">Live Tracking</Link></li>
+                  <li><Link to="/tam-time-and-attendance-management">Regularization</Link></li>
+                  <li><Link to="/tam-time-and-attendance-management">Biometric Integration</Link></li>
+                  <li><Link to="/tam-time-and-attendance-management">Workflow</Link></li>
+                  <li><Link to="/tam-time-and-attendance-management">Roles & Permission</Link></li>
+                  <li><Link to="/tam-time-and-attendance-management">Leave & Holiday Management</Link></li>
+                  <li><Link to="/tam-time-and-attendance-management">Shif Management</Link></li>
+                  <li><Link to="/tam-time-and-attendance-management">HRMS</Link></li>
+                  <li><Link to="/tam-time-and-attendance-management">Payroll</Link></li>
+
+
+                
                   {/* Add or edit more features as needed */}
                 </ul>
               </div>

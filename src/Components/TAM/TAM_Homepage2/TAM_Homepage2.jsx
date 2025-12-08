@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './TAM_Homepage2.css';
 import client1 from '../../../assets/client1.png';
 import client2 from '../../../assets/client2.png';
@@ -11,8 +11,8 @@ import Slider2 from '../../../Containers/Slider2/Slider2';
 import award1 from '../../../assets/awards1.jpg';
 import award2 from '../../../assets/awards2.jpeg';
 import award3 from '../../../assets/awards3.jpeg';
-import google from '../../../assets/google.svg';
-import playstore from '../../../assets/playstore.svg';
+import google from '../../../assets/google.png';
+import playstore from '../../../assets/playstore.png';
 import appstore from '../../../assets/appstore.png';
 import star1 from '../../../assets/Star1.png';
 import star2 from '../../../assets/Star2.png';
@@ -27,7 +27,7 @@ import holidayImg from '../../../assets/holidayImg.png';
 import rpImg from '../../../assets/rpImg.png';
 import hrmsImg from '../../../assets/hrmsImg.png';
 import workflowImg from '../../../assets/workflowImg.png';
-import { Star, Clock, X, MapPin } from "lucide-react";
+import { Star, Clock, X, MapPin, WorkflowIcon } from "lucide-react";
 import call from '../../../assets/call.png'
 import CTA from '../../../assets/Lp-cta.png';
 import playStore from '../../../assets/Store-badge.png';
@@ -38,35 +38,32 @@ import tam_of3 from '../../../assets/tam_of3.png';
 import tam_of4 from '../../../assets/tam_of4.png';
 import tam_of5 from '../../../assets/tam_of5.png';
 import tam_of6 from '../../../assets/tam_of6.png';
-import tam_of7 from '../../../assets/tam_of7.png';
-import tam_of8 from '../../../assets/tam_of8.png';
-import tam_of9 from '../../../assets/tam_of9.png';
-import tam_of10 from '../../../assets/tam_of10.png';
-import tam_of11 from '../../../assets/tam_of11.png';
-import tam_of12 from '../../../assets/tam_of12.png';
 import multiattendenceLogo from '../../../assets/multiLogo.png';
 import liveLogo from '../../../assets/liveLogo.png';
 import regularizationLogo from '../../../assets/regularizationLogo.png';
 import biometricLogo from '../../../assets/bioLogo.png';
 import payrollLogo from '../../../assets/payrollLogo.png';
-import leaveLogo from '../../../assets/leaveLogo.png';
-import rpLogo from '../../../assets/rpLogo.png';
-import workflowLogo from '../../../assets/workflowLogo.png';
 import highlySecure from '../../../assets/highlySecure.png';
 import reliable from '../../../assets/reliable.png';
 import scalable from '../../../assets/scalable.png';
 import userFriendly from '../../../assets/userFriendly.png';
-import tamBanner from '../../../assets/tam-herobanner2.png';
+import tamBanner from '../../../assets/tam2-hero-banner.png';
+import { Workflow, Users, Calendar, BarChart3, DollarSign } from 'lucide-react';
+import bmg from '../../../assets/bmglogo.png';
+import purpleOptics from '../../../assets/purplelogo.png';
+
 
 
 
 export default function TAM_Homepage2() {
-  const [email, setEmail] = useState('');
-  const statsData = [
-    { number: "2000+", label: "Happy Clients" },
-    { number: "143000+", label: "Active Users" },
-    { number: "3+", label: "Years of Excellence" },
-  ];
+
+   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 600);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const features = [
     {
@@ -138,7 +135,6 @@ export default function TAM_Homepage2() {
   ];
 
   const [activeSlide, setActiveSlide] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
 
 
   const slides = [
@@ -212,27 +208,27 @@ export default function TAM_Homepage2() {
 
   const testimonials = [
     {
-      text: "The Febulas application is truly impressive. The concept of allowing staff members to mark their attendance directly from their mobile phones, along with integrated break features, is outstanding. The live tracking functionality adds even more value -truly a remarkable solution!",
+      text: "We love this App! It’s user-friendly, efficient, and accurate for tracking attendance. The GPS feature provides real-time updates, and the customizable options fit our needs perfectly. Managing teams and generating reports is a breeze.",
       author: "BEST MONEY GOLD",
-      logo: "bmg.png" // Optional: Replace with actual logo path or remove if not needed
+      logo: bmg// Optional: Replace with actual logo path or remove if not needed
     },
     {
-      text: "I had an amazing experience with this company! The customer service was top-notch, and the product exceeded my expectations. I highly recommend them to anyone looking for quality products and excellent service.",
-      author: "MANJU ASSOCIATIONS",
+      text: "No Qu Attendance has greatly improved our daily workflow with its simple and efficient interface. The support staff are incredibly responsive and always go the extra mile to assist. The app runs smoothly, backed by a solid and secure infrastructure. Frequent updates and new features show the team's Commitment to excellence, and we highly trust No Qu TAM as the best Attendance App for Businesses.",
+      author: "Purple Opticals",
+      logo: purpleOptics
       // Optional: Replace with actual logo path or remove if not needed
-    },
-    {
-      text: "We wish to voice our thoughts about NOQU. We've been using this for over a year, and it provides tracking information, site position, and other details. Numerous advancements are being made that provide exact information on what we require. Additionally, Mr.Dev and Mr.Mathesh, patiently answered all of my questions. We wish the team great success in future.",
-      author: "HI TECH CONCRETE SOLUTIONS",
-      logo: "hitech.png" // Optional: Replace with actual logo path or remove if not needed
-    },
-    {
-      text: "We have been using the NOQU App for the past 3 months. This Mail is to drop a Feedback regarding the App & Customer Care Person at your end. Mr.Nandhakumar is more Responsive in Clearing all the doubts & picking the Calls with no delay. We are thankful in this regard and help us to Grow better.",
-      author: "JAI SAKTHI BALAJI",
-      // No logo provided, so it will be optional
     },
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const clientLogos = [
+    { src: client1, alt: "Client logo", className: "lp-5-client-logo-1" },
+    { src: client2, alt: "Client logo", className: "lp-5-client-logo-2" },
+    { src: client3, alt: "Client logo", className: "lp-5-client-logo-3" },
+    { src: client4, alt: "Client logo", className: "lp-5-client-logo-4" },
+    { src: client5, alt: "Client logo", className: "lp-5-client-logo-5" },
+    { src: client6, alt: "Client logo", className: "lp-5-client-logo-6" },
+  ];
 
   function handlePrev() {
     setCurrentIndex(prev => (prev === 0 ? testimonials.length - 1 : prev - 1));
@@ -245,17 +241,17 @@ export default function TAM_Homepage2() {
   const [activeTab, setActiveTab] = useState("workflow");
 
   const tabs = [
-    { id: "workflow", label: "Workflow", icon: workflowLogo, },
-    { id: "roles", label: "Roles & Permissions", icon: rpLogo, },
-    { id: "leave", label: "Leave & Holiday", icon: leaveLogo, },
+    { id: "workflow", label: "Workflow", icon: WorkflowIcon, },
+    { id: "roles", label: "Roles & Permissions", icon: Users, },
+    { id: "leave", label: "Leave & Holiday", icon: Calendar, },
     // { id: "hrms", label: "HRMS", icon: leaveLogo, },
-    { id: "payroll", label: "Payroll", icon: payrollLogo, },
+    { id: "payroll", label: "Payroll", icon: DollarSign, },
   ];
 
   const tabContent = {
     workflow: {
       title: "Workflow",
-     
+
       paragraph:
         "No Qu modernized attendance requests with a smart automated flow across HR and reporting managers...",
       features: [
@@ -268,7 +264,7 @@ export default function TAM_Homepage2() {
     },
     roles: {
       title: "Roles & Permissions",
-      
+
       paragraph:
         "No Qu ensures secure and structured access with role-based permissions...",
       features: [
@@ -281,7 +277,7 @@ export default function TAM_Homepage2() {
     },
     leave: {
       title: "Leave & Holiday Management",
-      
+
       paragraph:
         "No Qu simplifies leave management with an intuitive and transparent process...",
       features: [
@@ -307,7 +303,7 @@ export default function TAM_Homepage2() {
     // },
     payroll: {
       title: "Payroll",
-      icon:payrollLogo,
+      icon: payrollLogo,
       paragraph:
         "Manage payroll with ease using attendance-integrated automation...",
       features: [
@@ -322,14 +318,42 @@ export default function TAM_Homepage2() {
 
   const currentTab = tabContent[activeTab];
 
-  const handleScroll = (e) => {
-    const scrollLeft = e.target.scrollLeft;
-    const tabWidth = e.target.clientWidth;
-    const activeIndex = Math.round(scrollLeft / tabWidth);
-    if (activeIndex >= 0 && activeIndex < tabs.length) {
-      setActiveTab(tabs[activeIndex].id);
+let timeout = null;
+
+const handleScroll = (e) => {
+  const container = e.target;
+
+  if (timeout) clearTimeout(timeout);
+
+  timeout = setTimeout(() => {
+    const width = container.clientWidth;
+    const index = Math.round(container.scrollLeft / width);
+
+    container.scrollTo({
+      left: index * width,
+      behavior: "smooth",
+    });
+
+    if (index >= 0 && index < tabs.length) {
+      setActiveTab(tabs[index].id);
     }
-  };
+  }, 120);
+};
+
+const tabsRef = useRef(null);
+
+const handleTabClick = (id, index) => {
+  setActiveTab(id);
+
+  if (tabsRef.current) {
+    const width = tabsRef.current.clientWidth;
+    tabsRef.current.scrollTo({
+      left: width * index,
+      behavior: "smooth",
+    });
+  }
+};
+
 
 
 
@@ -338,40 +362,39 @@ export default function TAM_Homepage2() {
       {/* Hero Section */}
       <section className="TAM_Homepage2_hero">
         <div className="TAM_Homepage2_hero_container">
-          <div className="TAM_Homepage2_hero_content">
-            <h1 className="TAM_Homepage2_hero_title">
-              The Smart AI-Powered Attendance Solution for the Modern Workforce
-            </h1>
-            <p className="TAM_Homepage2_hero_subtitle">
-              Say to AI Efficiency, Punctuality, Attendance Efficiency and Streamlined Productivity
-            </p>
-            <div className="TAM_Homepage2_hero_buttons">
-              <button className="TAM_Homepage2_btn_primary">Sign up for free trail</button>
-              <button className="TAM_Homepage2_btn_secondary">Request Demo</button>
-            </div>
-          </div>
-          <div className="TAM_Homepage2_hero_visual">
-            <div className="TAM_Homepage2_hero_image_wrapper">
-                <img src={tamBanner}/>
-            </div>
-          </div>
+          <img src={tamBanner} className='TAM_HeroBanner_img' />
         </div>
       </section>
 
       <section className="TAM_Homepage2_trusted">
-        <div className="TAM_Homepage2_trusted_container">
-          <p className="TAM_Homepage2_trusted_label">Trusted by leading organizations</p>
-          <div className="TAM_Homepage2_logos_grid">
-            <img className='TAM_Homepage2_logo_item' src={client1} alt="" />
-            <img className='TAM_Homepage2_logo_item' src={client2} alt="" />
-            <img className='TAM_Homepage2_logo_item' src={client3} alt="" />
-            <img className='TAM_Homepage2_logo_item' src={client4} alt="" />
-            <img className='TAM_Homepage2_logo_item' src={client5} alt="" />
+        <div className="lp-5-client-logos-section" style={{ padding: 0, marginTop: isMobile ? '0px' : '50px' }}>
+          <div className="lp5-testimonials-title-wrapper">
+            <h1 className="lp-5-awards-title" style={isMobile ? { width:'90%' } : {}}>Our Clients</h1>
+          </div>
+          <div className="lp-5-client-logos-container" style={isMobile ? { gap: '0px', marginTop: '0px' } : {}}>
+            <div className="lp-5-separator"></div>
+
+            <div className="lp-5-client-logos-marquee">
+              <div className="lp-5-client-logos-track">
+                {[...clientLogos, ...clientLogos].map((logo, index) => (
+                  <img
+                    key={`client-logo-${index}`}
+                    className={`lp-5-client-logo ${logo.className}`}
+                    alt={logo.alt}
+                    src={logo.src}
+
+
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="lp-5-separator"></div>
           </div>
         </div>
       </section>
 
-      <div className="lp5-testimonials-title-wrapper" style={{ marginTop:'60px'}}>
+      <div className="lp5-testimonials-title-wrapper">
         <h1 className="lp-5-awards-title">Our Features</h1>
       </div>
 
@@ -437,21 +460,21 @@ export default function TAM_Homepage2() {
 
         <div className="TAM_homepage-stats-container">
           <div className="TAM_homepage-stat-box">
-            <h3 className="TAM_homepage-number TAM_homepage-blue">1000+</h3>
+            <h3 className="TAM_homepage-number TAM_homepage-blue">2000+</h3>
             <p className="TAM_homepage-caption">
               Serving diverse organizations with reliable solutions.
             </p>
           </div>
 
           <div className="TAM_homepage-stat-box">
-            <h3 className="TAM_homepage-number TAM_homepage-green">30000+</h3>
+            <h3 className="TAM_homepage-number TAM_homepage-green">200000+</h3>
             <p className="TAM_homepage-caption">
               Supporting professionals with seamless workforce management
             </p>
           </div>
 
           <div className="TAM_homepage-stat-box">
-            <h3 className="TAM_homepage-number TAM_homepage-purple">12+</h3>
+            <h3 className="TAM_homepage-number TAM_homepage-purple">3+</h3>
             <p className="TAM_homepage-caption">
               Extending trusted AI attendance across global markets.
             </p>
@@ -485,9 +508,10 @@ export default function TAM_Homepage2() {
                   src={testimonials[currentIndex].logo}
                   alt="Company Logo"
                   className="lp-5-testimonial-logo"
+                  style={isMobile ? { width:'50px', height:'50px' } : {}}
                 />
               )}
-              <p className="lp-5-testimonial-text">
+              <p className="lp-5-testimonial-text" style={isMobile ? { fontSize:'12px' } : {}}>
                 {testimonials[currentIndex].text}
               </p>
               <h4 className="lp-5-testimonial-author">
@@ -515,22 +539,34 @@ export default function TAM_Homepage2() {
             className="tam-hp-slider2-tabs"
             onScroll={handleScroll}
           >
-            {tabs.map((tab) => {
-              // const IconComponent = tab.icon;
+            {tabs.map((tab, index) => {
+              const IconComponent = tab.icon;
               return (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`tam-hp-slider2-tab ${activeTab === tab.id ? "tam-hp-slider2-tab-active" : ""
-                    }`}
+    onClick={() => handleTabClick(tab.id, index)}
+    className={`tam-hp-slider2-tab ${
+      activeTab === tab.id ? "tam-hp-slider2-tab-active" : ""
+    }`}
                 >
-                  <img src={tab.icon} />
+                   <IconComponent className='tab-icon' size={28} />
                   {/* <IconComponent className="tam-hp-slider2-tab-icon" size={26} /> */}
                   <span className="tam-hp-slider2-tab-label">{tab.label}</span>
                 </button>
               );
             })}
+            
           </div>
+          <div className="tam-hp-slider2-indicator">
+  {tabs.map((t) => (
+    <span
+      key={t.id}
+      className={`tam-hp-slider2-dot ${
+        activeTab === t.id ? "active" : ""
+      }`}
+    />
+  ))}
+</div>
 
           <div className="tam-hp-slider2-content">
 
@@ -561,51 +597,49 @@ export default function TAM_Homepage2() {
       </div>
       <div className="tam-homepage2-awards">
         <div className="lp5-testimonials-title-wrapper">
-          <h1 className="lp-5-awards-title">Our Awards & Recognitions</h1>
+          <h1 className="lp-5-awards-title" style={isMobile ? { margin:'0px 20px' } : {}}>Our Awards & Recognitions</h1>
         </div>
+        <h2 className="tam-homepage-awards-title">We're leading the competition in every category</h2>
         <section className="lp-5-awards-section">
-          <div className="lp-5-awards-container">
-            <div className="lp-5-awards-list">
-              <img src={award2} alt="Award 2" className="lp-5-award-image" />
-              <img src={award3} alt="Award 3" className="lp-5-award-image" />
-              <img src="https://www.softwaresuggest.com/award_logo/highly-recommended-winter-2024.png" alt="Award 4" className="lp-5-award-image" />
+          <div className="lp-5-awards-container" style={{ width: '95%', maxWidth: '95%', display:'flex', flexWrap:'wrap', alignItems:'center', justifyContent:'center', gap:'5%', marginTop:'30px'}}>
+            <div className="tam-award-box">
+              <img src={award2} alt="Award 2" className="tam-award-box" style={isMobile ? { width: '135px'} : {}}/>
             </div>
-          </div>
-        </section>
-        <section className="lp-5-awards-section">
-          <div className="lp-5-awards-container">
-            <h2 className="tam-homepage-awards-title">We're leading the competition in every category</h2>
-            <div className="lp-5-awards-list">
-              <div className="tam-award-box">
-                <img src={google} alt="Google" />
-                <div className="tam-rating-box">
-                  <img src={star1} alt="Star" className="tam-star-image" />
-                  <img src={star1} alt="Star" className="tam-star-image" />
-                  <img src={star1} alt="Star" className="tam-star-image" />
-                  <img src={star1} alt="Star" className="tam-star-image" />
-                  <img src={star2} alt="Star" className="tam-star-image" />
-                </div>
+            <div className="tam-award-box">
+              <img src={award3} alt="Award 3" className="tam-award-box" style={isMobile ? { width: '135px'} : {}}/>
+            </div>
+            <div className="tam-award-box">
+              <img src="https://www.softwaresuggest.com/award_logo/highly-recommended-winter-2024.png" alt="Award 4" className="tam-award-box" style={isMobile ? { width: '135px'} : {}}/>
+            </div>
+            <div className="tam-award-box" style={isMobile ? { margin: '15px 0px', marginTop: '25px'} : {}}>
+              <img src={google} alt="Google" style={isMobile ? { width: '105px', margin:'15px 25px'} : {width:'140px'}}/>
+              <div className="tam-rating-box">
+                <img src={star1} alt="Star" className="tam-star-image" />
+                <img src={star1} alt="Star" className="tam-star-image" />
+                <img src={star1} alt="Star" className="tam-star-image" />
+                <img src={star1} alt="Star" className="tam-star-image" />
+                <img src={star2} alt="Star" className="tam-star-image" />
               </div>
-              <div className="tam-award-box">
-                <img src={playstore} alt="Play Store" />
-                <div className="tam-rating-box">
-                  <img src={star1} alt="Star" className="tam-star-image" />
-                  <img src={star1} alt="Star" className="tam-star-image" />
-                  <img src={star1} alt="Star" className="tam-star-image" />
-                  <img src={star1} alt="Star" className="tam-star-image" />
-                  <img src={star2} alt="Star" className="tam-star-image" />
-                </div>
+            </div>
+            <div className="tam-award-box" style={isMobile ? { margin: '15px 0px'} : {}}>
+              <img src={playstore} alt="Play Store" style={isMobile ? { width: '105px', margin:'15px 25px'} : {width:'140px'}}/>
+              <div className="tam-rating-box">
+                <img src={star1} alt="Star" className="tam-star-image" />
+                <img src={star1} alt="Star" className="tam-star-image" />
+                <img src={star1} alt="Star" className="tam-star-image" />
+                <img src={star1} alt="Star" className="tam-star-image" />
+                <img src={star2} alt="Star" className="tam-star-image" />
               </div>
+            </div>
 
-              <div className="tam-award-box">
-                <img src={appstore} alt="App Store" />
-                <div className="tam-rating-box">
-                  <img src={star1} alt="Star" className="tam-star-image" />
-                  <img src={star1} alt="Star" className="tam-star-image" />
-                  <img src={star1} alt="Star" className="tam-star-image" />
-                  <img src={star1} alt="Star" className="tam-star-image" />
-                  <img src={star2} alt="Star" className="tam-star-image" />
-                </div>
+            <div className="tam-award-box" style={isMobile ? { margin: '15px 0px'} : {}}>
+              <img src={appstore} alt="App Store" style={isMobile ? { width: '105px', margin:'15px 25px'} : {width:'140px'}}/>
+              <div className="tam-rating-box">
+                <img src={star1} alt="Star" className="tam-star-image" />
+                <img src={star1} alt="Star" className="tam-star-image" />
+                <img src={star1} alt="Star" className="tam-star-image" />
+                <img src={star1} alt="Star" className="tam-star-image" />
+                <img src={star2} alt="Star" className="tam-star-image" />
               </div>
             </div>
           </div>
@@ -670,42 +704,42 @@ export default function TAM_Homepage2() {
         </div>
 
         <div className="tam-hp2-business-section">
-  <h2 className="tam-hp2-business-title">Optimized for Business Success</h2>
+          <h2 className="tam-hp2-business-title">Optimized for Business Success</h2>
 
-  <div className="tam-hp2-business-grid">
-    <div className="tam-hp2-business-item">
-      <div className="tam-hp2-business-icon tam-hp2-business-icon-orange"><img src={userFriendly} width={35}/></div>
-      <h3 className="tam-hp2-business-item-title">User-friendly</h3>
-      <p className="tam-hp2-business-item-desc">
-        Simple to use with an intuitive design that makes adoption quick and easy.
-      </p>
-    </div>
+          <div className="tam-hp2-business-grid">
+            <div className="tam-hp2-business-item">
+              <div className="tam-hp2-business-icon tam-hp2-business-icon-orange"><img src={userFriendly} width={35} /></div>
+              <h3 className="tam-hp2-business-item-title">User-friendly</h3>
+              <p className="tam-hp2-business-item-desc">
+                Simple to use with an intuitive design that makes adoption quick and easy.
+              </p>
+            </div>
 
-    <div className="tam-hp2-business-item">
-      <div className="tam-hp2-business-icon tam-hp2-business-icon-orange"><img src={highlySecure} width={35}/></div>
-      <h3 className="tam-hp2-business-item-title">Highly Secure</h3>
-      <p className="tam-hp2-business-item-desc">
-        Enterprise-grade security ensures data privacy, compliance, and complete protection.
-      </p>
-    </div>
+            <div className="tam-hp2-business-item">
+              <div className="tam-hp2-business-icon tam-hp2-business-icon-orange"><img src={highlySecure} width={35} /></div>
+              <h3 className="tam-hp2-business-item-title">Highly Secure</h3>
+              <p className="tam-hp2-business-item-desc">
+                Enterprise-grade security ensures data privacy, compliance, and complete protection.
+              </p>
+            </div>
 
-    <div className="tam-hp2-business-item">
-      <div className="tam-hp2-business-icon tam-hp2-business-icon-orange"><img src={scalable} width={35}/></div>
-      <h3 className="tam-hp2-business-item-title">Scalable</h3>
-      <p className="tam-hp2-business-item-desc">
-        Adapts effortlessly to businesses of any size, from startups to large enterprises.
-      </p>
-    </div>
+            <div className="tam-hp2-business-item">
+              <div className="tam-hp2-business-icon tam-hp2-business-icon-orange"><img src={scalable} width={35} /></div>
+              <h3 className="tam-hp2-business-item-title">Scalable</h3>
+              <p className="tam-hp2-business-item-desc">
+                Adapts effortlessly to businesses of any size, from startups to large enterprises.
+              </p>
+            </div>
 
-    <div className="tam-hp2-business-item">
-      <div className="tam-hp2-business-icon tam-hp2-business-icon-orange"><img src={reliable} width={35}/></div>
-      <h3 className="tam-hp2-business-item-title">Reliable</h3>
-      <p className="tam-hp2-business-item-desc">
-        Delivers accurate, real-time attendance and workforce insights you can trust.
-      </p>
-    </div>
-  </div>
-</div>
+            <div className="tam-hp2-business-item">
+              <div className="tam-hp2-business-icon tam-hp2-business-icon-orange"><img src={reliable} width={35} /></div>
+              <h3 className="tam-hp2-business-item-title">Reliable</h3>
+              <p className="tam-hp2-business-item-desc">
+                Delivers accurate, real-time attendance and workforce insights you can trust.
+              </p>
+            </div>
+          </div>
+        </div>
 
         <section className="lp-5-cta-section">
           <div className="lp-5-cta-content">
@@ -718,8 +752,8 @@ export default function TAM_Homepage2() {
               <div className="lp-5-app-download">
                 <h3 className="lp-5-app-download-title">Get the App</h3>
                 <div className="lp-5-store-badges">
-                  <img src={playStore} alt="Play Store" />
-                  <img src={appStore} alt="App Store" />
+                  <a href="https://play.google.com/store/apps/details?id=com.noqu.app" target='blank'><img src={playStore} alt="Play Store" /></a>
+                  <a href="https://apps.apple.com/us/app/noqu-tam/id6554003975" target='blank'><img src={appStore} alt="App Store" /></a>
                 </div>
                 <div className="lp-5-call">
                   <p className="lp-5-call-text">Need Help? Call Us Now:</p>

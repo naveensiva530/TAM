@@ -604,7 +604,7 @@
 /* TAM Navbar Extension Styles */
 .tam-navbar-extension {
   position: fixed;
-  top: 70px; /* Adjust this value to sit below your main navbar (estimate based on .navbar height; e.g., 60-80px). Test and tweak in browser dev tools. */
+  top: 0px; /* Adjust this value to sit below your main navbar (estimate based on .navbar height; e.g., 60-80px). Test and tweak in browser dev tools. */
   width: 100%;
   background-color: #fff; /* White background */
   border-top: 1px solid #ccc; /* Thin gray line between navbar and TAM extension */
@@ -612,28 +612,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 30px;
-  transition: transform 0.3s ease; /* Added for smooth slide animation */
 }
 
-.tam-navbar-extension.slide-up {
-  transform: translateY(-100%); /* Slide up to hide behind main navbar */
-}
-
-.tam-navbar-extension.slide-down {
-  transform: translateY(0); /* Slide down to show */
-}
+/* Removed slide-up and slide-down classes and their transforms */
 
 /* Rest of TAM extension styles remain the same */
 .tam-navbar-container {
   width: 95%;
   height: 100px;
-  background-color: #fff; /* White background */
-  border-radius: 25px;
+  background-color: #27375d; /* Changed to requested color */
+  border-radius: 25px; /* Already set, but confirmed */
   display: flex;
   align-items: center;
-  justify-content: center; /* Centered content */
+  justify-content: space-between; /* Centered content */
   padding: 10px 25px;
+  padding-right: 50px;
 }
 
 .tam-navbar-links {
@@ -646,11 +639,11 @@
 
 .tam-navbar-links a {
   text-decoration: none;
-  color: #000; /* Black links */
+  color: #fff; /* Changed to white for contrast on dark background */
 }
 
 .tam-navbar-links h5 {
-  color: #000; /* Black text */
+  color: #fff; /* Changed to white for contrast on dark background */
   font-family: "Poppins", sans-serif;
   font-size: 12px !important;
   font-weight: 500;
@@ -680,7 +673,7 @@
 }
 
 .tam-navbar-features h5 {
-  color: #000; /* Black text */
+  color: #fff; /* Changed to white for contrast on dark background */
   font-family: "Poppins", sans-serif;
   font-size: 12px !important;
   font-weight: 500;
@@ -693,14 +686,14 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #fff;
+  background-color: #fff; /* Kept white for dropdown contrast */
   border: 1px solid #ccc;
   z-index: 10;
   width: 210px;
   font-family: "Poppins", sans-serif;
   font-size: 12px;
   font-weight: 500;
-  color: #000;
+  color: #000; /* Black text in dropdown */
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -717,7 +710,7 @@
 
 .tam-navbar-features-dropdown a {
   text-decoration: none;
-  color: #000;
+  color: #000; /* Black links in dropdown */
   display: block;
 }
 
@@ -740,3 +733,5 @@
     display: none; /* Hide dropdown on mobile/tablet */
   }
 }
+
+/* ... existing code ... */

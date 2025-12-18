@@ -47,17 +47,19 @@ import highlySecure from '../../../assets/highlySecure.png';
 import reliable from '../../../assets/reliable.png';
 import scalable from '../../../assets/scalable.png';
 import userFriendly from '../../../assets/userFriendly.png';
-import tamBanner from '../../../assets/tam2-hero-banner.png';
+import tamBanner from '../../../assets/tam-hp2-banner.png';
+import tamBg from '../../../assets/tam2-bg.png';
 import { Workflow, Users, Calendar, BarChart3, DollarSign } from 'lucide-react';
 import bmg from '../../../assets/bmglogo.png';
 import purpleOptics from '../../../assets/purplelogo.png';
+import TAM_Footer from '../TAM_Footer/TAM_Footer';
 
 
 
 
 export default function TAM_Homepage2() {
 
-   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 600);
@@ -318,41 +320,41 @@ export default function TAM_Homepage2() {
 
   const currentTab = tabContent[activeTab];
 
-let timeout = null;
+  let timeout = null;
 
-const handleScroll = (e) => {
-  const container = e.target;
+  const handleScroll = (e) => {
+    const container = e.target;
 
-  if (timeout) clearTimeout(timeout);
+    if (timeout) clearTimeout(timeout);
 
-  timeout = setTimeout(() => {
-    const width = container.clientWidth;
-    const index = Math.round(container.scrollLeft / width);
+    timeout = setTimeout(() => {
+      const width = container.clientWidth;
+      const index = Math.round(container.scrollLeft / width);
 
-    container.scrollTo({
-      left: index * width,
-      behavior: "smooth",
-    });
+      container.scrollTo({
+        left: index * width,
+        behavior: "smooth",
+      });
 
-    if (index >= 0 && index < tabs.length) {
-      setActiveTab(tabs[index].id);
+      if (index >= 0 && index < tabs.length) {
+        setActiveTab(tabs[index].id);
+      }
+    }, 120);
+  };
+
+  const tabsRef = useRef(null);
+
+  const handleTabClick = (id, index) => {
+    setActiveTab(id);
+
+    if (tabsRef.current) {
+      const width = tabsRef.current.clientWidth;
+      tabsRef.current.scrollTo({
+        left: width * index,
+        behavior: "smooth",
+      });
     }
-  }, 120);
-};
-
-const tabsRef = useRef(null);
-
-const handleTabClick = (id, index) => {
-  setActiveTab(id);
-
-  if (tabsRef.current) {
-    const width = tabsRef.current.clientWidth;
-    tabsRef.current.scrollTo({
-      left: width * index,
-      behavior: "smooth",
-    });
-  }
-};
+  };
 
 
 
@@ -362,14 +364,38 @@ const handleTabClick = (id, index) => {
       {/* Hero Section */}
       <section className="TAM_Homepage2_hero">
         <div className="TAM_Homepage2_hero_container">
-          <img src={tamBanner} className='TAM_HeroBanner_img' />
+
+          {/* LEFT CONTENT */}
+          <div className="TAM_Homepage2_hero_content">
+            <h1>
+              The <span className="highlight">Smart AI</span>-Powered Attendance Solution<br />
+              for the Modern Workforce
+            </h1>
+
+            <p>
+              No Qu TAM enhances <span>Efficiency</span>, improves <span>Productivity</span>,
+              and increases <span>Profitability</span>
+            </p>
+
+            <button className="hero-cta">Schedule Demo</button>
+          </div>
+
+          {/* RIGHT IMAGE */}
+          <div className="TAM_Homepage2_hero_image">
+            <img
+              src={tamBanner}
+              alt="TAM Dashboard"
+            />
+          </div>
+
         </div>
       </section>
+
 
       <section className="TAM_Homepage2_trusted">
         <div className="lp-5-client-logos-section" style={{ padding: 0, marginTop: isMobile ? '0px' : '50px' }}>
           <div className="lp5-testimonials-title-wrapper">
-            <h1 className="lp-5-awards-title" style={isMobile ? { width:'90%' } : {}}>Our Clients</h1>
+            <h1 className="lp-5-awards-title" style={isMobile ? { width: '90%' } : {}}>Clients</h1>
           </div>
           <div className="lp-5-client-logos-container" style={isMobile ? { gap: '0px', marginTop: '0px' } : {}}>
             <div className="lp-5-separator"></div>
@@ -395,7 +421,7 @@ const handleTabClick = (id, index) => {
       </section>
 
       <div className="lp5-testimonials-title-wrapper">
-        <h1 className="lp-5-awards-title">Our Features</h1>
+        <h1 className="lp-5-awards-title">Features</h1>
       </div>
 
       <div className='TAM_Homepage2_slider1'>
@@ -461,6 +487,7 @@ const handleTabClick = (id, index) => {
         <div className="TAM_homepage-stats-container">
           <div className="TAM_homepage-stat-box">
             <h3 className="TAM_homepage-number TAM_homepage-blue">2000+</h3>
+            <p style={{ fontSize: '14px', marginBottom: '15px', color: 'grey' }}>Clients</p>
             <p className="TAM_homepage-caption">
               Serving diverse organizations with reliable solutions.
             </p>
@@ -468,6 +495,7 @@ const handleTabClick = (id, index) => {
 
           <div className="TAM_homepage-stat-box">
             <h3 className="TAM_homepage-number TAM_homepage-green">200000+</h3>
+            <p style={{ fontSize: '14px', marginBottom: '15px', color: 'grey' }}>Users</p>
             <p className="TAM_homepage-caption">
               Supporting professionals with seamless workforce management
             </p>
@@ -475,6 +503,7 @@ const handleTabClick = (id, index) => {
 
           <div className="TAM_homepage-stat-box">
             <h3 className="TAM_homepage-number TAM_homepage-purple">3+</h3>
+            <p style={{ fontSize: '14px', marginBottom: '15px', color: 'grey' }}>Countries</p>
             <p className="TAM_homepage-caption">
               Extending trusted AI attendance across global markets.
             </p>
@@ -508,10 +537,10 @@ const handleTabClick = (id, index) => {
                   src={testimonials[currentIndex].logo}
                   alt="Company Logo"
                   className="lp-5-testimonial-logo"
-                  style={isMobile ? { width:'50px', height:'50px' } : {}}
+                  style={isMobile ? { width: '50px', height: '50px' } : {}}
                 />
               )}
-              <p className="lp-5-testimonial-text" style={isMobile ? { fontSize:'12px' } : {}}>
+              <p className="lp-5-testimonial-text" style={isMobile ? { fontSize: '12px' } : {}}>
                 {testimonials[currentIndex].text}
               </p>
               <h4 className="lp-5-testimonial-author">
@@ -544,29 +573,27 @@ const handleTabClick = (id, index) => {
               return (
                 <button
                   key={tab.id}
-    onClick={() => handleTabClick(tab.id, index)}
-    className={`tam-hp-slider2-tab ${
-      activeTab === tab.id ? "tam-hp-slider2-tab-active" : ""
-    }`}
+                  onClick={() => handleTabClick(tab.id, index)}
+                  className={`tam-hp-slider2-tab ${activeTab === tab.id ? "tam-hp-slider2-tab-active" : ""
+                    }`}
                 >
-                   <IconComponent className='tab-icon' size={28} />
+                  <IconComponent className='tab-icon' size={28} />
                   {/* <IconComponent className="tam-hp-slider2-tab-icon" size={26} /> */}
                   <span className="tam-hp-slider2-tab-label">{tab.label}</span>
                 </button>
               );
             })}
-            
+
           </div>
           <div className="tam-hp-slider2-indicator">
-  {tabs.map((t) => (
-    <span
-      key={t.id}
-      className={`tam-hp-slider2-dot ${
-        activeTab === t.id ? "active" : ""
-      }`}
-    />
-  ))}
-</div>
+            {tabs.map((t) => (
+              <span
+                key={t.id}
+                className={`tam-hp-slider2-dot ${activeTab === t.id ? "active" : ""
+                  }`}
+              />
+            ))}
+          </div>
 
           <div className="tam-hp-slider2-content">
 
@@ -597,22 +624,22 @@ const handleTabClick = (id, index) => {
       </div>
       <div className="tam-homepage2-awards">
         <div className="lp5-testimonials-title-wrapper">
-          <h1 className="lp-5-awards-title" style={isMobile ? { margin:'0px 20px' } : {}}>Our Awards & Recognitions</h1>
+          <h1 className="lp-5-awards-title" style={isMobile ? { margin: '0px 20px' } : {}}>Awards & Recognitions</h1>
         </div>
         <h2 className="tam-homepage-awards-title">We're leading the competition in every category</h2>
         <section className="lp-5-awards-section">
-          <div className="lp-5-awards-container" style={{ width: '95%', maxWidth: '95%', display:'flex', flexWrap:'wrap', alignItems:'center', justifyContent:'center', gap:'5%', marginTop:'30px'}}>
+          <div className="lp-5-awards-container" style={{ width: '95%', maxWidth: '95%', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '5%', marginTop: '30px' }}>
             <div className="tam-award-box">
-              <img src={award2} alt="Award 2" className="tam-award-box" style={isMobile ? { width: '135px'} : {}}/>
+              <img src={award2} alt="Award 2" className="tam-award-box" style={isMobile ? { width: '135px' } : {}} />
             </div>
             <div className="tam-award-box">
-              <img src={award3} alt="Award 3" className="tam-award-box" style={isMobile ? { width: '135px'} : {}}/>
+              <img src={award3} alt="Award 3" className="tam-award-box" style={isMobile ? { width: '135px' } : {}} />
             </div>
             <div className="tam-award-box">
-              <img src="https://www.softwaresuggest.com/award_logo/highly-recommended-winter-2024.png" alt="Award 4" className="tam-award-box" style={isMobile ? { width: '135px'} : {}}/>
+              <img src="https://www.softwaresuggest.com/award_logo/highly-recommended-winter-2024.png" alt="Award 4" className="tam-award-box" style={isMobile ? { width: '135px' } : {}} />
             </div>
-            <div className="tam-award-box" style={isMobile ? { margin: '15px 0px', marginTop: '25px'} : {}}>
-              <img src={google} alt="Google" style={isMobile ? { width: '105px', margin:'15px 25px'} : {width:'140px'}}/>
+            <div className="tam-award-box" style={isMobile ? { margin: '15px 0px', marginTop: '25px' } : {}}>
+              <img src={google} alt="Google" style={isMobile ? { width: '105px', margin: '15px 25px' } : { width: '140px' }} />
               <div className="tam-rating-box">
                 <img src={star1} alt="Star" className="tam-star-image" />
                 <img src={star1} alt="Star" className="tam-star-image" />
@@ -621,8 +648,8 @@ const handleTabClick = (id, index) => {
                 <img src={star2} alt="Star" className="tam-star-image" />
               </div>
             </div>
-            <div className="tam-award-box" style={isMobile ? { margin: '15px 0px'} : {}}>
-              <img src={playstore} alt="Play Store" style={isMobile ? { width: '105px', margin:'15px 25px'} : {width:'140px'}}/>
+            <div className="tam-award-box" style={isMobile ? { margin: '15px 0px' } : {}}>
+              <img src={playstore} alt="Play Store" style={isMobile ? { width: '105px', margin: '15px 25px' } : { width: '140px' }} />
               <div className="tam-rating-box">
                 <img src={star1} alt="Star" className="tam-star-image" />
                 <img src={star1} alt="Star" className="tam-star-image" />
@@ -632,8 +659,8 @@ const handleTabClick = (id, index) => {
               </div>
             </div>
 
-            <div className="tam-award-box" style={isMobile ? { margin: '15px 0px'} : {}}>
-              <img src={appstore} alt="App Store" style={isMobile ? { width: '105px', margin:'15px 25px'} : {width:'140px'}}/>
+            <div className="tam-award-box" style={isMobile ? { margin: '15px 0px' } : {}}>
+              <img src={appstore} alt="App Store" style={isMobile ? { width: '105px', margin: '15px 25px' } : { width: '140px' }} />
               <div className="tam-rating-box">
                 <img src={star1} alt="Star" className="tam-star-image" />
                 <img src={star1} alt="Star" className="tam-star-image" />
@@ -670,7 +697,7 @@ const handleTabClick = (id, index) => {
           </p>
 
           <div className="lp5-testimonials-title-wrapper" style={{ margin: '30px 0px', fontSize: '22px' }}>
-            <h1 className="lp-5-awards-title" style={{ fontSize: '30px' }}>Other Features</h1>
+            <h1 className="lp-5-awards-title" style={{ fontSize: '30px' }}>Features</h1>
           </div>
           <div className="tam-homepage2-container">
             {features.map((f, i) => (
@@ -769,16 +796,7 @@ const handleTabClick = (id, index) => {
           </div>
         </section>
       </div>
-      <footer className="lp-5-footer-section">
-        <div className="lp-5-footer-container">
-          <div className="lp-5-footer-copyright">© 2025 Noqu - All Rights Reserved</div>
-          <div className="lp-5-footer-links">
-            <a href="/privacy-policy" target='blank' className="lp-5-footer-link">Terms of use</a>
-            <a href="/terms-and-conditions" target='blank' className="lp-5-footer-link">Privacy policy</a>
-          </div>
-
-        </div>
-      </footer>
+      <TAM_Footer />
     </div>
   );
 }

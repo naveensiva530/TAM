@@ -78,7 +78,9 @@ const Navbar = () => {
   }, [isTamPage, tamLastScrollY]);
 
   return (
+
     <>
+    {!isTamPage ? (
       <div className="navbar">
         <div className="navbar-links">
           <div className="navbar-logo-and-links">
@@ -126,11 +128,14 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      )
 
-      {/* TAM Extension: Only render for TAM pages on desktop */}
-      {isTamPage && (
+      : (
         <div className={`tam-navbar-extension ${tamVisible ? 'slide-down' : 'slide-up'}`}>
           <div className="tam-navbar-container">
+            <div>
+              <img src={logo} width={75} />
+            </div>
             <div className="tam-navbar-links">
               <h5><Link to="/home">Product Home</Link></h5>
               <div className="tam-navbar-features">
@@ -145,16 +150,15 @@ const Navbar = () => {
                   <li><Link to="/tam-time-and-attendance-management">Leave & Holiday Management</Link></li>
                   <li><Link to="/tam-time-and-attendance-management">Shif Management</Link></li>
                   <li><Link to="/tam-time-and-attendance-management">HRMS</Link></li>
-                  <li><Link to="/tam-time-and-attendance-management">Payroll</Link></li>
-
-
-                
-                  {/* Add or edit more features as needed */}
+                  <li><Link to="/tam-time-and-attendance-management">Workflow</Link></li>               
                 </ul>
               </div>
               <h5><Link to="/tam-pricing">Pricing</Link></h5>
               <h5><Link to="/tam-support">Support</Link></h5>
               <h5><Link to="/tam-casestudies">Case Studies</Link></h5>
+            </div>
+            <div className='scale-hover'>
+              <a href="callto:+91 7401600600" style={{textDecoration:'none'}}><button style={{display:'flex', alignItems:'center', gap:'8px', backgroundColor:'inherit', border:'none', color:'white',cursor:'pointer'}}><img src={call} width={25} /><p>+91 7401 600 600</p></button></a>
             </div>
           </div>
         </div>

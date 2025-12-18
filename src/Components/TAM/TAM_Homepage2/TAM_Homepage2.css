@@ -2,7 +2,7 @@
 .TAM_Homepage2_wrapper {
   width: 100%;
   overflow-x: hidden;
-  margin-top: 150px;
+
 }
 
 /* ======================== NAVBAR ======================== */
@@ -76,17 +76,129 @@
 }
 
 /* ======================== HERO SECTION ======================== */
+/* HERO WRAPPER */
 .TAM_Homepage2_hero {
-  height: 450px;
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-bottom: 0px ;
-  padding-top: 300px;
+  background: linear-gradient(
+    135deg,
+    #e9fbf8 0%,
+    #eaf4ff 50%,
+    #ffffff 100%
+  );
+  overflow: hidden;
 }
 
+/* CONTAINER */
 .TAM_Homepage2_hero_container {
-  width: 100%;
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
+/* LEFT CONTENT */
+.TAM_Homepage2_hero_content {
+  flex: 1;
+  max-width: 620px;
+}
+
+.TAM_Homepage2_hero_content h1 {
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #0f172a;
+  margin-bottom: 20px;
+}
+
+.TAM_Homepage2_hero_content .highlight {
+  background: #3cb300;
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+
+.TAM_Homepage2_hero_content p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #1f2937;
+}
+
+.TAM_Homepage2_hero_content p span {
+  color: #0b74d6;
+  font-weight: 700;
+}
+
+/* CTA BUTTON */
+.hero-cta {
+  margin-top: 30px;
+  padding: 14px 36px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  background: #3cb300;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(60,179,0,0.3);
+}
+
+/* RIGHT IMAGE */
+.TAM_Homepage2_hero_image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.TAM_Homepage2_hero_image img {
+  width: 100%;
+  max-width: 620px;
+  object-fit: contain;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1024px) {
+  .TAM_Homepage2_hero_content h1 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 768px) {
+  .TAM_Homepage2_hero_container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .TAM_Homepage2_hero_image {
+    margin-top: 40px;
+    justify-content: center;
+  }
+
+  .TAM_Homepage2_hero_content {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .TAM_Homepage2_hero_content h1 {
+    font-size: 30px;
+  }
+
+  .hero-cta {
+    width: 100%;
+  }
+}
+
 
 .TAM_HeroBanner_img{
   width: 100%;
@@ -102,7 +214,6 @@
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   position: relative;
-  margin-top: 300px;
 }
 
 .TAM_Homepage2_trusted_container {
@@ -1254,7 +1365,7 @@ gap: 50px;
 
 
 .slider1-container {
-  width: 80%;
+  max-width: 90%;
   margin: auto;
 }
 

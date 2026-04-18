@@ -1,63 +1,167 @@
-.TAM_Help h1{
-    margin-bottom: 10px;
+/* ─── Google Fonts ──────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ─── CSS Variables ─────────────────────────────────────────── */
+:root {
+    --font-figtree: 'Figtree', sans-serif;
+    --font-poppins: 'Poppins', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+
+    --text-dark:     #0f172a;
+    --text-soft:     #475569;
+    --text-muted:    #94a3b8;
+    --brand-blue:    #0077B6;
+    --brand-blue-dark: #005f94;
+    --brand-blue-light: #dbeafe;
+    --brand-green:   #38B000;
+    --brand-green-light: #dcfce7;
+    --bg-white:      #ffffff;
+    --border-soft:   rgba(0, 119, 182, 0.15);
+    --shadow-card:   0 4px 20px rgba(0, 0, 0, 0.06);
+    --shadow-hover:   0 12px 32px rgba(0, 0, 0, 0.10);
+    --transition:     all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.TAM_Help{
+
+/* ─── Wrapper ───────────────────────────────────────────────── */
+.TAM_Help {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0px 20px 80px;
+    background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 45%, #DCFCE7 75%, #e0f7fa 100%);
+    min-height: 100vh;
+    font-family: var(--font-inter);
+    position: relative;
+}
 
+/* ── Header ── */
+.TAM_Help_header {
+    text-align: center;
+    padding-top: 90px;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.TAM_Help p{
-    /* width: 85%; */
-    font-size: 13px;
-    margin-bottom: 1rem;
-    color: #5e5e5e;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
+
+.TAM_Help_header.header-animated {
+    opacity: 1;
+    transform: translateY(0);
 }
-.TAM_Help-content{
+
+.TAM_Help .TAM_h1 {
+    font-family: var(--font-figtree);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+}
+
+.title-dark {
+    color: var(--text-dark);
+}
+
+.TAM_Help_subtitle {
+    font-family: var(--font-poppins);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    margin-bottom: 0;
+    color: var(--brand-blue);
+}
+
+/* ── Content Box ── */
+.TAM_Help-content {
     width: 90%;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 80px 80px;
+    max-width: 860px;
+    background-color: var(--bg-white);
+    border-radius: 20px;
+    padding: 56px 72px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgb(238, 238, 238);
+    border: 1px solid rgba(0, 119, 182, 0.10);
+    box-shadow: var(--shadow-card);
     gap: 20px;
     margin-top: 10px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: 0.15s;
 }
-.TAM_Help-content p{
-    font-size: 18px;
-    text-align: center;
-    line-height: 35px;
+
+.TAM_Help-content.content-animated {
+    opacity: 1;
+    transform: translateY(0);
 }
-.TAM_Help-content button{
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    color: #FFF;
-    background-color: #27375d;
+
+.TAM_Help-content p {
+    font-family: var(--font-inter);
     font-size: 15px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    cursor: pointer;
+    line-height: 1.85;
+    color: var(--text-soft);
+    font-weight: 400;
+    letter-spacing: 0.1px;
+    text-align: center;
 }
-@media screen and (max-width: 550px){
-    .TAM_Help-content{
-        padding: 80px 50px;
+
+/* ── Form Container ── */
+.TAM_Help-form-container {
+    width: 100%;
+    max-width: 860px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    padding-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: 0.3s;
+}
+
+.TAM_Help-form-container.form-animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Responsive ── */
+@media screen and (max-width: 768px) {
+    .TAM_Help {
+        padding: 40px 14px 60px;
     }
-    .TAM_Help h1{
-        margin-bottom: 10px;
-        font-size: 3rem;
+
+    .TAM_Help_header {
+        padding-top: 60px;
+        margin-bottom: 36px;
     }
-    .TAM_Help p{
-        width: 90%;
-        text-align: center;
+
+    .TAM_Help .TAM_h1 {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
     }
-    .TAM_Help-content p{
+
+    .TAM_Help-content {
+        padding: 36px 28px;
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .TAM_Help-content {
+        padding: 28px 20px;
+    }
+
+    .TAM_Help-content p {
         font-size: 14px;
-        line-height: 25px;
+        line-height: 1.75;
     }
 }

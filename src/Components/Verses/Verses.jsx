@@ -39,10 +39,10 @@ import locator from '../../assets/locator.png'
     }, []);
 
   return (
-    <div class="box">
+    <div className="box">
       
-        <div class="scroller" data-speed="fast">
-        <ul class="tag-list scroller__inner">
+        <div className="scroller" data-speed="fast">
+        <ul className="tag-list scroller__inner">
             
             <li><Usecase img={liveLocation} heading="Live Location Tracker" content="Track employee locations in real time to enhance operational efficiency."/></li>
             <li><Usecase img={integration} heading="Integration" content="Effortlessly connect HR management and payroll for streamlined processes."/></li>

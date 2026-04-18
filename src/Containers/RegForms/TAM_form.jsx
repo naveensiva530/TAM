@@ -13,10 +13,11 @@ import axios from 'axios';
 import { Helmet } from 'react-helmet-async';
 
 const TAM_form = ({ isOpen, onClose }) => {
-	if (!isOpen) return null;
 	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, []);
+		if (isOpen) {
+			window.scrollTo(0, 0);
+		}
+	}, [isOpen]);
 
 	const [productName, setProductName] = useState('Time And Attendance Management');
 	const [fullName, setFullName] = useState('');
@@ -61,6 +62,8 @@ const TAM_form = ({ isOpen, onClose }) => {
 			});
 	};
 
+	if (!isOpen) return null;
+
 	return (
 		<>
 			<Helmet>
@@ -80,7 +83,7 @@ const TAM_form = ({ isOpen, onClose }) => {
 				<div className='SAD'>
 					<form onSubmit={handleSubmit} className="SAD_form">
 						<div className="SAD_form_close">
-							<p onClick={onClose}>&#215;</p>
+							<button className="SAD_close_btn" onClick={onClose}>&#215;</button>
 						</div>
 						<div className="SAD_from_head">
 							<h5 className='TAM_h1'>Schedule a Demo / call</h5>

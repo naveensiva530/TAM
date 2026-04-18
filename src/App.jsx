@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+
 import ChannelPartner from './Components/ChannelPartner/ChannelPartner'
 import AboutUs from './Components/Company/AboutUs/AboutUs'
 import Awards from './Components/Company/Awards/Awards'
@@ -54,7 +55,26 @@ import Lp3 from './Components/LP/Lp3'
 import Lp4 from './Components/LP/Lp4'
 import ScheduleAdemolp from './Containers/RegForms/ScheduleAdemolp'
 import NotFound from './Components/Error Page/NotFound'
+
+
+
 import TAM_Homepage2 from './Components/TAM/TAM_Homepage2/TAM_Homepage2'
+
+
+/*----Features-------*/
+import Multichannel from "./Components/TAM/Features/Multichannel/Multichannel";
+import Livetracking from "./Components/TAM/Features/Livetracking/Livetracking";
+import Regularization from "./Components/TAM/Features/Regularization/Regularization";
+import Biometric from "./Components/TAM/Features/Biometric/Biometric";
+import Workflow from "./Components/TAM/Features/Workflow/Workflow";
+import Roles_Permission from "./Components/TAM/Features/Roles_Permission/Roles_Permission";
+import Leave_Holiday from "./Components/TAM/Features/Leave_Holiday/Leave_Holiday";
+import Shif_Management from "./Components/TAM/Features/Shif_Management/Shif_Management";
+import Hrms from "./Components/TAM/Features/Hrms/Hrms";
+import Payroll from "./Components/TAM/Features/Payroll/Payroll";
+
+
+
 
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, ArcElement, BarElement, Title, Tooltip, Legend);
@@ -93,6 +113,17 @@ function App() {
       || location.pathname === '/retail-chain'
       || location.pathname === '/manufacturing-industry'
       || location.pathname === '/tam-form-demo'
+      || location.pathname === '/multichannel' // <--- Add this line
+       || location.pathname === '/livetracking' // <--- Add this line
+       || location.pathname === '/regularization' // <--- Add this line
+        || location.pathname === '/biometric' // <--- Add this line
+        || location.pathname === '/workflow' // <--- Add this line
+       || location.pathname === '/roles_permission' // <--- Add this line
+        || location.pathname === '/leave_holiday' // <--- Add this line
+                || location.pathname === '/shif_management' // <--- Add this line
+          || location.pathname === '/hrms' // <--- Add this line
+            || location.pathname === '/payroll' // <--- Add this line
+       
     ) {
       setAdditionalNavbar(<TAM_Navbar />);
       setFooter('')
@@ -120,6 +151,7 @@ function App() {
       || location.pathname === '/retail-chain'
       || location.pathname === '/manufacturing-industry'
       || location.pathname === '/tam-form-demo'
+      
     ) {
       setFooter('');
     }
@@ -145,7 +177,7 @@ function App() {
       return () => {
         document.head.removeChild(script);
       }
-    };
+    }
   }, [location.pathname]);
 
 
@@ -226,6 +258,25 @@ function App() {
           <Route path='/lp-submit' element={< LP_Submit />}></Route>
           <Route path="/news/:slug" element={<NewsDetail />} />
           <Route path="*" element={<NotFound />} />
+
+
+           <Route path="/multichannel" element={<Multichannel />} />
+
+             <Route path="/livetracking" element={<Livetracking />} />
+                
+                <Route path='/regularization' element ={<Regularization />} />
+               <Route path='/biometric' element ={<Biometric/>} />
+                 <Route path='/workflow' element ={<Workflow/>} />
+                  <Route path='/roles_permission' element ={<Roles_Permission/>} />
+                    <Route path='/leave_holiday' element ={<Leave_Holiday/>} />
+                       <Route path='/shif_management' element ={<Shif_Management/>} />
+                           <Route path='/hrms' element ={<Hrms/>} />
+                    <Route path='/payroll' element ={<Payroll/>} />
+                
+                
+
+
+
         </Routes>
       </div>
       {footer}

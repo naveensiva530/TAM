@@ -13,10 +13,11 @@ import axios from 'axios';
 import { Helmet } from 'react-helmet-async';
 
 const ScheduleAdemo = ({ isOpen, onClose }) => {
-	if (!isOpen) return null;
 	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, []);
+		if (isOpen) {
+			window.scrollTo(0, 0);
+		}
+	}, [isOpen]);
 
 	const [productName, setProductName] = useState('');
 	const [fullName, setFullName] = useState('');
@@ -65,6 +66,8 @@ const ScheduleAdemo = ({ isOpen, onClose }) => {
 
 			});
 	};
+
+	if (!isOpen) return null;
 
 	return (
 		<>

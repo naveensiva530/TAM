@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import './TAM_cs.css'
-import caseStudy5 from '../../../assets/TAM/caseStudy5.jpeg'
+import caseStudy5 from '../../../assets/banner/caseStudy5.png';
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
+import TAM_Footer from '../TAM_Footer/TAM_Footer';
 
 const TAM_cs5 = () => {
     useEffect(() => {
@@ -30,10 +31,13 @@ const TAM_cs5 = () => {
         </Helmet>
 
     <div className='TAM_cases'>
-        <div className="TAM_cases-img">
-            <img src={caseStudy5} alt="" />
+         <div className="TAM_cases-img">
+             <img src={caseStudy5} alt="" />
         </div>
-        <h1 className='TAM_h1'>Manpower and Staffing Industry</h1>
+       <h1 className='TAM_h1'>
+           <span className="title-green">Manpower and</span>
+            <span className="title-blue">Staffing Industry</span>
+     </h1>
         <div className="TAM_cases-content">
             <h5>Background</h5>
             <p>Manpower and Staffing Industry Challenged by the complexities of diverse staffing requirements, timely placements, and the imperative of ensuring client satisfaction, our clients in the manpower industry sought a transformative tool to modernize their operations. Faced with limitations in manual processes to meet the evolving demands of the industry, the need for an innovative solution became apparent.</p>
@@ -57,6 +61,7 @@ const TAM_cs5 = () => {
             </div>
         </div>
     </div>
+      <TAM_Footer />
     </>
   )
 }

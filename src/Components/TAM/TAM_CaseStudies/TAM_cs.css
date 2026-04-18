@@ -1,65 +1,625 @@
-.TAM_cases{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 150px;
-}
-.TAM_cases-img{
-    width: 100%;
-}
-.TAM_cases-img img{
-    width: 100%;
-}
-.TAM_cases h1{
-    margin-top: 20px;
-}
-.TAM_cases-content{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 30px 30px;
-}
-.TAM_cases-content h5{
-    color: #27375d;
-    font-family: "Poppins", sans-serif;
-    font-weight: 650;
-    font-size: 16px;
-}
-.TAM_cases-content p,
-.TAM_cases-content ul li{
-    font-size: 15px;
-    color: #5e5e5e;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-}
-.TAM_cases-content ul li{
-    padding-left: 15px;
-}
-.TAM_cases-content-buttons button{
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    color: #fff;
-    background-color: #27375d;
-    font-size: 15px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    cursor: pointer;
-}
-.TAM_cases-content-buttons{
-    display: flex;
-    gap: 10px;
-    padding: 15px 15px;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ── Root Variables ── */
+:root {
+  --green: #38B000;
+  --green-dark: #2d9200;
+  --green-glow: rgba(56, 176, 0, 0.35);
+  --blue: #0077B6;
+  --blue-light: rgba(0, 119, 182, 0.07);
+  --white: #FFFFFF;
+  --text-dark: #1a1a2e;
+  --text-muted: #4a5568;
+  --shadow-blue: 0 8px 28px rgba(0, 119, 182, 0.18);
+  --shadow-green: 0 8px 28px rgba(56, 176, 0, 0.22);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
 }
 
-@media (max-width: 500px){
-    .TAM_cases{
-        margin-top: 0px;
-    }
-    .TAM_cases-img{
-        width: -webkit-fill-available;
-    }
-    .TAM_cases-img img{
-        width: -webkit-fill-available;
-    }
+/* ── Keyframes ── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes overlaySlideIn {
+  from { opacity: 0; transform: translateY(-50%) translateX(-60px); }
+  to   { opacity: 1; transform: translateY(-50%) translateX(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulseGreen {
+  0%, 100% { box-shadow: 0 0 0 0 var(--green-glow); }
+  50%       { box-shadow: 0 0 0 10px transparent; }
+}
+
+@keyframes borderDraw {
+  from { width: 0; }
+  to   { width: 60px; }
+}
+
+@keyframes listItemIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Progress Strip removed ── */
+
+/* ── Main Container ── */
+.TAM_cases {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0;
+  background: var(--white);
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── Hero Image Block ── */
+.TAM_cases-img {
+  top: 70px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.TAM_cases-img img {
+  width: 100%;
+  display: block;
+ 
+
+  object-fit: cover;
+}
+
+
+
+/* ── Overlay Badge ── */
+.TAM_cases-img-overlay {
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  transform: translateY(-50%);
+  padding: 18px 32px;
+  border-radius: 4px 16px 16px 4px;
+  z-index: 2;
+  animation: overlaySlideIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0px;
+}
+
+.TAM_cases-img-overlay h2 {
+  color: black;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 56px;
+  margin: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ── Page Title ── */
+.TAM_cases h1 {
+  margin-top: 76px;
+  font-size: clamp(3rem, 4.5vw, 5rem);
+  font-weight: 800;
+  color: var(--text-dark);
+  text-align: center;
+  position: relative;
+  animation: fadeSlideUp 0.7s ease 0.4s both;
+  letter-spacing: -0.5px;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.title-green { color: black; }
+.title-blue  { color: var(--blue); }
+
+.TAM_cases h1::after {
+  content: '';
+  display: block;
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue));
+  border-radius: 99px;
+  margin: 10px auto 0;
+  animation: borderDraw 0.8s ease 1s both;
+}
+
+/* ── Content Area ── */
+.TAM_cases-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 40px 48px 40px;
+  width: 100%;
+  max-width: 1260px;
+  box-sizing: border-box;
+  animation: fadeSlideUp 0.7s ease 0.6s both;
+}
+
+/* ── Section Labels ── */
+.TAM_cases-content > h5 {
+  color: var(--blue);
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 32px 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.TAM_cases-content > h5::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulseGreen 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+/* ── Paragraphs ── */
+.TAM_cases-content p {
+  font-size: 16px;
+  color: var(--text-muted);
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.85;
+  margin: 0;
+  padding: 16px 20px;
+  background: #f8fafc;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--blue-light);
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.TAM_cases-content p:hover {
+  border-left-color: var(--blue);
+  background: var(--blue-light);
+  
+}
+
+/* ── Key Factors List ── */
+.TAM_cases-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.TAM_cases-content ul li {
+  font-size: 16px;
+  color: var(--text-muted);
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  padding: 14px 20px 14px 52px;
+  background: linear-gradient(135deg, #f0fff4 0%, #f8fafc 100%);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(56, 176, 0, 0.15);
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  animation: listItemIn 0.5s ease both;
+}
+
+.TAM_cases-content ul li:nth-child(1) { animation-delay: 0.7s; }
+.TAM_cases-content ul li:nth-child(2) { animation-delay: 0.85s; }
+.TAM_cases-content ul li:nth-child(3) { animation-delay: 1.0s; }
+.TAM_cases-content ul li:nth-child(4) { animation-delay: 1.15s; }
+.TAM_cases-content ul li:nth-child(5) { animation-delay: 1.3s; }
+
+.TAM_cases-content ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: var(--green);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+}
+
+.TAM_cases-content ul li:hover {
+  transform: translateX(6px);
+  
+  border-color: var(--green);
+  color: var(--text-dark);
+}
+
+/* ── Buttons ── */
+.TAM_cases-content-buttons {
+  display: flex;
+  gap: 14px;
+  padding: 28px 0 10px;
+  align-items: center;
+}
+
+.TAM_cases-content-buttons button {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.TAM_cases-content-buttons a button {
+  background: transparent;
+  color: var(--blue);
+  border: 2px solid var(--blue);
+}
+
+.TAM_cases-content-buttons a button::before {
+  content: '←  ';
+  font-size: 16px;
+}
+
+.TAM_cases-content-buttons a button:hover {
+  background: var(--blue);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-blue);
+}
+
+.TAM_cases-content-buttons > button:last-child {
+  background: linear-gradient(135deg, var(--green) 0%, #2d9200 100%);
+  color: var(--white);
+  box-shadow: var(--shadow-green);
+}
+
+.TAM_cases-content-buttons > button:last-child::after {
+  content: '  ↓';
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.TAM_cases-content-buttons > button:last-child::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transition: left 0.5s ease;
+}
+
+.TAM_cases-content-buttons > button:last-child:hover::before {
+  left: 100%;
+}
+
+.TAM_cases-content-buttons > button:last-child:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(56, 176, 0, 0.45);
+}
+
+.TAM_cases-content-buttons button:active {
+  transform: scale(0.97) translateY(0);
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — TABLET (≤ 1024px)
+═══════════════════════════════════════════ */
+@media (max-width: 1024px) {
+
+  .TAM_cases-img {
+    height: 250px;
+    overflow: hidden;
+    margin-top: 0;        /* ← add */
+    position: relative;   /* ← add */
+    top: 0;               /* ← add */
+  }
+
+  .TAM_cases-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+   .TAM_cases {
+    padding-top: 60px;  
+  }
+
+  .TAM_cases-content {
+    margin-top: 0px;
+    padding: 30px 32px;
+  }
+
+  .TAM_cases-img-overlay h2 {
+    font-size: 36px;
+  }
+
+  .TAM_cases h1 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — MOBILE (≤ 768px)
+   All elements use consistent 16px side padding
+═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  .TAM_cases-img {
+    width: 100%;
+    height: 150px;        
+    overflow: hidden;
+  }
+
+  .TAM_cases-img img {
+    width: 100%;
+    height: 100%;        
+    object-fit: cover;
+    object-position: center center;
+    transform: none;     
+    animation: none;
+  }
+  .TAM_cases {
+    padding-top: 50px; 
+  }
+
+  /* ── Title ── */
+  .TAM_cases h1 {
+    font-size: 22px;
+    line-height: 1.4;
+    padding: 0 16px;
+    margin-top: 24px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* ── Content wrapper: 16px gutters on both sides ── */
+  .TAM_cases-content {
+    padding: 20px 16px 32px;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  /* ── Section label: left-aligned, same 0 horizontal margin ── */
+  .TAM_cases-content > h5 {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    margin: 28px 0 8px;
+    align-items: center;
+  }
+
+  /* ── Paragraphs: full width, readable font ── */
+  .TAM_cases-content p {
+    font-size: 14px;
+    line-height: 1.8;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* ── List: full width, consistent icon alignment ── */
+  .TAM_cases-content ul {
+    gap: 10px;
+  }
+
+  .TAM_cases-content ul li {
+    font-size: 14px;
+    line-height: 1.65;
+    padding: 13px 14px 13px 46px;
+    border-radius: var(--radius-sm);
+  }
+
+  .TAM_cases-content ul li::before {
+    left: 13px;
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+    line-height: 22px;
+  }
+
+  
+  
+
+  /* ── Buttons: stacked, full width, same 16px gutter ── */
+  .TAM_cases-content-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    padding: 24px 0 8px;
+    align-items: stretch;
+  }
+
+  .TAM_cases-content-buttons a {
+    width: 100%;
+    display: block;
+  }
+
+  .TAM_cases-content-buttons button,
+  .TAM_cases-content-buttons a button {
+    width: 100%;
+    text-align: center;
+    padding: 13px 20px;
+    font-size: 14px;
+    border-radius: 50px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  /* ── Shimmer strip removed ── */
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — SMALL MOBILE (≤ 500px)
+   Tighter but identical 14px side gutter
+═══════════════════════════════════════════ */
+@media (max-width: 500px) {
+
+ .TAM_cases-img {
+    
+    height: 130px;
+  }
+
+  .TAM_cases h1 {
+    font-size: 19px;
+    margin-top: 20px;
+    padding: 0 14px;
+  }
+
+  .TAM_cases-content {
+    padding: 16px 14px 28px;
+  }
+
+  .TAM_cases-content > h5 {
+    font-size: 11px;
+    margin: 24px 0 6px;
+  }
+
+  .TAM_cases-content p {
+    font-size: 13px;
+    padding: 12px 14px;
+    line-height: 1.75;
+  }
+
+  .TAM_cases-content ul {
+    gap: 9px;
+  }
+
+  .TAM_cases-content ul li {
+    font-size: 13px;
+    padding: 12px 12px 12px 42px;
+    line-height: 1.6;
+  }
+
+  .TAM_cases-content ul li::before {
+    left: 11px;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    line-height: 20px;
+  }
+
+  
+
+  .TAM_cases-img-overlay h2 {
+    font-size: 17px;
+  }
+
+  .TAM_cases-content-buttons {
+    gap: 10px;
+    padding: 20px 0 6px;
+  }
+
+  .TAM_cases-content-buttons button,
+  .TAM_cases-content-buttons a button {
+    font-size: 13px;
+    padding: 12px 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  .TAM_cases-img {
+    height: 130px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — EXTRA SMALL (≤ 360px)
+   Minimum 12px gutters, smallest readable sizes
+═══════════════════════════════════════════ */
+@media (max-width: 360px) {
+
+  .TAM_cases h1 {
+    font-size: 16px;
+    padding: 0 12px;
+    margin-top: 16px;
+  }
+
+  .TAM_cases-content {
+    padding: 14px 12px 24px;
+  }
+
+  .TAM_cases-content > h5 {
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin: 20px 0 6px;
+  }
+
+  .TAM_cases-content p {
+    font-size: 12px;
+    padding: 11px 12px;
+    line-height: 1.7;
+  }
+
+  .TAM_cases-content ul {
+    gap: 8px;
+  }
+
+  .TAM_cases-content ul li {
+    font-size: 12px;
+    padding: 11px 10px 11px 38px;
+    line-height: 1.6;
+  }
+
+  .TAM_cases-content ul li::before {
+    left: 10px;
+    width: 18px;
+    height: 18px;
+    font-size: 9px;
+    line-height: 18px;
+  }
+
+  .TAM_cases-img-overlay {
+    bottom: 10px;
+    left: 12px;
+    right: 12px;
+    padding: 8px 12px;
+    max-width: calc(100% - 24px);
+  }
+
+  .TAM_cases-img-overlay h2 {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  .TAM_cases-content-buttons {
+    gap: 9px;
+    padding: 18px 0 4px;
+  }
+
+  .TAM_cases-content-buttons button,
+  .TAM_cases-content-buttons a button {
+    font-size: 12px;
+    padding: 11px 14px;
+  }
 }

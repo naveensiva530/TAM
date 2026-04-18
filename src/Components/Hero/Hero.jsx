@@ -41,9 +41,10 @@ const Hero = () => {
           <h1><span>O</span>nce upon a time, there
             was a concept called 'Queue'.</h1>
           <h2>Now, it is no more !!!</h2>
+          
           <button className="scale-hover" onClick={() => openModal()}>Schedule a Demo / Call</button>
         </div>
-        <img src={hero} />
+        <img src={hero} loading="eager" fetchPriority="high" alt="Hero Banner" />
       </div>
       <div className="hero-content">
         <Verses />

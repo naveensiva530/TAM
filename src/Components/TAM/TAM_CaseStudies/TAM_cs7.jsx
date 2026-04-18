@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import './TAM_cs.css'
-import caseStudy7 from '../../../assets/TAM/caseStudy7.jpeg'
+import caseStudy7 from '../../../assets/banner/caseStudy8.png';
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-
+import TAM_Footer from '../TAM_Footer/TAM_Footer';
 const TAM_cs7 = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -29,9 +29,12 @@ const TAM_cs7 = () => {
         </Helmet>
     <div className='TAM_cases'>
         <div className="TAM_cases-img">
-            <img src={caseStudy7} alt="" />
+             <img src={caseStudy7} alt="" />
         </div>
-        <h1 className='TAM_h1'>Manufacturing Industry</h1>
+        <h1 className='TAM_h1'>
+           <span className="title-green">Manufacturing</span>
+            <span className="title-blue">Industry</span>
+     </h1>
         <div className="TAM_cases-content">
             <h5>Background</h5>
             <p>Our manufacturing Industry faced challenges in workforce optimization, production delays, and operational coordination. Inefficient workforce management and a lack of real-time visibility caused delays, bottlenecks, and coordination difficulties in their dynamic manufacturing setting</p>
@@ -55,6 +58,7 @@ const TAM_cs7 = () => {
             </div>
         </div>
     </div>
+     <TAM_Footer />
     </>
   )
 }

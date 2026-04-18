@@ -1,208 +1,763 @@
-.TAM_Pricing{
-    background:url('../../../assets/TAM/TAM_bg.svg') no-repeat;
-    background-size:contain;
-      margin-top: 150px;
+/* ════════════════════════════════════════
+   SECTION 1 — HERO
+════════════════════════════════════════ */
+.TAM_Pricing {
+    background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 40%, #DCFCE7 100%);
 }
-.TAM_Pricing_head{
-    padding-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.TAM_Pricing_head img{
-    width: 80%;
-    z-index: 2;
-    margin-top: 50px;
-}
-.TAM_Pricing_head h5{
-    color: #27375d;
-    font-family: "Poppins", sans-serif;
-    font-weight: 650;
-    font-size: 16px;
-    margin-left: 70%;
-    margin-bottom: 10px;
-    margin-top: 50px;
-}
-.TAM_Pricing_list{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 150px;
-}
-.TAM_Pricing_list h1{
-    text-align: center;
-}
-.TAM_Pricing_list p{
-    font-size: 13px;
-    margin-bottom: 1rem;
-    color: #5e5e5e;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    text-align:center;
-    width: 70%;
-}
-.TAM_Pricing_list_container{
-    display: flex;
-    margin-top: 70px;
-}
-.TAM_Pricing_list_container-box1,
-.TAM_Pricing_list_container-box2,
-.TAM_Pricing_list_container-box3{
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    border-radius: 25px;
-}
-.TAM_Pricing_list_container-box1{
-    overflow: hidden;
-    color: #0076bc;
-    border: 1px solid #0076bc;
-    margin-top: 80px;
-    height: 650px;
-}
-.TAM_Pricing_list_container-box3{
-    overflow: hidden;
-    color: #5e09b3;
-    border: 1px solid #5e09b3;
-    background:url('../../../assets/TAM/price3.png') no-repeat;
-    background-size:contain;
-    padding-top: 40px;
-    display: flex;
-    align-items: center;
-    margin-top: 80px;
-    height: 650px;
-}
-.TAM_Pricing_list_container-box2{
-    overflow: hidden;
-    color: #d0316c;
-    border: 1px solid #d0316c;
-    background:url('../../../assets/TAM/price2.png') no-repeat;
-    background-size:contain;
-    padding-top: 40px;
-    display: flex;
-    align-items: center;
-    height: 780px;
-}
-.TAM_Pricing_list_container-box2 .TAM_Pricing_avd,
-.TAM_Pricing_list_container-box3 .TAM_Pricing_avd{
-    margin-top: 180px;
-}
-.box2_head {
-    width: 200px;
-    height: 50px;
-    border: 3px solid #fff;
-    border-radius: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.box2_head h1{
-    font-size: 30px;
-    color: #fff;
 
+.TAM_Pricing_head {
+     position: relative;
+    height: 90vh;
+    min-height: 600px;
+    width: 100%;
+    overflow: hidden;
+    background-color: #e6f0ff;
 }
-.box1_head{
-    width: 110%;
+
+.TAM_Pricing_head_left {
     position: relative;
-    top: -10px;
-    left: -20px;
-    height: 250px;
-    background:url('../../../assets/TAM/price1.png') no-repeat;
-    background-size:cover;
+    z-index: 2;
+    flex: none;
+    width: 50%;
+    height: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 70px 40px 40px 60px;
+    box-sizing: border-box;
+    /* Optional: subtle left-side overlay for text readability */
+   
+}
+
+.TAM_Pricing_head_right {
+    position: absolute;
+    top: 85px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.TAM_Pricing_head_right img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center top;   /* ← bottom → top மாத்தினோம் */
+    display: block;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
+    transition: none !important;
+}
+.TAM_Pricing_center_stack {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 }
-.box1_head h1{
-    margin-top: 50px;
-    margin-left: 15px;
-    border: 3px solid white;
-    width: 200px;
-    height: 50px;
-    border-radius: 25px;
-    font-size: 30px;
-    color: #fff;
-    padding-top: 4px;
+
+.TAM_h1 {
+    font-family: 'Poppins', sans-serif;
+    color: #0f172a;
+    font-size: clamp(3.2rem, 4.5vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 1.6rem;
+    letter-spacing: -2px;
+    opacity: 1 !important;
 }
-.TAM_Pricing_avd li{
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-size: 13px;
-    margin: 15px 25px;
+
+.TAM_h1 .w-black {
+    color: #000000;
 }
-.TAM_Pricing_avd li span{
-    margin-right: 10px;
+
+.TAM_h1 .w-green {
+    color: #38B000;
 }
-.TAM_Pricing_avd{
-    margin-top: 20px;
-}
-.TAM_Pricing_list button{
-    padding: 10px 35px;
-    border: none;
-    border-radius: 30px;
-    color: #FFF;
-    background-color: #27375d;
-    font-size: 20px;
-    font-family: "Poppins", sans-serif;
+
+.TAM_Pricing_subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.3rem, 1.6vw, 1.7rem);
     font-weight: 500;
+    color: #4B5563;
+    line-height: 1.55;
+    margin-bottom: 2rem;
+    opacity: 1 !important;
+}
+
+.TAM_Pricing_mini_cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    opacity: 1 !important;
+    margin-top: auto;
+    padding-top: 1.5rem;
+}
+
+.TAM_Pricing_mini_card {
+    position: relative;
+    background: #FFFFFF;
+    border: 1.5px solid rgba(56, 176, 0, 0.12);
+    padding: 1.2rem 1.6rem 1.2rem;
+    text-align: left;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #0f172a;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    cursor: default;
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s;
+}
+
+.TAM_Pricing_mini_card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 20px 20px 0 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: linear-gradient(90deg, #38B000, #5ACD1A);
+}
+
+.TAM_Pricing_mini_card:hover {
+    transform: translateY(-6px);
+    border-color: transparent;
+    box-shadow: 0 20px 50px rgba(56,176,0,0.15);
+}
+
+.TAM_Pricing_mini_card:hover::before {
+    opacity: 1;
+}
+
+.TAM_Pricing_mini_icon_wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
+    border: 1.5px solid rgba(56,176,0,0.2);
+    flex-shrink: 0;
+}
+
+.TAM_Pricing_mini_card:hover .TAM_Pricing_mini_icon_wrap {
+    background: linear-gradient(135deg, #38B000, #5ACD1A);
+    border-color: #38B000;
+    box-shadow: 0 8px 20px rgba(56,176,0,0.3);
+}
+
+.TAM_Pricing_mini_svg_icon {
+    width: 22px;
+    height: 22px;
+    color: #38B000;
+    flex-shrink: 0;
+    transition: color 0.3s ease;
+}
+
+.TAM_Pricing_mini_card:hover .TAM_Pricing_mini_svg_icon {
+    color: #FFFFFF;
+}
+
+.TAM_Pricing_mini_card_label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.25;
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.2px;
+}
+
+
+/* ════════════════════════════════════════
+   SECTION 2 — PRICING CARDS
+════════════════════════════════════════ */
+
+.TAM_Pricing_list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 24px 120px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fffe 100%);
+    width: 100%;
+}
+
+/* ── Header ── */
+.pricing-hd {
+    text-align: center;
+    margin-bottom: 72px;
+    max-width: 680px;
+}
+
+.pricing-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #38B000 0%, #2d9400 100%);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 16px rgba(56, 176, 0, 0.3);
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% { box-shadow: 0 4px 16px rgba(56, 176, 0, 0.3); }
+    50% { box-shadow: 0 4px 24px rgba(56, 176, 0, 0.5); }
+}
+
+.pricing-hd-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.pricing-hd-sub {
+    font-size: 1.2rem;
+    color: #64748b;
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+/* ── Grid ── */
+.pricing-grid {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 32px;
+    max-width: 1900px;
+    width: 100%;
+    padding: 0 24px;
+    flex-wrap: wrap;
+    margin-bottom: 72px;
+}
+
+/* ── Card Base ── */
+.pricing-card {
+    width: 350px;
+    border-radius: 24px;
+    background: #ffffff;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.02),
+        0 10px 20px rgba(0, 0, 0, 0.04),
+        0 0 0 1px rgba(0, 0, 0, 0.04);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.4s ease;
+    opacity: 0;
+    transform: translateY(60px);
+}
+
+.pricing-card.card-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pricing-card:nth-child(1) { transition-delay: 0ms; }
+.pricing-card:nth-child(2) { transition-delay: 120ms; }
+.pricing-card:nth-child(3) { transition-delay: 240ms; }
+
+.pricing-card:hover {
+    transform: translateY(-12px);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Glow Effect ── */
+.card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    z-index: 2;
+}
+
+.glow-std { background: linear-gradient(90deg, #0077B6, #00b4d8); }
+.glow-pre { background: linear-gradient(90deg, #38B000, #7ddf00); height: 8px; }
+.glow-add { background: linear-gradient(90deg, #0077B6, #00b4d8); }
+
+/* ── Popular Ribbon ── */
+.popular-ribbon {
+    position: absolute;
+    top: 20px;
+    right: -32px;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    padding: 6px 40px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transform: rotate(45deg);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+
+/* ── Card Header ── */
+.card-header {
+    padding: 36px 32px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.card-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 50px;
+}
+
+.badge-std {
+    background: rgba(0, 119, 182, 0.1);
+    color: #0077B6;
+}
+
+/* ── Icon Wrap ── */
+.card-icon-wrap {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.icon-std {
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    box-shadow: 0 8px 24px rgba(0, 119, 182, 0.2);
+}
+
+.icon-pre {
+    background: linear-gradient(135deg, #38B000 0%, #2d9400 100%);
+    box-shadow: 0 8px 24px rgba(56, 176, 0, 0.3);
+}
+
+.icon-add {
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    box-shadow: 0 8px 24px rgba(0, 119, 182, 0.2);
+}
+
+/* ── Card Body ── */
+.card-body {
+    padding: 28px 32px;
+}
+
+.card-tier {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 12px;
+}
+
+.card-price {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.price-currency {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.price-amount {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.card-pre .price-amount {
+    background: linear-gradient(135deg, #38B000, #7ddf00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.price-period {
+    font-size: 1rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.card-desc {
+    font-size: 15px;
+    color: #64748b;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* ── Divider ── */
+.card-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+    margin: 0 32px;
+}
+
+/* ── Feature List ── */
+.card-feats {
+    list-style: none;
+    padding: 28px 32px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+.feat-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: featSlideIn 0.5s ease forwards;
+}
+
+.card-visible .feat-item {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@keyframes featSlideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.feat-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #475569;
+}
+
+.card-pre .feat-icon {
+    background: rgba(56, 176, 0, 0.1);
+    color: #38B000;
+}
+
+.feat-text {
+    font-size: 15px;
+    color: #334155;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* ── CTA Button ── */
+.card-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: calc(100% - 64px);
+    margin: 0 32px 32px;
+    padding: 16px 28px;
+    border: none;
+    border-radius: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
     cursor: pointer;
-    margin-top: 100px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    letter-spacing: 0.3px;
 }
-@media screen and (max-width: 780px){
-    .TAM_Pricing_list {
-        margin-top: 100px;
-    }
-    .TAM_Pricing_list_container-box1,
-    .TAM_Pricing_list_container-box2,
-    .TAM_Pricing_list_container-box3{
-        width: 250px;
-    }
-    .box2_head {
-        width: 200px;
-        height: 50px;
-        border: 3px solid #fff;
-        border-radius: 25px;
+
+.cta-std {
+    background: linear-gradient(135deg, #0077B6, #00b4d8);
+    color: white;
+    box-shadow: 0 4px 16px rgba(0, 119, 182, 0.3);
+}
+
+.cta-std:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 119, 182, 0.4);
+}
+
+.cta-pre {
+    background: linear-gradient(135deg, #38B000, #2d9400);
+    color: white;
+    box-shadow: 0 8px 32px rgba(56, 176, 0, 0.4);
+}
+
+.cta-pre:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(56, 176, 0, 0.5);
+}
+
+.cta-add {
+    background: linear-gradient(135deg, #0077B6, #00b4d8);
+    color: white;
+    box-shadow: 0 4px 16px rgba(0, 119, 182, 0.3);
+}
+
+.cta-add:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 119, 182, 0.4);
+}
+
+/* Premium Card Special Styling */
+.card-pre {
+    background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 30%);
+    border: 2px solid rgba(56, 176, 0, 0.15);
+    transform: scale(1.04);
+}
+
+.card-pre.card-visible {
+    transform: scale(1.04);
+}
+
+.card-pre:hover {
+    transform: scale(1.04) translateY(-12px);
+}
+
+.card-pre .card-tier {
+    color: #38B000;
+}
+
+.card-pre .card-desc {
+    color: #475569;
+}
+
+/* ── Bottom CTA ── */
+.pricing-btm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.pricing-trust {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.pricing-trust svg {
+    color: #38B000;
+}
+
+.pricing-btm-btn {
+    background: #38B000;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 18px 56px;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow:
+        0 4px 16px rgba(15, 23, 42, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    letter-spacing: 0.3px;
+}
+
+.pricing-btm-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow:
+        0 12px 32px rgba(15, 23, 42, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE — TABLET (max 1100px)
+════════════════════════════════════════ */
+@media screen and (max-width: 1100px) {
+    .TAM_Pricing_head {
+        height: auto;
+        min-height: unset;
         display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .TAM_Pricing_list h1 {
-        margin-bottom: 0px;
-    }
-    .TAM_Pricing_head h5{
-        margin-left: 0px;
-        text-align: center;
-        margin-top: 0px;
-    }
-}
-@media screen and (max-width: 550px){
-    .TAM_Pricing_head h5{
-        margin-left: 0px;
-        text-align: center;
-    }
-    .TAM_Pricing_list {
-        margin-top: 50px;
-    }
-    .TAM_Pricing_list h1{
-        font-size: 3rem;
-    }
-    .TAM_h1 {
-        font-size: 3rem;
-        margin-bottom: 10px;
-    }
-    .TAM_Pricing_list_container {
         flex-direction: column;
     }
-    .TAM_Pricing_list_container-box3{
-        margin-top: 0px;
-    }
-    .TAM_Pricing_list_container-box1{
-        margin-top: 0px;
-    }
-    .TAM_Pricing_head img{
+
+    .TAM_Pricing_head_left {
+        width: 100%;
+        padding: 60px 40px 32px;
+        position: relative;
         z-index: 2;
-        margin-top: 50px;
+        order: 1; /* Heading FIRST */
     }
-    .TAM_Pricing{
-        margin-top: 70px;
+
+    .TAM_Pricing_head_right {
+        position: relative; /* Remove absolute so it flows below */
+        top: unset;
+        left: unset;
+        width: 100%;
+        height: 380px;
+        order: 2; /* Image SECOND */
     }
-}   
+
+    .TAM_Pricing_head_right img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: right center;
+    }
+
+    .TAM_h1 {
+        font-size: 2.4rem;
+        letter-spacing: -1.5px;
+    }
+
+    .TAM_Pricing_subtitle {
+        font-size: 1.55rem;
+    }
+
+    .TAM_Pricing_mini_cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+    }
+
+    .TAM_Pricing_mini_card {
+        padding: 1rem 1.2rem;
+    }
+
+    .TAM_Pricing_mini_card_label {
+        font-size: 1rem;
+    }
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE — MOBILE (max 780px)
+════════════════════════════════════════ */
+@media screen and (max-width: 780px) {
+    .TAM_Pricing_head {
+        height: auto;
+        min-height: unset;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .TAM_Pricing_head_left {
+        width: 100%;
+          padding: 40px 16px; /* FIXED: proper left alignment */
+        position: relative;
+        z-index: 2;
+        order: 1; /* Heading FIRST */
+    }
+
+    .TAM_Pricing_head_right {
+        position: relative; /* KEY: removes absolute overlap */
+        top: unset;
+        left: unset;
+        width: 100%;
+        height: 280px;
+        order: 2; /* Image SECOND */
+    }
+
+    .TAM_Pricing_head_right img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: right center;
+    }
+
+   .TAM_h1 {
+    font-size: 1.88rem;
+    font-weight: 500; /* stronger */
+     letter-spacing: -0.5px;
+       margin-bottom: 12px;
+        text-align: left; /* ensure left */
+}
+
+    .TAM_Pricing_subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 18px;
+        line-height: 1.55;
+    }
+
+    .TAM_Pricing_mini_cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        width: 100%;
+    }
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE — MOBILE (max 550px)
+════════════════════════════════════════ */
+@media screen and (max-width: 550px) {
+    .TAM_Pricing_head {
+        height: auto;
+        min-height: unset;
+    }
+
+    .TAM_Pricing_head_left {
+       padding: 78px 20px 59px;
+        left: -0px;
+        order: 1;
+    }
+
+    .TAM_Pricing_head_right {
+        position: relative;
+        top: unset;
+        left: unset;
+        width: 100%;
+        height: 220px;
+        order: 2;
+    }
+
+    .TAM_Pricing_head_right img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .TAM_h1 {
+        font-size: 1.66rem !important;
+        font-weight: 500;
+        text-align: left;
+    }
+
+    .TAM_Pricing_subtitle {
+        font-size: 1.2rem;
+    }
+}

@@ -12,12 +12,18 @@
     "start": "PORT=8080 react-scripts start"
   },
   "dependencies": {
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.17.10",
+    "@react-three/rapier": "^1.5.0",
+    "@tailwindcss/vite": "^4.1.18",
     "@tinymce/tinymce-react": "^5.1.1",
     "axios": "^1.7.7",
     "chart.js": "^4.4.6",
     "draft-js": "^0.11.7",
+    "framer-motion": "^12.34.3",
     "gsap": "^3.13.0",
     "lucide-react": "^0.554.0",
+    "meshline": "^3.3.1",
     "quill": "^2.0.2",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
@@ -33,7 +39,9 @@
     "recharts": "^2.13.3",
     "redux": "^5.0.1",
     "sample-noqu": "file:",
-    "swiper": "^11.1.4",
+    "swiper": "^11.2.10",
+    "tailwindcss": "^4.1.18",
+    "three": "^0.183.2",
     "vite-plugin-react-icons": "^0.2.0"
   },
   "devDependencies": {

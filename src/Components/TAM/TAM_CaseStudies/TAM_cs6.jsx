@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import './TAM_cs.css'
-import caseStudy6 from '../../../assets/TAM/caseStudy6.jpeg'
+import caseStudy6 from '../../../assets/banner/caseStudy4.png';
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
+import TAM_Footer from '../TAM_Footer/TAM_Footer';
 
 const TAM_cs6 = () => {
     useEffect(() => {
@@ -31,9 +32,12 @@ const TAM_cs6 = () => {
 
     <div className='TAM_cases'>
         <div className="TAM_cases-img">
-            <img src={caseStudy6} alt="" />
+             <img src={caseStudy6} alt="" />
         </div>
-        <h1 className='TAM_h1'>Retail Chain</h1>
+        <h1 className='TAM_h1'>
+           <span className="title-green">Retail</span>
+            <span className="title-blue">Chain</span>
+     </h1>
         <div className="TAM_cases-content">
             <h5>Background</h5>
             <p>Retail Chain Navigating the bustling realm of retail where every transaction holds significance, our traders as a small retail outlet aspired to enhance their operations and elevate customer service. Recognizing the need for improved efficiency and customer satisfaction, the quest for a solution to modernize their operations was initiated.</p>
@@ -55,6 +59,7 @@ const TAM_cs6 = () => {
             </div>
         </div>
     </div>
+      <TAM_Footer />
     </>
   )
 }

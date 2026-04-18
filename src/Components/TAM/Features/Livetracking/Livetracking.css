@@ -1,0 +1,208 @@
+/* ============================================================
+   LIVETRACKING SPECIFIC CSS (SECTION 3)
+============================================================ */
+
+/* ============================================================
+   SECTION 3 — FEATURES
+============================================================ */
+.ltf-section { padding: 100px 6%; background: #ffffff; }
+
+.ltf-section-intro { text-align: center; max-width: 900px; margin: 0 auto 80px; }
+
+.ltf-section-headline {
+    font-family:   'Poppins', sans-serif;
+    font-size:     clamp(3rem, 4.5vw, 5rem);
+    font-weight:   900;
+    line-height:   1.1;
+    margin-bottom: 0 !important;
+    text-align:    center;
+}
+
+.ltf-headline-blue  { color: #0077B6; }
+
+.ltf-section-subtext {
+    font-family:  'Inter', sans-serif;
+    font-size:    1.55rem;
+    color:        #4B5563;
+    line-height:  1.7;
+    margin:       1rem auto;
+    text-align:   center;
+    max-width:    900px;
+}
+
+.ltf-headline-bar { width: 60px; height: 4px; background: #0077B6; margin: 18px auto 24px; border-radius: 4px; }
+
+.ltf-cards-panel { display: flex; flex-direction: column; gap: 0; max-width: 1200px; margin: 0 auto; }
+
+/* Step Row */
+.ltf-step-row {
+    display:               grid;
+    grid-template-columns: 140px 1fr;
+    gap:                   0;
+    position:              relative;
+}
+.ltf-step-row:not(:last-child)::after {
+    content:    '';
+    position:   absolute;
+    left:       68px;
+    top:        100px;
+    bottom:     -1px;
+    width:      2px;
+    background: #E5E7EB;
+}
+
+.ltf-step-number-col { display: flex; flex-direction: column; align-items: center; padding-top: 1rem; position: relative; z-index: 1; }
+
+.ltf-step-circle {
+    width:           80px;
+    height:          80px;
+    border-radius:   50%;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+    box-shadow:      0 8px 24px rgba(0,0,0,0.1);
+    transition:      transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ltf-step-circle:hover { transform: scale(1.1) rotate(5deg); box-shadow: 0 12px 32px rgba(0,0,0,0.18); }
+.ltf-circle-green { background: linear-gradient(135deg, #38B000, #5ACD1A); }
+.ltf-circle-blue  { background: linear-gradient(135deg, #0077B6, #00A8E8); }
+.ltf-circle-dark  { background: linear-gradient(135deg, #1F2937, #374151); }
+
+.ltf-step-circle-text { font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 900; color: #FFFFFF; line-height: 1; }
+
+/* Card Body */
+.ltf-step-card-body {
+    background:     #FFFFFF;
+    border:         1.5px solid #F1F5F9;
+    padding:        4rem 4.5rem;
+    margin:         0 0 3rem 3rem;
+    box-shadow:     0 4px 24px rgba(0,0,0,0.05);
+    transition:     all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    display:        flex;
+    flex-direction: column;
+}
+.ltf-step-card-body:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.1); border-color: #E5E7EB; transform: translateX(8px); }
+
+/* Step Badge */
+.ltf-step-header-top { display: none; }
+.ltf-step-badge {
+    display:        inline-block;
+    font-family:    'Poppins', sans-serif;
+    font-size:      1.05rem;
+    font-weight:    900;
+    color:          #FFFFFF;
+    padding:        5px 16px;
+    border-radius:  100px;
+    letter-spacing: 0.5px;
+}
+.ltf-badge-green { background: #38B000; }
+.ltf-badge-blue  { background: #0077B6; }
+.ltf-badge-dark  { background: #1F2937; }
+
+/* Card Header */
+.ltf-step-card-header { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.8rem; padding-bottom: 2rem; border-bottom: 1.5px solid #F1F5F9; }
+
+.ltf-step-header-main { display: flex; align-items: center; gap: 1.4rem; }
+
+.ltf-step-icon-box {
+    width:           54px;
+    height:          54px;
+    border-radius:   16px;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+    transition:      transform 0.3s ease;
+}
+.ltf-step-card-body:hover .ltf-step-icon-box { transform: rotate(8deg) scale(1.1); }
+.ltf-iconbox-green { background: #F0FDF4; color: #38B000; }
+.ltf-iconbox-blue  { background: #EFF6FF; color: #0077B6; }
+.ltf-iconbox-dark  { background: #F3F4F6; color: #374151; }
+
+.ltf-step-card-title { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; color: #0f172a; line-height: 1.2; }
+
+/* Two-column body */
+.ltf-step-body-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+
+/* Step Image - instant load, no delay */
+.ltf-step-img-wrap { width: 100%; height: 520px; border-radius: 16px; overflow: hidden; }
+.ltf-step-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; opacity: 1 !important; visibility: visible !important; animation: none !important; }
+.ltf-step-card-body:hover .ltf-step-img-wrap img { transform: scale(1.05); }
+
+.ltf-step-points-col { display: flex; flex-direction: column; }
+
+.ltf-step-key-label { font-family: 'Poppins', sans-serif; font-size: 2.1rem; font-weight: 800; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.4rem; }
+
+.ltf-step-points-list { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2.4rem; }
+.ltf-step-points-list li { display: flex; align-items: center; gap: 1.2rem; font-family: 'Inter', sans-serif; font-size: 1.45rem; font-weight: 600; color: #1F2937; transition: transform 0.2s ease; }
+.ltf-step-points-list li:hover { transform: translateX(5px); }
+
+.ltf-point-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s ease; }
+.ltf-point-icon-green { background: #F0FDF4; color: #38B000; }
+.ltf-point-icon-blue  { background: #EFF6FF; color: #0077B6; }
+.ltf-step-points-list li:hover .ltf-point-icon-green { background: #38B000; color: white; transform: scale(1.1); }
+.ltf-step-points-list li:hover .ltf-point-icon-blue  { background: #0077B6; color: white; transform: scale(1.1); }
+
+.ltf-step-desc-block { display: flex; flex-direction: column; gap: 1.4rem; padding-top: 2rem; border-top: 1.5px solid #F1F5F9; }
+.ltf-step-desc-text { font-family: 'Inter', sans-serif; font-size: 1.55rem; color: #374151; line-height: 1.8; font-weight: 500; }
+.ltf-step-sub-desc {
+    font-family:   'Inter', sans-serif;
+    font-size:     1.45rem;
+    font-weight:   500;
+    color:         #374151;
+    line-height:   1.8;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1.5px solid #F1F5F9;
+}
+
+
+@media (max-width: 1100px) {
+    .ltf-section               { padding: 70px 4%; }
+    .ltf-step-row              { grid-template-columns: 70px 1fr; }
+    .ltf-step-row:not(:last-child)::after { left: 33px; }
+    .ltf-step-circle           { width: 60px; height: 60px; }
+    .ltf-step-circle-text      { font-size: 1.8rem; }
+    .ltf-step-card-body        { padding: 3rem 2.5rem; margin: 0 0 2.5rem 1.5rem; }
+    .ltf-step-body-grid        { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .ltf-step-img-wrap         { height: 600px; }
+    .ltf-step-points-list li   { font-size: 1.3rem; }
+    .ltf-point-icon            { width: 40px; height: 40px; }
+    .ltf-step-desc-text        { font-size: 1.35rem; }
+}
+
+@media (max-width: 768px) {
+    .ltf-section               { padding: 48px 20px; }
+    .ltf-section-intro        { margin-bottom: 40px; }
+    .ltf-section-headline     { font-size: 2.4rem; letter-spacing: -0.5px; }
+    .ltf-section-subtext      { font-size: 1.4rem; text-align: justify; }
+
+    .ltf-step-row             { grid-template-columns: 48px 1fr; margin-bottom: 1.5rem; }
+    .ltf-step-row:not(:last-child)::after { left: 23px; top: 60px; }
+
+    .ltf-step-circle          { width: 48px; height: 48px; }
+    .ltf-step-circle-text     { font-size: 1.3rem; }
+
+    .ltf-step-card-body       { padding: 1.5rem; margin: 0 0 2rem 1.2rem; }
+    .ltf-step-card-header     { gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; }
+    .ltf-step-icon-box        { width: 40px; height: 40px; }
+    .ltf-step-icon-box svg    { width: 20px; height: 20px; }
+    .ltf-step-card-title      { font-size: 1.6rem; }
+
+    .ltf-step-body-grid       { grid-template-columns: 1fr; gap: 1.5rem; }
+
+    .ltf-step-img-col         { order: -1; }
+    .ltf-step-img-wrap        { height: 320px; }
+
+    .ltf-step-points-col      { order: 2; border-top: 1.5px solid #F1F5F9; padding-top: 1.5rem; }
+    .ltf-step-key-label       { font-size: 1.3rem; margin-bottom: 1rem; }
+    .ltf-step-points-list    { gap: 1rem; margin-bottom: 1.5rem; }
+    .ltf-step-points-list li { font-size: 1.25rem; gap: 1rem; align-items: flex-start; }
+
+    .ltf-point-icon           { width: 32px; height: 32px; flex-shrink: 0; }
+    .ltf-point-icon svg       { width: 14px; height: 14px; }
+
+    .ltf-step-desc-block      { padding-top: 1.5rem; }
+    .ltf-step-desc-text       { font-size: 1.25rem; }
+}

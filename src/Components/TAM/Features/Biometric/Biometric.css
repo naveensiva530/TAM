@@ -1,0 +1,172 @@
+/* ============================================================
+   SECTION 3 — BIOMETRIC_FEATURES_SECTION  (Stacking Cards)
+============================================================ */
+.btf-section {
+    padding:          100px 5%;
+    background-color: var(--tf-white, #FFFFFF);
+}
+
+.btf-sync-header {
+    text-align:    center;
+    margin-bottom: 80px;
+}
+
+.btf-sync-top-heading {
+    font-family:   'Poppins', sans-serif;
+    font-size:     clamp(3rem, 4.5vw, 5rem);
+    font-weight:   900;
+    line-height:   1.1;
+    margin-bottom: 0px !important;
+    text-align:    center;
+   
+}
+
+.btf-sync-heading-blue { color: var(--tf-blue, #0077B6); }
+
+.btf-sync-heading-underline {
+    width:         60px;
+    height:        4px;
+    background:    var(--tf-blue, #0077B6);
+    border-radius: 2px;
+    margin:        0 auto 20px;
+}
+
+.btf-sync-top-desc {
+    font-family:  'Inter', sans-serif;
+    font-size:    1.55rem;
+    color:        #475569;
+    line-height:  1.7;
+    margin-bottom: 1rem;
+    text-align:   center;
+    max-width:    900px;
+    margin-left:  auto;
+    margin-right: auto;
+}
+
+.btf-stack-container {
+    display:        flex;
+    flex-direction: column;
+    max-width:      1100px;
+    margin:         0 auto;
+}
+
+.btf-sticky-wrapper {
+    position:       sticky;
+    top:            50px;
+    padding-bottom: 100px;
+}
+
+.btf-sync-card {
+    display:     flex;
+    align-items: stretch;
+    background:  var(--tf-green-tint, #F0FDF4);
+    min-height:  460px;
+    border:      1px solid #e2e8f0;
+    overflow:    hidden;
+}
+
+.btf-sync-card-content {
+    flex:            1;
+    padding:         60px;
+    display:         flex;
+    flex-direction:  column;
+    justify-content: center;
+}
+
+.btf-sync-card-visual {
+    flex:            1;
+    background:      var(--tf-white, #FFFFFF);
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    border-left:     1px solid #e2e8f0;
+    overflow:        hidden;
+}
+
+.btf-sync-card-img {
+    width:      100%;
+    height:     100%;
+    object-fit: cover;
+    display:    block;
+}
+
+.btf-sync-card-title {
+    font-family: 'Poppins', sans-serif;
+    font-size:   30px;
+    color:       black;
+    font-weight: 500;
+    margin:      0 0 16px;
+    line-height: 1.15;
+}
+
+.btf-sync-card-text {
+    font-family:   'Inter', sans-serif;
+    font-size:     17px;
+    color:         #64748b;
+    line-height:   1.7;
+    margin-bottom: 24px;
+}
+
+.btf-sync-card-footer {
+    font-family: 'Inter', sans-serif;
+    font-size:   16px;
+    color:       #94a3b8;
+    line-height: 1.6;
+    margin-top:  20px;
+    padding-top: 20px;
+    border-top:  2px solid #f1f5f9;
+}
+
+.btf-sync-card-list {
+    list-style:     none;
+    padding:        0;
+    margin:         0;
+    display:        flex;
+    flex-direction: column;
+    gap:            12px;
+}
+
+.btf-sync-card-list li {
+    display:     flex;
+    align-items: center;
+    gap:         12px;
+    font-family: 'Inter', sans-serif;
+    font-size:   16px;
+    font-weight: 300;
+    color:       var(--tf-text-dark, #0f172a);
+}
+
+.btf-sync-list-icon {
+    width:           36px;
+    height:          36px;
+    border-radius:   10px;
+    background:      var(--tf-green-tint, #F0FDF4);
+    color:           var(--tf-green, #38B000);
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+}
+.btf-sync-list-icon svg { width: 18px; height: 18px; }
+
+/* Responsive adjustments for Section 3 */
+@media (max-width: 1100px) {
+    .btf-section          { padding: 70px 4%; }
+    .btf-sync-card        { flex-direction: column; }
+    .btf-sync-card-visual { border-left: none; border-top: 1px solid #e2e8f0; min-height: 260px; }
+    .btf-sync-card-content{ padding: 40px 28px; }
+}
+
+@media (max-width: 768px) {
+    .btf-section {
+        padding:    48px 20px;
+    }
+    .btf-sync-top-heading { font-size: 2.1rem; letter-spacing: -0.5px; }
+    .btf-sync-header      { margin-bottom: 40px; }
+    .btf-sticky-wrapper   { padding-bottom: 30px; position: relative; top: 0; }
+    .btf-sync-card-content{ padding: 24px 20px; }
+    .btf-sync-card-title  { font-size: 20px; margin-bottom: 12px; }
+    .btf-sync-card-text   { font-size: 14px; margin-bottom: 20px; }
+    .btf-sync-card-list li{ font-size: 13.5px; gap: 10px; }
+    .btf-sync-list-icon   { width: 32px; height: 32px; }
+}

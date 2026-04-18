@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import './TAM_cs.css'
-import caseStudy2 from '../../../assets/TAM/caseStudy2.jpeg'
+import caseStudy2 from '../../../assets/banner/caseStudy2.png';
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
+import TAM_Footer from '../TAM_Footer/TAM_Footer';
 
 const TAM_cs2 = () => {
     useEffect(() => {
@@ -30,9 +31,12 @@ const TAM_cs2 = () => {
 
     <div className='TAM_cases'>
         <div className="TAM_cases-img">
-            <img src={caseStudy2} alt="" />
+             <img src={caseStudy2} alt="" />
         </div>
-        <h1 className='TAM_h1'>Financial Institutions</h1>
+        <h1 className='TAM_h1'>
+           <span className="title-green">Financial </span>
+            <span className="title-blue">Institutions</span>
+     </h1>
         <div className="TAM_cases-content">
             <h5>Background</h5>
             <p>Our Finance is a significant player in the financial industry, found itself grappling with operational challenges. The optimization of collection staff efficiency, in-house monitoring, and ensuring timely customer service across various business units became a pressing concern. The reliance on manual processes led to inefficiencies, delayed services, and challenges with staff management.</p>
@@ -56,6 +60,7 @@ const TAM_cs2 = () => {
             </div>
         </div>
     </div>
+        <TAM_Footer />
     </>
   )
 }

@@ -53,7 +53,7 @@ const ScheduleAdemolp = () => {
 	return (
 		<>
 			{isSubmitted ? <div className="LpSubmit">
-				<LP_Submit email={email} />
+				<LP_Submit />
 			</div> :
 				<div className='schedule-a-demo'>
 					<form onSubmit={handleSubmit} id="name-form2">

@@ -1,0 +1,512 @@
+/* ============================================================
+   DESIGN TOKENS & GLOBALS
+============================================================ */
+.tf-page-wrapper { width: 100%; overflow-x: hidden; font-family: 'Figtree', sans-serif; }
+
+/* ============================================================
+   GLOBAL IMAGE INSTANT LOAD — No fade, no delay, no animation
+   Applied at the top so it cascades with highest specificity
+============================================================ */
+.tf-page-wrapper img {
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
+    transition: none !important;
+    will-change: auto !important;
+    transform: none !important;
+    /* Prevent lazy-load flicker */
+    content-visibility: auto;
+}
+
+/* ============================================================
+   SCROLL ANIMATIONS (Intersection Observer classes)
+============================================================ */
+.tf-fade-up { opacity: 0; transform: translateY(50px); transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1); will-change: opacity, transform; }
+.tf-fade-up.tf-visible { opacity: 1; transform: translateY(0); }
+
+.tf-fade-left { opacity: 0; transform: translateX(-55px); transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1); will-change: opacity, transform; }
+.tf-fade-left.tf-visible { opacity: 1; transform: translateX(0); }
+
+.tf-fade-right { opacity: 0; transform: translateX(55px); transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1); will-change: opacity, transform; }
+.tf-fade-right.tf-visible { opacity: 1; transform: translateX(0); }
+
+.tf-scale-up { opacity: 0; transform: scale(0.85); transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); will-change: opacity, transform; }
+.tf-scale-up.tf-visible { opacity: 1; transform: scale(1); }
+
+/* Delays */
+.tf-delay-1 { transition-delay: 0.1s !important; }
+.tf-delay-2 { transition-delay: 0.2s !important; }
+.tf-delay-3 { transition-delay: 0.3s !important; }
+.tf-delay-4 { transition-delay: 0.4s !important; }
+
+/* ============================================================
+   SECTION 1 — HERO (Desktop / Laptop: > 1100px)
+============================================================ */
+.tf-hero-main {
+    background-color: #e6f0ff;
+    display: flex;
+    flex-direction: row;
+    height: 90vh;
+    min-height: 600px;
+    width: 100%;
+    padding: 0;
+}
+
+.tf-hero-left {
+    background-color: #e6f0ff;
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 70px 40px 40px 60px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.tf-hero-right {
+    flex: 1 1 auto;
+    position: relative;
+    overflow: hidden;
+    height: 82%;
+    top: 72px;
+}
+
+/* IMAGE: always visible, no transition */
+.tf-hero-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+    display: block;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
+    transition: none !important;
+}
+
+.tf-hero-center-stack {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tf-hero-title {
+    font-family: 'Poppins', sans-serif;
+    color: #0f172a;
+    font-size: clamp(3.2rem, 4.5vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 1.6rem;
+    letter-spacing: -2px;
+    opacity: 1 !important;
+}
+.tf-hero-title-green { color: #38B000; }
+.tf-hero-title-blue  { color: #0077B6; }
+
+.tf-hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.3rem, 1.6vw, 1.7rem);
+    font-weight: 500;
+    color: #4B5563;
+    line-height: 1.55;
+    margin-bottom: 2rem;
+    opacity: 1 !important;
+}
+
+.tf-hero-cta-area {
+    margin-bottom: 1.5rem;
+    opacity: 1 !important;
+}
+
+.tf-demo-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #38B000;
+    color: #FFFFFF;
+    padding: 1.2rem 3.5rem;
+    border-radius: 100px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.tf-demo-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.55s ease;
+}
+.tf-demo-btn:hover::after { transform: translateX(100%); }
+.tf-demo-btn:hover {
+    background-color: #2D8C00;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(56,176,0,0.35);
+}
+.tf-btn-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+}
+.tf-demo-btn:hover .tf-btn-arrow { transform: translateX(4px); }
+
+/* ── Hero Mini Cards ── */
+.tf-hero-mini-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    opacity: 1 !important;
+    margin-top: auto;
+    padding-top: 1.5rem;
+}
+
+.tf-mini-card {
+    position: relative;
+    background: #FFFFFF;
+    border: 1.5px solid rgba(56, 176, 0, 0.12);
+    padding: 1.2rem 1.6rem 1.2rem;
+    text-align: left;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #0f172a;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    cursor: default;
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s;
+
+}
+.tf-mini-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 20px 20px 0 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: linear-gradient(90deg, #38B000, #5ACD1A);
+}
+.tf-mini-card:hover { transform: translateY(-6px); border-color: transparent; box-shadow: 0 20px 50px rgba(56,176,0,0.15); }
+.tf-mini-card:hover::before { opacity: 1; }
+
+.tf-mini-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
+    border: 1.5px solid rgba(56,176,0,0.2);
+    flex-shrink: 0;
+}
+.tf-mini-card:hover .tf-mini-icon-wrap {
+    background: linear-gradient(135deg, #38B000, #5ACD1A);
+    border-color: #38B000;
+    box-shadow: 0 8px 20px rgba(56,176,0,0.3);
+}
+.tf-mini-svg-icon { width: 22px; height: 22px; color: #38B000; flex-shrink: 0; transition: color 0.3s ease; }
+.tf-mini-card:hover .tf-mini-svg-icon { color: #FFFFFF; }
+
+.tf-mini-card-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.25;
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.2px;
+}
+
+/* ============================================================
+   SECTION 2 — PARAGRAPH & CARDS
+============================================================ */
+.tf-para-section { padding: 100px 5%; background: radial-gradient(circle at 90% 10%, rgba(56,176,0,0.05) 0%, transparent 40%), #FFFFFF; min-height: 80vh; display: flex; align-items: center; font-family: 'Inter', sans-serif; }
+.tf-para-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px; max-width: 1300px; margin: 0 auto; align-items: center; }
+.tf-para-heading { font-family: 'Poppins', sans-serif; font-size: clamp(2.8rem, 4vw, 4.2rem); font-weight: 900; line-height: 1.1; color: #0f172a; margin-bottom: 24px; letter-spacing: -1px; }
+.tf-para-highlight { color: #38B000; display: inline-block; }
+.tf-para-text { text-align: justify; font-family: 'Inter', sans-serif; font-size: 18px; line-height: 1.8; color: #475569; margin-bottom: 0; }
+
+.tf-para-right { width: 100%; }
+.tf-para-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.tf-para-card { padding: 32px 20px 28px; background: #FFFFFF; text-align: center; font-weight: 700; font-family: 'Poppins', sans-serif; font-size: 15px; color: #64748b; border-radius: 16px; border: 2.5px solid transparent; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1); cursor: default; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.tf-para-card:nth-child(odd) .tf-para-card-label  { color: #0077B6; }
+.tf-para-card:nth-child(even) .tf-para-card-label { color: #38B000; }
+.tf-para-card:hover { transform: translateY(-6px); }
+.tf-para-card:nth-child(odd):hover  { box-shadow: 0 16px 36px rgba(0,119,182,0.15); }
+.tf-para-card:nth-child(even):hover { box-shadow: 0 16px 36px rgba(56,176,0,0.15); }
+
+.tf-para-icon-wrap { width: 80px; height: 80px; border-radius: 18px; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; flex-shrink: 0; }
+.tf-para-card:nth-child(odd) .tf-para-icon-wrap  { background: rgba(0,119,182,0.08); border: 1.5px solid rgba(0,119,182,0.15); }
+.tf-para-card:nth-child(even) .tf-para-icon-wrap { background: rgba(56,176,0,0.08); border: 1.5px solid rgba(56,176,0,0.15); }
+.tf-para-card:hover .tf-para-icon-wrap { transform: scale(1.12) rotate(-3deg); }
+.tf-para-card-label { font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: -0.2px; }
+
+/* ============================================================
+   SECTION 4 — IMPROVES / KEY BENEFITS
+============================================================ */
+.tf-improve-section { padding: 100px 6%; background: linear-gradient(135deg, #F0FDF4 0%, #EFF6FF 100%); position: relative; overflow: hidden; }
+.tf-improve-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 8rem; align-items: center; }
+.tf-improve-left { display: flex; flex-direction: column; gap: 0; }
+.tf-improve-headline { font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 2.8vw, 3rem); font-weight: 900; color: #0077B6; line-height: 1.15; margin-bottom: 2.4rem; letter-spacing: -0.5px; text-transform: uppercase; }
+.tf-improve-para { font-family: 'Inter', sans-serif; font-size: 1.5rem; color: #374151; line-height: 1.75; margin-bottom: 2rem; }
+.tf-improve-label { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: #0f172a; margin-bottom: 1.2rem; }
+.tf-improve-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.4rem; padding: 0; }
+.tf-improve-item { display: flex; align-items: center; gap: 1.2rem; font-family: 'Inter', sans-serif; font-size: 1.45rem; font-weight: 500; color: #1F2937; line-height: 1.55; transition: transform 0.2s ease; }
+.tf-improve-item:hover { transform: translateX(4px); }
+.tf-improve-bullet { width: 10px; height: 10px; min-width: 10px; border-radius: 50%; background: #38B000; }
+.tf-improve-highlight { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 600; color: #0077B6; line-height: 1.7; margin-bottom: 2rem; padding-left: 1.6rem; border-left: 4px solid #38B000; border-radius: 0; }
+.tf-improve-right { display: flex; flex-direction: column; }
+.tf-improve-img-block {
+    width: 100%;
+    max-width: 690px;
+    aspect-ratio: 4/4; 
+    height: auto;       
+    overflow: hidden;
+    border-radius: 20px;
+}
+.tf-improve-img-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
+}
+.tf-improve-img-block:hover img { transform: scale(1.04); }
+
+/* ============================================================
+   SECTION 5 — CTA
+============================================================ */
+.tf-cta-section { position: relative; width: 100%; padding: 90px 5%; background-color: #FFBB08; overflow: hidden; display: flex; justify-content: center; align-items: center; font-family: 'Figtree', sans-serif; }
+.tf-cta-wrap { position: relative; z-index: 10; text-align: center; }
+.tf-cta-headline { font-family: 'Poppins', sans-serif; font-size: clamp(32px, 4.5vw, 42px); font-weight: 900; color: #1A1A1A; line-height: 1.1; letter-spacing: -2px; margin-bottom: 40px; }
+.tf-cta-headline-blue { color: #0077B6; display: block; }
+.tf-cta-btn-group { text-align: center; }
+.tf-cta-btn { display: inline-flex; align-items: center; gap: 15px; background: #1A1A1A; color: #FFFFFF; padding: 18px 48px; border-radius: 100px; border: none; font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 700; cursor: pointer; transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+.tf-cta-btn:hover { transform: translateY(-5px); background: #0077B6; box-shadow: 0 25px 50px rgba(0,119,182,0.3); }
+.tf-cta-btn-arrow-circle { width: 32px; height: 32px; background: #38B000; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.4s ease; }
+.tf-cta-btn:hover .tf-cta-btn-arrow-circle { transform: rotate(450deg); background: #FFFFFF; }
+.tf-cta-btn:hover .tf-cta-btn-arrow-circle svg { stroke: #0077B6; }
+
+/* ============================================================
+   SECTION 3 COMMON TYPOGRAPHY & HEADER
+============================================================ */
+.tf-sec3-headline { font-family: 'Poppins', sans-serif !important; font-size: clamp(3rem, 4.5vw, 5rem) !important; font-weight: 900 !important; line-height: 1.1 !important; margin-bottom: 0 !important; text-align: center !important; }
+.tf-sec3-hl-dark { color: #27375D !important; }
+.tf-sec3-hl-blue { color: #0077B6 !important; }
+.tf-sec3-bar { width: 60px !important; height: 4px !important; background: #0077B6 !important; margin: 18px auto 24px !important; border-radius: 4px !important; }
+.tf-sec3-subtext { font-family: 'Inter', sans-serif !important; font-size: 1.55rem !important; color: #4B5563 !important; line-height: 1.7 !important; margin: 1rem auto !important; text-align: center !important; max-width: 900px !important; font-weight: 400 !important; }
+.tf-sec3-key-label { font-family: 'Poppins', sans-serif !important; font-size: 2.1rem !important; font-weight: 800 !important; color: #9CA3AF !important; text-transform: uppercase !important; letter-spacing: 0.1em !important; margin-bottom: 1.4rem !important; }
+.tf-sec3-card-title { font-family: 'Poppins', sans-serif !important; font-size: 2rem !important; font-weight: 800 !important; color: #0f172a !important; line-height: 1.2 !important; }
+.tf-sec3-card-desc { font-family: 'Inter', sans-serif !important; font-size: 1.55rem !important; color: #374151 !important; line-height: 1.8 !important; font-weight: 500 !important; }
+.tf-sec3-card-points { list-style: none !important; }
+.tf-sec3-card-points li, .tf-sec3-card-point { font-family: 'Inter', sans-serif !important; font-size: 1.45rem !important; font-weight: 600 !important; color: #1F2937 !important; line-height: 1.5 !important; }
+
+/* ============================================================
+   RESPONSIVE — TABLET  (769px – 1100px)
+============================================================ */
+@media (max-width: 1100px) {
+    /* HERO */
+    .tf-hero-main        { flex-direction: column; height: auto; min-height: unset; }
+    .tf-hero-left        { flex: none; order: 0; padding: 80px 40px 40px; width: 100%; box-sizing: border-box; }
+    .tf-hero-right       { order: 1; width: 100%; height: 60dvh; top: 0; flex: none; }
+    .tf-hero-right img   { object-position: center top; }
+    .tf-hero-title       { font-size: 3.4rem; letter-spacing: -1.5px; }
+    .tf-hero-subtitle    { font-size: 1.55rem; }
+    .tf-demo-btn         { font-size: 1.45rem; padding: 1.2rem 3rem; }
+
+    .tf-hero-mini-cards  { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .tf-mini-card        { padding: 1rem 1.2rem; }
+    .tf-mini-card-label  { font-size: 1rem; }
+
+    /* PARA */
+    .tf-para-section     { padding: 70px 5%; min-height: auto; }
+    .tf-para-grid        { grid-template-columns: 1fr; gap: 50px; }
+    .tf-para-heading     { font-size: 3rem; }
+
+    /* IMPROVE */
+    .tf-improve-section  { padding: 70px 5%; }
+    .tf-improve-inner    { grid-template-columns: 1fr; gap: 4rem; }
+    .tf-improve-img-block{ width: 100%; max-width: 100%; height: auto; aspect-ratio: 4/4; }
+
+    /* CTA */
+    .tf-cta-section      { padding: 70px 5%; }
+
+    /* SEC 3 */
+    .tf-sec3-card-points li, .tf-sec3-card-point { font-size: 1.3rem !important; }
+    .tf-sec3-card-desc   { font-size: 1.35rem !important; }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE LARGE  (481px – 768px)
+============================================================ */
+@media (max-width: 768px) {
+    /* ── HERO ── */
+    .tf-hero-main {
+        flex-direction: column;
+        height: auto;
+        padding: 0;
+    }
+    .tf-hero-left {
+        order: 0;
+        flex: none;
+        width: 100%;
+        padding: 72px 20px 28px;
+        box-sizing: border-box;
+        background-color: #e6f0ff;
+        gap: 0;
+    }
+    .tf-hero-right {
+        order: 1;
+        width: 100%;
+     height: 70vw;        /* 55vw இருந்தது — increase பண்ணு */
+    max-height: 400px; 
+        top: 0;
+        flex: none;
+        overflow: hidden;
+    }
+    .tf-hero-right img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+     object-position:100% center;     /* subject top-ல் இருந்தா */
+        
+        display: block;
+    }
+
+    .tf-hero-center-stack {
+        gap: 0;
+        margin: 10px 0 18px;
+        align-items: flex-start;
+    }
+    .tf-hero-title {
+        font-size: 2.35rem;
+        letter-spacing: -0.8px;
+        margin-bottom: 10px;
+        line-height: 1.28;
+        width: 100%;
+        text-align: left;
+    }
+    .tf-hero-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 18px;
+        line-height: 1.55;
+        text-align: left;
+        width: 100%;
+    }
+    .tf-hero-cta-area {
+        margin-bottom: 18px;
+        width: 100%;
+    }
+    .tf-demo-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem 1.5rem;
+        font-size: 1.35rem;
+        border-radius: 14px;
+    }
+
+    /* Mini Cards — 3 equal columns on mobile */
+    .tf-hero-mini-cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        width: 100%;
+        padding-top: 1rem;
+    }
+    .tf-mini-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 10px;
+       
+        gap: 8px;
+    }
+    .tf-mini-icon-wrap {
+        width: 36px;
+        height: 36px;
+        border-radius: 9px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+    .tf-mini-svg-icon {
+        width: 17px;
+        height: 17px;
+    }
+    .tf-mini-card-label {
+        font-size: 0.82rem;
+        line-height: 1.2;
+        font-weight: 700;
+        word-break: break-word;
+    }
+
+    /* ── PARA ── */
+    .tf-para-section     { padding: 48px 20px; min-height: auto; }
+    .tf-para-grid        { grid-template-columns: 1fr; gap: 36px; }
+    .tf-para-heading     { font-size: 2.4rem; letter-spacing: -0.5px; margin-bottom: 14px; line-height: 1.15; text-align: left; }
+    .tf-para-highlight   { display: inline; }
+    .tf-para-text        { text-align: left; font-size: 1.45rem; line-height: 1.75; }
+    .tf-para-cards-grid  { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .tf-para-card        { padding: 20px 12px 18px; border-radius: 14px; gap: 10px; align-items: center; justify-content: flex-start; }
+    .tf-para-icon-wrap   { width: 64px; height: 64px; border-radius: 14px; }
+    .tf-para-card-label  { font-size: 13.5px; line-height: 1.25; }
+
+    /* ── IMPROVE ── */
+    .tf-improve-section  { padding: 48px 20px; }
+    .tf-improve-inner    { gap: 32px; }
+    .tf-improve-headline { font-size: 2.2rem; margin-bottom: 16px; letter-spacing: -0.5px; line-height: 1.2; }
+    .tf-improve-para     { font-size: 1.35rem; line-height: 1.7; margin-bottom: 20px; }
+    .tf-improve-label    { font-size: 1.45rem; margin-bottom: 14px; }
+    .tf-improve-list     { gap: 14px; margin-bottom: 24px; }
+    .tf-improve-item     { font-size: 1.35rem; gap: 10px; align-items: flex-start; }
+    .tf-improve-bullet   { margin-top: 6px; }
+    .tf-improve-highlight{ font-size: 1.4rem; padding-left: 14px; margin-bottom: 24px; border-left-width: 3px; }
+    .tf-improve-img-block{ height: auto; aspect-ratio: 4/4; border-radius: 16px; max-width: 100%; }
+
+    /* ── CTA ── */
+    .tf-cta-section      { padding: 56px 20px; }
+    .tf-cta-headline     { font-size: 2.4rem; letter-spacing: -1px; margin-bottom: 32px; line-height: 1.15; }
+    .tf-cta-headline-blue{ display: inline; }
+    .tf-cta-btn          { width: 100%; justify-content: center; padding: 1.2rem; font-size: 1.5rem; gap: 12px; }
+
+    /* ── SEC 3 ── */
+    .tf-sec3-card-title  { font-size: 1.65rem !important; }
+    .tf-sec3-key-label   { font-size: 1.4rem !important; margin-bottom: 1rem !important; }
+    .tf-sec3-card-points li, .tf-sec3-card-point { font-size: 1.25rem !important; }
+    .tf-sec3-card-desc   { font-size: 1.35rem !important; line-height: 1.6 !important; }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE SMALL  (< 400px)
+   Extra fine-tuning for very narrow screens (iPhone SE etc.)
+============================================================ */
+@media (max-width: 400px) {
+    .tf-hero-title       { font-size: 1.95rem; }
+    .tf-hero-subtitle    { font-size: 1.2rem; }
+    .tf-demo-btn         { font-size: 1.2rem; border-radius: 12px; }
+
+    .tf-hero-mini-cards  { gap: 8px; }
+    .tf-mini-card        { padding: 10px 8px; gap: 6px; }
+    .tf-mini-icon-wrap   { width: 30px; height: 30px; border-radius: 7px; }
+    .tf-mini-svg-icon    { width: 14px; height: 14px; }
+    .tf-mini-card-label  { font-size: 0.72rem; }
+
+    .tf-improve-headline { font-size: 1.85rem; }
+    .tf-cta-headline     { font-size: 2rem; }
+}

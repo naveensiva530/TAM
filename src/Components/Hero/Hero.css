@@ -105,11 +105,11 @@
 
 .hero-text button{
     border: none;
-    padding: 15px;
+    padding: 10px;
     border-radius: 25px;
     font-size: 12px;
     font-weight: 600;
-    margin-top: 20px;
+    margin-top: 30px;
     background-color:#27375d;
     color: white;
     cursor: pointer;

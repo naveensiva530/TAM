@@ -1,6 +1,6 @@
 .navbar-links {
     display: flex;
-    justify-content: space-between; /* Changed from space-between to align logo, links, and call button to the left */
+    justify-content: space-between;
     align-items: center;
     margin: 0;
     padding: 10px 25px;
@@ -13,7 +13,7 @@
     width: 100%;
     top: 0;
     z-index: 5;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .slide-up {
@@ -23,13 +23,14 @@
 .nav_link_box1 {
     display: flex;
     align-items: center;
-    gap: 20px; /* Added gap for spacing between links and call button */
+    gap: 20px;
 }
 
 .slide-down {
     transform: translateY(0);
 }
-.navbar-logo-and-links{
+
+.navbar-logo-and-links {
     display: flex;
     align-items: center;
     gap: 50px;
@@ -124,10 +125,9 @@
 .navbar-links_container ul li {
     position: relative;
     margin: 0px 15px;
-
 }
 
-.navbar-links_container ul li p a{
+.navbar-links_container ul li p a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -137,7 +137,6 @@
 .Navbar_product_list {
     padding-top: 10px;
     background-color: transparent;
-
 }
 
 .Navbar_product_list_dropdown,
@@ -160,8 +159,9 @@
 .Navbar_product_list_dropdown {
     padding: 10px;
 }
+
 .Navbar_company_dropdown li,
-.Navbar_product_dropdown li{
+.Navbar_product_dropdown li {
     margin: 0px 0px !important;
 }
 
@@ -169,7 +169,6 @@
     padding: 10px 20px;
     transition: all 0.5s;
 }
-
 
 .Navbar_company_dropdown li:hover {
     background-color: #27375d;
@@ -295,11 +294,8 @@
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     font-size: 15px;
-    /* line-height: 25px; */
-    /* margin: 0 1rem; */
     text-transform: capitalize;
     cursor: pointer;
-
 }
 
 .navbar-links_container p a::after {
@@ -315,11 +311,6 @@
 
 .navbar-links_container p a:hover::after {
     width: 100%;
-}
-
-/* For smooth unhover effect */
-.navbar-links_container p a::after {
-    transition: width 0.3s ease;
 }
 
 .navbar-sign p a:hover {
@@ -394,26 +385,30 @@
     -webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
+
 @-webkit-keyframes slide-right {
     0% {
-      -webkit-transform: translateX(-100%);
-              transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
     }
+
     100% {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
     }
-  }
-  @keyframes slide-right {
+}
+
+@keyframes slide-right {
     0% {
         -webkit-transform: translateX(-100%);
-                transform: translateX(-100%);
-      }
-      100% {
+        transform: translateX(-100%);
+    }
+
+    100% {
         -webkit-transform: translateX(0);
-                transform: translateX(0);
-      }
-  }
+        transform: translateX(0);
+    }
+}
 
 .navbar-menu_container-img {
     display: flex;
@@ -422,6 +417,7 @@
     width: 100%;
     margin-bottom: 15px;
 }
+
 .navbar-menu_container p {
     padding: 1rem 5px;
     font-size: 12px;
@@ -454,7 +450,6 @@
     text-decoration: none;
     color: black;
     font-family: sans-serif;
-
 }
 
 .navbar-menu_container-links ul a {
@@ -474,7 +469,6 @@
 .navbar-menu_container-links-sign {
     display: none;
 }
-
 
 @media screen and (max-width: 1025px) {
     .navbar-demo button {
@@ -601,137 +595,410 @@
     }
 }
 
-/* TAM Navbar Extension Styles */
+
+/* ============================================
+   TAM NAVBAR — DESKTOP STYLES
+   ============================================ */
+
 .tam-navbar-extension {
-  position: fixed;
-  top: 0px; /* Adjust this value to sit below your main navbar (estimate based on .navbar height; e.g., 60-80px). Test and tweak in browser dev tools. */
-  width: 100%;
-  background-color: #fff; /* White background */
-  border-top: 1px solid #ccc; /* Thin gray line between navbar and TAM extension */
-  z-index: 4; /* Below main navbar (z-index: 5) */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #fff;
+    z-index: 1001;
+    transition: transform 0.3s ease-in-out;
 }
 
-/* Removed slide-up and slide-down classes and their transforms */
-
-/* Rest of TAM extension styles remain the same */
 .tam-navbar-container {
-  width: 95%;
-  height: 100px;
-  background-color: #27375d; /* Changed to requested color */
-  border-radius: 25px; /* Already set, but confirmed */
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Centered content */
-  padding: 10px 25px;
-  padding-right: 50px;
+    width: 100%;
+    height: 100px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 25px;
+    padding-right: 50px;
+}
+
+/* Mobile hamburger — hidden on desktop */
+.tam-mobile-menu-btn {
+    display: none;
 }
 
 .tam-navbar-links {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Links centered */
-  gap: 25px; /* Minimal spacing between links */
-  /* Removed fixed width for flexible centering */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
 }
 
 .tam-navbar-links a {
-  text-decoration: none;
-  color: #fff; /* Changed to white for contrast on dark background */
+    text-decoration: none;
+    color: #27375d;
 }
 
 .tam-navbar-links h5 {
-  color: #fff; /* Changed to white for contrast on dark background */
-  font-family: "Poppins", sans-serif;
-  font-size: 12px !important;
-  font-weight: 500;
-  margin: 0; /* Ensure no extra margins */
+    color: #27375d;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px !important;
+    font-weight: 500;
+    margin: 0;
 }
 
-/* Media Queries for TAM Extension */
 @media (max-width: 1510px) {
-  .tam-navbar-links h5 {
-    font-size: 13px;
-  }
+    .tam-navbar-links h5 {
+        font-size: 13px;
+    }
 }
 
-@media (max-width: 780px) {
-  .tam-navbar-extension {
-    display: none; /* Hide on mobile/tablet; mobile nav is handled by TAM_mobile_nav */
-  }
-  .tam-navbar-links h5 {
-    font-size: 11px;
-    font-weight: 400;
-  }
-}
-
-/* TAM Navbar Features Dropdown */
 .tam-navbar-features {
-  position: relative;
+    position: relative;
 }
 
 .tam-navbar-features h5 {
-  color: #fff; /* Changed to white for contrast on dark background */
-  font-family: "Poppins", sans-serif;
-  font-size: 12px !important;
-  font-weight: 500;
-  margin: 0;
-  cursor: pointer;
+    color: #27375d;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px !important;
+    font-weight: 500;
+    margin: 0;
+    cursor: pointer;
 }
 
 .tam-navbar-features-dropdown {
-  display: none !important;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #fff; /* Kept white for dropdown contrast */
-  border: 1px solid #ccc;
-  z-index: 10;
-  width: 210px;
-  font-family: "Poppins", sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  color: #000; /* Black text in dropdown */
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: none !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 10;
+    width: 210px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #000;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .tam-navbar-features-dropdown li {
-  padding: 8px 0;
-  list-style: none;
-  padding-left: 15px;
+    padding: 8px 0;
+    list-style: none;
+    padding-left: 15px;
 }
 
 .tam-navbar-features-dropdown li:hover {
-  background-color: #f0f0f0;
+    background-color: #f0f0f0;
 }
 
 .tam-navbar-features-dropdown a {
-  text-decoration: none;
-  color: #000; /* Black links in dropdown */
-  display: block;
+    text-decoration: none;
+    color: #000;
+    display: block;
 }
 
 .tam-navbar-features:hover .tam-navbar-features-dropdown {
-  display: block !important;
+    display: block !important;
 }
 
-/* Media Queries for TAM Features Dropdown */
 @media (max-width: 1510px) {
-  .tam-navbar-features h5 {
-    font-size: 13px;
-  }
-  .tam-navbar-features-dropdown {
-    font-size: 13px;
-  }
+    .tam-navbar-features h5 {
+        font-size: 13px;
+    }
+
+    .tam-navbar-features-dropdown {
+        font-size: 13px;
+    }
 }
 
-@media (max-width: 780px) {
-  .tam-navbar-features-dropdown {
-    display: none; /* Hide dropdown on mobile/tablet */
-  }
+/* Yellow underline effect */
+.tam-navbar-links h5,
+.tam-navbar-features h5 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 4px;
 }
 
-/* ... existing code ... */
+.tam-navbar-links h5::after,
+.tam-navbar-features h5::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: #ffbb08;
+    transition: width 0.3s ease;
+}
+
+.tam-navbar-links h5:hover::after,
+.tam-navbar-features h5:hover::after {
+    width: 100%;
+}
+
+/* ============================================
+   THIRD NAVBAR — DESKTOP STYLES
+   ============================================ */
+
+.third-nav-wrapper {
+    width: 100%;
+    background-color: white;
+}
+
+.third-navbar-extension {
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    background-color: white;
+    z-index: 1000;
+    display: flex;
+    border-top: 1px solid black;
+}
+
+.third-navbar-extension.sticky-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-top: none;
+    animation: navSlideIn 0.2s ease-out;
+}
+
+@keyframes navSlideIn {
+    from {
+        transform: translateY(-10%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.third-navbar-extension.scrolled-shadow {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid black;
+}
+
+.third-navbar-extension.sticky-top .third-navbar-brand img {
+    height: 180px;
+    width: 180px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.third-navbar-container {
+    width: 100%;
+    padding: 0 2px;
+    display: flex;
+    align-items: center;
+}
+
+.third-navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    text-decoration: none;
+    margin-left: 70px;
+    height: 80px;
+}
+
+.third-navbar-brand img {
+    height: 190px;
+    width: 200px;
+    pointer-events: none;
+}
+
+.brand-green {
+    color: #38B000;
+}
+
+.brand-blue {
+    color: #0077B6;
+}
+
+.third-navbar-brand span.brand-name {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+
+/* ============================================
+   MOBILE STYLES — max-width: 780px
+   ============================================ */
+
+@media screen and (max-width: 780px) {
+
+    html,
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow-x: hidden !important;
+    }
+
+    /* Hide desktop navbar elements */
+    .navbar-links_container,
+    .navbar-demo {
+        display: none !important;
+    }
+
+    /* ── SECOND NAVBAR: fixed top, slide-up on scroll ── */
+    .tam-navbar-extension {
+        display: flex !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 65px !important;
+        background-color: #ffffff !important;
+        align-items: center !important;
+        padding: 0 15px !important;
+        z-index: 1002 !important;
+        margin: 0 !important;
+        border-bottom: 0.01px solid;
+        transition: transform 0.3s ease-in-out !important;
+    }
+
+    .tam-navbar-extension.slide-up {
+        transform: translateY(-100%) !important;
+    }
+
+    .tam-navbar-extension.slide-down {
+        transform: translateY(0) !important;
+    }
+
+    .tam-navbar-container {
+        display: flex !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: transparent !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+    }
+
+    /* Logo — left */
+    .tam-nav-logo {
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .tam-nav-logo img {
+        width: 55px !important;
+        height: auto !important;
+    }
+
+    /* Hide desktop links & call button */
+    .tam-navbar-links,
+    .tam-nav-call {
+        display: none !important;
+    }
+
+    /* Hamburger — right side inside second navbar */
+    .tam-mobile-menu-btn {
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .tam-mobile-menu-btn .navbar-menu {
+        display: block !important;
+        position: static !important;
+        z-index: auto !important;
+        right: auto !important;
+        top: auto !important;
+    }
+
+    /* ── THIRD NAVBAR: fixed, default top = 65px (below second navbar) ── */
+    .third-nav-wrapper {
+        display: block !important;
+        margin-top: 65px !important;
+        padding: 0 !important;
+        background: #ffffff !important;
+    }
+
+    .third-navbar-extension {
+        display: flex !important;
+        position: fixed !important;
+        top: 65px !important;
+        /* Below second navbar */
+        left: 0 !important;
+        width: 100% !important;
+        height: 55px !important;
+        background-color: #ffffff !important;
+        padding: 6px 15px !important;
+        align-items: center !important;
+        z-index: 1001 !important;
+        margin: 0 !important;
+        border-top: none !important;
+        border-bottom: 1px solid #e0e0e0 !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+        /* Smooth transition when second navbar slides away */
+        transition: top 0.3s ease-in-out !important;
+    }
+
+    /* ── KEY FIX: Second navbar slide-up ஆகும்போது
+       third navbar top:0 ஆகி அந்த இடத்தை பிடிக்கும் ── */
+    .second-nav-hidden .third-navbar-extension {
+        top: 0 !important;
+    }
+
+    /* Override sticky-top on mobile */
+    .third-navbar-extension.sticky-top {
+        position: fixed !important;
+        animation: none !important;
+    }
+
+    /* Brand: logo + name side by side */
+    .third-navbar-brand {
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        margin-left: 0 !important;
+    }
+
+    .third-navbar-brand img {
+        height: 72px !important;
+        width: 72px !important;
+    }
+
+    .third-navbar-brand span.brand-name {
+        font-size: 14px !important;
+        line-height: 1.3 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        font-weight: 600 !important;
+    }
+
+    /* Page content: push down below both navbars */
+    .third-nav-wrapper+*,
+    .hero-section,
+    #hero {
+        margin-top: 55px !important;
+        padding-top: 0 !important;
+    }
+
+    /* Menu popup */
+    .navbar-menu_container {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 80% !important;
+        height: 100vh !important;
+        background: #ffffff !important;
+        z-index: 9999 !important;
+        transform: translateX(-100%);
+        animation: slide-in-left 0.4s forwards;
+    }
+}
+
+@keyframes slide-in-left {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}

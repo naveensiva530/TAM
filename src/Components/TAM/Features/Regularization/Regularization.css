@@ -1,0 +1,282 @@
+/* ============================================================
+   SECTION 3 — Dedicated scroll animation classes
+============================================================ */
+.reg-s3-fade-up {
+    opacity:    0;
+    transform:  translateY(48px);
+    transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reg-s3-fade-left {
+    opacity:    0;
+    transform:  translateX(-56px);
+    transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reg-s3-fade-right {
+    opacity:    0;
+    transform:  translateX(56px);
+    transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reg-s3-fade-up.reg-s3-visible,
+.reg-s3-fade-left.reg-s3-visible,
+.reg-s3-fade-right.reg-s3-visible {
+    opacity:   1;
+    transform: translate(0, 0);
+}
+
+/* ============================================================
+   SECTION 3 — HANDLE ATTENDANCE  (DESKTOP)
+============================================================ */
+.reg-handle-section {
+    padding:          100px 5%;
+    background-color: var(--tf-white, #FFFFFF);
+}
+
+.reg-handle-header {
+    text-align:    center;
+    margin-bottom: 80px;
+}
+
+.reg-handle-main-title {
+    font-family:   'Poppins', sans-serif;
+    font-size:     clamp(3rem, 4.5vw, 5rem);
+    font-weight:   900;
+    line-height:   1.1;
+    margin-bottom: 0 !important;
+    text-align:    center;
+   
+}
+
+
+
+.reg-handle-title-blue { color: var(--tf-blue, #0077B6); font-weight: 800; }
+
+.reg-handle-main-subtitle {
+    font-family:   'Inter', sans-serif;
+    font-size:     clamp(1.3rem, 2vw, 1.55rem);
+    color:         #6B7280;
+    line-height:   1.7;
+    text-align:    center;
+    max-width:     900px;
+    margin:        20px auto 0;
+}
+
+.reg-handle-container {
+    max-width:      1150px;
+    margin:         0 auto;
+    display:        flex;
+    flex-direction: column;
+    gap:            100px;
+}
+
+.reg-handle-row {
+    display:        flex;
+    flex-direction: row;
+    align-items:    center;
+    gap:            80px;
+}
+
+.reg-handle-image { flex: 1; }
+.reg-handle-text  { flex: 1; }
+
+.reg-handle-sub-title {
+    font-family:   'Poppins', sans-serif;
+    font-size:     clamp(20px, 3vw, 32px);
+    font-weight:   500;
+    color:         black;
+    margin-bottom: 14px;
+}
+
+.reg-handle-desc {
+    font-family:   'Inter', sans-serif;
+    font-size:     15px;
+    color:         #475569;
+    line-height:   1.75;
+    margin-bottom: 18px;
+}
+
+.reg-handle-features-label {
+    font-family:    'Poppins', sans-serif;
+    font-size:      13px;
+    font-weight:    700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color:          #38B000;
+    margin-bottom:  10px;
+}
+
+.reg-handle-closing {
+    margin-top:   18px;
+    font-size:    14px;
+    color:        #6B7280;
+    line-height:  1.75;
+    font-style:   italic;
+    border-left:  3px solid #38B000;
+    padding-left: 14px;
+}
+
+.reg-handle-list { list-style: none; }
+
+.reg-handle-list li {
+    font-family:   'Inter', sans-serif;
+    font-size:     clamp(14px, 2vw, 17px);
+    color:         #475569;
+    margin-bottom: 16px;
+    position:      relative;
+    padding-left:  28px;
+    line-height:   1.6;
+}
+
+.reg-handle-list li::before {
+    content:     "✓";
+    position:    absolute;
+    left:        0;
+    color:       #38B000;
+    font-weight: 900;
+}
+
+.reg-handle-img-item {
+    width:         100%;
+    object-fit:    cover;
+    border-radius: 24px;
+    display:       block;
+}
+.reg-handle-img-self { aspect-ratio: 4 / 4; height: unset; }
+.reg-handle-img-ro   { aspect-ratio: 4 / 4; height: unset; }
+.reg-handle-img-hr   { aspect-ratio: 4 / 4; height: unset; }
+
+/* ============================================================
+   RESPONSIVE — LARGE TABLET (max-width: 1200px)
+============================================================ */
+@media (max-width: 1200px) {
+    .reg-handle-container       { gap: 80px; }
+    .reg-handle-row             { gap: 50px; }
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET (max-width: 1024px)
+============================================================ */
+@media (max-width: 1024px) {
+    .reg-handle-section   { padding: 70px 5%; }
+    .reg-handle-container { gap: 70px; }
+    .reg-handle-row       { gap: 40px; }
+    .reg-handle-main-title { font-size: clamp(2rem, 4vw, 3.5rem); }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE (max-width: 768px)
+============================================================ */
+@media (max-width: 768px) {
+    .reg-handle-section {
+        padding: 48px 20px 52px;
+    }
+
+    .reg-handle-header {
+        margin-bottom: 36px;
+        text-align:    left;
+    }
+
+    .reg-handle-main-title {
+        font-size:   clamp(1.8rem, 5.5vw, 2.6rem);
+        line-height: 1.2;
+        text-align:  left;
+    }
+
+
+
+    .reg-handle-main-subtitle {
+        font-size:   1.32rem;
+        margin-top:  14px;
+        text-align:  left;
+        margin-left: 0;
+    }
+
+    .reg-handle-container { gap: 44px; }
+
+    /* Stack rows vertically: image on top, text below */
+    .reg-handle-row {
+        flex-direction: column;
+        gap:            20px;
+        align-items:    stretch;
+    }
+
+    .reg-handle-image {
+        flex:  0 0 auto;
+        width: 100%;
+        order: 1;
+    }
+
+    .reg-handle-img-item,
+.reg-handle-img-self,
+.reg-handle-img-ro,
+.reg-handle-img-hr {
+    aspect-ratio:  16 /  16;
+    height:        unset;
+    border-radius: 16px;
+    object-fit:    cover;
+}
+
+    .reg-handle-text {
+        flex:  0 0 auto;
+        width: 100%;
+        order: 2;
+    }
+
+    .reg-handle-sub-title  { font-size: 1.55rem; margin-bottom: 10px; }
+    .reg-handle-desc       { font-size: 1.32rem; margin-bottom: 14px; line-height: 1.68; }
+    .reg-handle-features-label { font-size: 11.5px; margin-bottom: 8px; }
+
+    .reg-handle-list li {
+        font-size:     1.3rem;
+        margin-bottom: 12px;
+        padding-left:  24px;
+        line-height:   1.6;
+    }
+
+    .reg-handle-closing {
+        font-size:         1.25rem;
+        margin-top:        14px;
+        padding-left:      12px;
+        border-left-width: 2px;
+        line-height:       1.65;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE — SMALL MOBILE (max-width: 480px)
+============================================================ */
+@media (max-width: 480px) {
+    .reg-handle-section        { padding: 36px 16px 40px; }
+    .reg-handle-header         { margin-bottom: 28px; }
+    .reg-handle-main-title     { font-size: clamp(1.65rem, 5vw, 2.1rem); }
+    .reg-handle-main-subtitle  { font-size: 1.25rem; }
+    .reg-handle-container      { gap: 36px; }
+
+    .reg-handle-img-item,
+.reg-handle-img-self,
+.reg-handle-img-ro,
+.reg-handle-img-hr {
+    aspect-ratio:  4 / 4;
+    height:        unset;
+    border-radius: 14px;
+}
+
+    .reg-handle-sub-title      { font-size: 1.4rem; }
+    .reg-handle-desc           { font-size: 1.22rem; }
+    .reg-handle-list li        { font-size: 1.2rem; padding-left: 22px; margin-bottom: 10px; }
+    .reg-handle-closing        { font-size: 1.15rem; }
+}
+
+/* ============================================================
+   RESPONSIVE — EXTRA SMALL (max-width: 360px)
+============================================================ */
+@media (max-width: 360px) {
+    .reg-handle-main-title    { font-size: 1.55rem; }
+    .reg-handle-sub-title     { font-size: 1.3rem; }
+    .reg-handle-list li       { font-size: 1.12rem; }
+}

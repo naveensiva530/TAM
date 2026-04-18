@@ -1,71 +1,772 @@
-.TAM_CaseStudies{
-    background:url( '../../../assets/TAM/TAM_bg.svg') no-repeat;
-    background-size:contain;
-    margin-top: 150px;
+/* ================================
+   GOOGLE FONTS IMPORT
+================================ */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ================================
+   FONT VARIABLES
+================================ */
+:root {
+    --font-heading: 'Figtree', 'Poppins', sans-serif;
+    --font-body:    'Inter', 'Poppins', sans-serif;
+    --font-btn:     'Poppins', 'Figtree', sans-serif;
 }
-.TAM_CaseStudies_head{
-    padding-top: 50px;
+
+.TAM_CaseStudies {
+    background-color: #E6F0FF;
+    font-family: var(--font-body);
+}
+
+/* ================================
+   HERO SECTION
+================================ */
+.TAM_CaseStudies_head {
+    padding-top: 90px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+    min-height: 90vh;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #E6F0FF;
+    box-sizing: border-box;
+}
+
+.TAM_CaseStudies_head_left {
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-.TAM_CaseStudies_head img{
-    width: 80%;
-}
-.TAM_CaseStudies_head h1{
-    margin-bottom: 50px;
-}
-.TAM_CaseStudies_head h5{
-    color: #27375d;
-    font-family: "Poppins", sans-serif;
-    font-weight: 650;
-    font-size: 16px;
-    margin-left: 70%;
-    margin-bottom: 10px;
-}
-.TAM_CaseStudies_container{
-    margin-top: 150px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    align-items: center;
     justify-content: center;
-    padding: 10px 20px;
 }
+
+.TAM_CaseStudies_head_left h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 700;
+    color: #000000;
+}
+
+.TAM_CaseStudies_head_right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.TAM_CaseStudies_head_right img {
+    width: 100%;
+    max-width: 700px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+/* ================================
+   CARDS CONTAINER
+================================ */
+.TAM_CaseStudies_container {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 100%;
+    padding: 60px 6%;
+    padding-bottom: 80px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
 .TAM_CaseStudies_container a {
     text-decoration: none;
+    display: block;
+    margin-bottom: 32px;
 }
-@media screen and (max-width: 780px){
-    .TAM_CaseStudies_head{
-        padding-top: 20px;
-    }
-    .TAM_CaseStudies_head h5{
-        margin-left: 0;
-        text-align: center;
-        margin-top: 0px;
-    }
+
+/* ================================
+   SCROLL ANIMATION - WRAPPER
+================================ */
+.cs-card-wrapper {
+    opacity: 0;
+    transition:
+        opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, opacity;
 }
-@media screen and (max-width: 550px){
-    .TAM_CaseStudies{
-        margin-top: 70px;
+
+.cs-card-wrapper.slide-from-left  { transform: translateX(-80px); }
+.cs-card-wrapper.slide-from-right { transform: translateX(80px); }
+
+.cs-card-wrapper.cs-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ================================
+   LEFT PANEL - slides from top
+================================ */
+.cs-card-left.anim-from-top {
+    opacity: 0;
+    transform: translateY(-40px);
+    transition:
+        opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+    will-change: transform, opacity;
+}
+
+.cs-card-wrapper.cs-visible .cs-card-left.anim-from-top {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================================
+   RIGHT PANEL - slides from bottom
+================================ */
+.cs-card-right.anim-from-bottom {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+        opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.25s,
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+    will-change: transform, opacity;
+}
+
+.cs-card-wrapper.cs-visible .cs-card-right.anim-from-bottom {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================================
+   HORIZONTAL CARD BASE
+================================ */
+.cs-card {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    border-radius: 0px;
+    overflow: hidden;
+    min-height: 240px;
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.13);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cs-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+/* LEFT PANEL */
+.cs-card-left {
+    padding: 36px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    min-height: 260px;
+}
+
+.cs-card-icon {
+    position: absolute;
+    top: 28px;
+    left: 28px;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.cs-card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.cs-card-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(20px, 2.5vw, 30px);
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+    position: relative;
+    z-index: 1;
+    line-height: 1.2;
+    letter-spacing: -0.2px;
+}
+
+.cs-card-short-text {
+    font-family: var(--font-body);
+    font-size: clamp(13px, 1.3vw, 15px);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.65;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* RIGHT PANEL */
+.cs-card-right {
+    padding: 36px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.cs-card-detail-text {
+    font-family: var(--font-body);
+    font-size: clamp(14px, 1.4vw, 16px);
+    font-weight: 400;
+    line-height: 1.8;
+    margin: 0;
+    flex: 1;
+}
+
+.cs-card-btn {
+    font-family: var(--font-btn);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 11px 24px;
+    font-size: clamp(13px, 1.3vw, 15px);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+    width: fit-content;
+    letter-spacing: 0.3px;
+    border: 2px solid;
+}
+
+.cs-card-btn:hover {
+    transform: scale(1.04);
+}
+
+/* ================================
+   CARD COLOR VARIANTS
+================================ */
+
+/* CARD 1 - Healthcare - Deep Teal */
+.cs-card-1 .cs-card-left  { background: linear-gradient(145deg, #0a7075, #064e52); }
+.cs-card-1 .cs-card-right { background: #e8f7f7; }
+.cs-card-1 .cs-card-detail-text { color: #064e52; }
+.cs-card-1 .cs-card-btn   { color: #0a7075; border-color: #0a7075; }
+.cs-card-1 .cs-card-btn:hover { background-color: rgba(10,112,117,0.1); }
+
+/* CARD 2 - Financial - Royal Purple */
+.cs-card-2 .cs-card-left  { background: linear-gradient(145deg, #5b2d8e, #3b1a6b); }
+.cs-card-2 .cs-card-right { background: #f3eefb; }
+.cs-card-2 .cs-card-detail-text { color: #3b1a6b; }
+.cs-card-2 .cs-card-btn   { color: #5b2d8e; border-color: #5b2d8e; }
+.cs-card-2 .cs-card-btn:hover { background-color: rgba(91,45,142,0.1); }
+
+/* CARD 3 - Supply Chain - Burnt Orange */
+.cs-card-3 .cs-card-left  { background: linear-gradient(145deg, #c45c13, #8f3d07); }
+.cs-card-3 .cs-card-right { background: #fff3eb; }
+.cs-card-3 .cs-card-detail-text { color: #7a3200; }
+.cs-card-3 .cs-card-btn   { color: #c45c13; border-color: #c45c13; }
+.cs-card-3 .cs-card-btn:hover { background-color: rgba(196,92,19,0.1); }
+
+/* CARD 4 - Construction - Steel Blue */
+.cs-card-4 .cs-card-left  { background: linear-gradient(145deg, #0077B6, #0d3f7a); }
+.cs-card-4 .cs-card-right { background: #ffffff; }
+.cs-card-4 .cs-card-detail-text { color: black; }
+.cs-card-4 .cs-card-btn   { color: #1565c0; border-color: #1565c0; }
+.cs-card-4 .cs-card-btn:hover { background-color: rgba(21,101,192,0.1); }
+
+/* CARD 5 - Manpower - Forest Green */
+.cs-card-5 .cs-card-left  { background: linear-gradient(145deg, #1b6e2e, #0f4219); }
+.cs-card-5 .cs-card-right { background: #eaf6ec; }
+.cs-card-5 .cs-card-detail-text { color: #0f4219; }
+.cs-card-5 .cs-card-btn   { color: #1b6e2e; border-color: #1b6e2e; }
+.cs-card-5 .cs-card-btn:hover { background-color: rgba(27,110,46,0.1); }
+
+/* CARD 6 - Retail - Crimson Red */
+.cs-card-6 .cs-card-left  { background: linear-gradient(145deg, #b71c1c, #7f0000); }
+.cs-card-6 .cs-card-right { background: #fff0f0; }
+.cs-card-6 .cs-card-detail-text { color: #7f0000; }
+.cs-card-6 .cs-card-btn   { color: #b71c1c; border-color: #b71c1c; }
+.cs-card-6 .cs-card-btn:hover { background-color: rgba(183,28,28,0.1); }
+
+/* CARD 7 - Manufacturing - Dark Slate */
+.cs-card-7 .cs-card-left  { background: linear-gradient(145deg, #37474f, #1c2e35); }
+.cs-card-7 .cs-card-right { background: #f0f4f5; }
+.cs-card-7 .cs-card-detail-text { color: #1c2e35; }
+.cs-card-7 .cs-card-btn   { color: #37474f; border-color: #37474f; }
+.cs-card-7 .cs-card-btn:hover { background-color: rgba(55,71,79,0.1); }
+
+/* ================================
+   LARGE DESKTOP 1400px+
+================================ */
+@media screen and (min-width: 1400px) {
+    .TAM_CaseStudies_container { padding: 80px 10%; }
+    .cs-card { min-height: 260px; }
+}
+
+/* ================================
+   LAPTOP 1025px - 1399px
+================================ */
+@media screen and (max-width: 1399px) and (min-width: 1025px) {
+    .TAM_CaseStudies_container { padding: 60px 5%; }
+}
+
+/* ================================
+   TABLET LANDSCAPE 769px - 1024px
+================================ */
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+    .TAM_CaseStudies_head { padding-top: 110px; }
+    .TAM_CaseStudies_container { padding: 50px 4%; }
+    .cs-card {
+        grid-template-columns: 1fr 1.2fr;
+        min-height: 220px;
     }
-    .TAM_CaseStudies_head img{
-        width: 400px;
-    }
-    .TAM_CaseStudies_head h5{
-        margin-left: 0px;
-        text-align: center;
-        font-size: 1.5rem;
-    }
+    .cs-card-left { padding: 80px 24px 24px; }
+    .cs-card-right { padding: 28px; }
+}
+
+/* ================================
+   TABLET PORTRAIT 481px - 768px
+================================ */
+@media screen and (max-width: 768px) {
+
+    /* Hero */
     .TAM_CaseStudies_head {
-        padding-top: 20px;
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 100px;
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: center;
+        gap: 16px;
+        padding-bottom: 40px;
     }
-    .TAM_CaseStudies_container{
-        margin-top: 50px;
+    .TAM_CaseStudies_head_left {
+        align-items: center;
+        justify-content: center;
+    }
+    .TAM_CaseStudies_head_right {
+        margin-top: 0;
+    }
+    .TAM_CaseStudies_head_right img {
+        max-width: 60%;
+    }
+
+    /* Cards container - center aligned */
+    .TAM_CaseStudies_container {
+        margin-top: 40px;
+        padding: 40px 0 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .TAM_CaseStudies_container a {
+        margin-bottom: 24px;
+        width: 100%;
+        display: block;
+    }
+
+    /* Card stacks vertically - centered */
+    .cs-card-wrapper {
+        width: 100%;
+        max-width: 460px;
+        margin: 0 auto;
+        /* Disable slide animation on mobile */
+        transform: none !important;
+    }
+
+    .cs-card {
+        grid-template-columns: 1fr;
+        min-height: auto;
+       
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* Left panel - colored header section */
+    .cs-card-left {
+        min-height: 180px;
+        padding: 80px 20px 24px 20px;
+        justify-content: flex-end;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cs-card-icon {
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 48px;
+        height: 48px;
+        padding: 9px;
+    }
+
+    .cs-card-heading {
+        font-size: 22px;
+        margin-bottom: 8px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .cs-card-short-text {
+        font-size: 13px;
+        line-height: 1.6;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Right panel */
+    .cs-card-right {
+        padding: 20px;
+        gap: 16px;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cs-card-detail-text {
+        font-size: 14px;
+        line-height: 1.75;
+        text-align: center;
+    }
+
+    .cs-card-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+
+    /* Disable panel animations on mobile */
+    .cs-card-left.anim-from-top,
+    .cs-card-right.anim-from-bottom {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
     }
 }
-@media screen and (max-width: 320px){
-    .TAM_CaseStudies_head h5{
-        font-size: 1.2rem;
+
+/* ================================
+   MOBILE LARGE 430px - 480px
+================================ */
+@media screen and (max-width: 480px) {
+
+    .TAM_CaseStudies_head {
+        padding-top: 90px;
+        padding-left: 16px;
+        padding-right: 16px;
+        gap: 12px;
+        padding-bottom: 36px;
+    }
+
+    .TAM_CaseStudies_head_right img {
+        max-width: 60%;
+    }
+
+    .TAM_CaseStudies_container {
+        margin-top: 30px;
+        padding: 30px 0 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .TAM_CaseStudies_container a {
+        margin-bottom: 20px;
+        width: 100%;
+        display: block;
+    }
+
+    .cs-card-wrapper {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        transform: none !important;
+    }
+
+    .cs-card {
+       
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .cs-card-left {
+        min-height: 170px;
+        padding: 76px 16px 20px 16px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cs-card-icon {
+        top: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 44px;
+        height: 44px;
+        padding: 8px;
+    }
+
+    .cs-card-heading {
+        font-size: 20px;
+        margin-bottom: 6px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .cs-card-short-text {
+        font-size: 12.5px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .cs-card-right {
+        padding: 16px;
+        gap: 14px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cs-card-detail-text {
+        font-size: 13.5px;
+        line-height: 1.7;
+        text-align: center;
+    }
+
+    .cs-card-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 11px 16px;
+        font-size: 13px;
+    }
+
+    .cs-card-left.anim-from-top,
+    .cs-card-right.anim-from-bottom {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* ================================
+   MOBILE SMALL 360px - 429px
+================================ */
+@media screen and (max-width: 429px) {
+
+    .TAM_CaseStudies_head {
+        padding-top: 85px;
+        padding-left: 14px;
+        padding-right: 14px;
+        padding-bottom: 30px;
+    }
+
+    .TAM_CaseStudies_head_left h1 {
+        font-size: 26px;
+    }
+
+    .TAM_CaseStudies_head_right img {
+        max-width: 60%;
+    }
+
+    .TAM_CaseStudies_container {
+        margin-top: 30px;
+        padding: 24px 0 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .TAM_CaseStudies_container a {
+        margin-bottom: 16px;
+        width: 100%;
+        display: block;
+    }
+
+    .cs-card-wrapper {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        transform: none !important;
+    }
+
+    .cs-card {
+        
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .cs-card-left {
+        min-height: 160px;
+        padding: 70px 14px 18px 14px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cs-card-icon {
+        top: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 42px;
+        height: 42px;
+        padding: 8px;
+    }
+
+    .cs-card-heading {
+        font-size: 18px;
+        margin-bottom: 6px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .cs-card-short-text {
+        font-size: 12px;
+        line-height: 1.55;
+        text-align: center;
+        width: 100%;
+    }
+
+    .cs-card-right {
+        padding: 14px;
+        gap: 12px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cs-card-detail-text {
+        font-size: 13px;
+        line-height: 1.7;
+        text-align: center;
+    }
+
+    .cs-card-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+
+    .cs-card-left.anim-from-top,
+    .cs-card-right.anim-from-bottom {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* ================================
+   EXTRA SMALL below 360px
+================================ */
+@media screen and (max-width: 359px) {
+
+    .TAM_CaseStudies_head {
+        padding-top: 80px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .TAM_CaseStudies_head_left h1 {
+        font-size: 22px;
+    }
+
+    .TAM_CaseStudies_head_right img {
+        max-width: 100%;
+    }
+
+    .TAM_CaseStudies_container {
+        padding: 20px 0 44px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .TAM_CaseStudies_container a {
+        margin-bottom: 14px;
+        width: 100%;
+        display: block;
+    }
+
+    .cs-card-wrapper {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        transform: none !important;
+    }
+
+    .cs-card {
+       
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .cs-card-icon {
+        width: 38px;
+        height: 38px;
+        top: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 7px;
+    }
+
+    .cs-card-left {
+        min-height: 150px;
+        padding: 62px 12px 16px 12px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cs-card-heading {
+        font-size: 17px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .cs-card-short-text {
+        font-size: 11.5px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .cs-card-right {
+        padding: 12px;
+        gap: 10px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cs-card-detail-text {
+        font-size: 12.5px;
+        text-align: center;
+    }
+
+    .cs-card-btn {
+        padding: 10px 12px;
+        font-size: 12px;
+        border-radius: 6px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .cs-card-left.anim-from-top,
+    .cs-card-right.anim-from-bottom {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* ================================
+   REDUCED MOTION ACCESSIBILITY
+================================ */
+@media (prefers-reduced-motion: reduce) {
+    .cs-card-wrapper,
+    .cs-card-left.anim-from-top,
+    .cs-card-right.anim-from-bottom {
+        transition: opacity 0.3s ease !important;
+        transform: none !important;
     }
 }

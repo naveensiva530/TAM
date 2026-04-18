@@ -1,14 +1,70 @@
+// ============================================================
+//  TAM_Homepage2.jsx
+//  Main homepage component for No Qu TAM
+//  Sections (in render order):
+//    1. Imports
+//    2. ScrollToTopButton — fixed scroll-up helper component
+//    3. TAM_Homepage2 — main export
+//       3a. State & Modal handlers
+//       3b. Responsive resize handler
+//       3c. Scroll-reveal IntersectionObserver
+//       3d. Data — features cards
+//       3e. Data — slides (Features slider)
+//       3f. Data — testimonials
+//       3g. Data — client logos
+//       3h. Testimonial navigation handlers
+//       3i. Data — tabs & tabContent (Workflow section)
+//       3j. Handlers — tab click & mobile nav scroll
+//       3k. JSX Return
+//          ├── Hero Section
+//          ├── Clients Marquee Section
+//          ├── Features Slider Section
+//          ├── Stats Section
+//          ├── Testimonials Section
+//          ├── Workflow / Tab Section
+//          ├── Awards & Recognitions Section
+//          ├── Feature Cards Grid Section
+//          ├── Business Values Section
+//          ├── CTA / App Download Section
+//          └── Footer + ScrollToTopButton
+// ============================================================
+
+
+// ─────────────────────────────────────────────────────────────
+// SECTION 1 — IMPORTS
+// ─────────────────────────────────────────────────────────────
 import React, { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import './TAM_Homepage2.css';
+
+// Preload hero images for instant display
+const heroBgImg = new Image();
+heroBgImg.src = tamBg;
+const heroBannerImg = new Image();
+heroBannerImg.src = tamBanner;
+
+// Client logos — first group
 import client1 from '../../../assets/client1.png';
 import client2 from '../../../assets/client2.png';
 import client3 from '../../../assets/client3.png';
 import client4 from '../../../assets/client4.png';
 import client5 from '../../../assets/client5.png';
 import client6 from '../../../assets/client6.png';
+
+// Client logos — second group
+import client7 from '../../../assets/FB.png';
+import client8 from '../../../assets/Jll.png';
+import client9 from '../../../assets/Nexus.webp';
+import client10 from '../../../assets/Samco.png';
+import client11 from '../../../assets/SeaShell.jpeg';
+import client12 from '../../../assets/Sangeetha.png';
+
+// Slider containers (used elsewhere in the app)
 import Slider from '../../../Containers/Slider1/Slider1';
 import Slider2 from '../../../Containers/Slider2/Slider2';
-import award1 from '../../../assets/awards1.jpg';
+
+// Awards & platform rating images
+import award1 from '../../../assets/elcotlogo.png';
 import award2 from '../../../assets/awards2.jpeg';
 import award3 from '../../../assets/awards3.jpeg';
 import google from '../../../assets/google.png';
@@ -16,222 +72,403 @@ import playstore from '../../../assets/playstore.png';
 import appstore from '../../../assets/appstore.png';
 import star1 from '../../../assets/Star1.png';
 import star2 from '../../../assets/Star2.png';
+
+// Misc assets
 import adv from '../../../assets/career_adv2.png';
-import multiattendenceImg from '../../../assets/multiattendenceImg.png';
-import liveImg from '../../../assets/liveImg.png';
-import regularizationImg from '../../../assets/regularizationImg.png';
-import biometricImg from '../../../assets/biometricImg.png';
-import shiftImg from '../../../assets/shiftImg.png';
-import payrollImg from '../../../assets/payrollImg.png';
-import holidayImg from '../../../assets/holidayImg.png';
-import rpImg from '../../../assets/rpImg.png';
-import hrmsImg from '../../../assets/hrmsImg.png';
-import workflowImg from '../../../assets/workflowImg.png';
-import { Star, Clock, X, MapPin, WorkflowIcon } from "lucide-react";
-import call from '../../../assets/call.png'
+
+// Feature slide images (used in the Features slider section)
+import multiattendenceImg from '../../../assets/Multi Channel - Home.png';
+import liveImg from '../../../assets/live2 (1).jpeg';
+import regularizationImg from '../../../assets/live2 (4).jpeg';
+import biometricImg from '../../../assets/live2 (5).jpeg';
+import shiftImg from '../../../assets/Shift Management.png';
+import payrollImg from '../../../assets/Payroll.png';
+import holidayImg from '../../../assets/Leave & Holiday Management.png';
+import rpImg from '../../../assets/Roles___Permissions.jpeg';
+import hrmsImg from '../../../assets/HRMS.png';
+import workflowImg from '../../../assets/Workflow.png';
+
+// Lucide icons used in various UI elements
+import { Star, Clock, X, MapPin } from 'lucide-react';
+
+// CTA / app-download section assets
+import call from '../../../assets/call.png';
 import CTA from '../../../assets/Lp-cta.png';
 import playStore from '../../../assets/Store-badge.png';
 import appStore from '../../../assets/Store-badge2.png';
-import tam_of1 from '../../../assets/tam_of1.png';
-import tam_of2 from '../../../assets/tam_of2.png';
-import tam_of3 from '../../../assets/tam_of3.png';
-import tam_of4 from '../../../assets/tam_of4.png';
-import tam_of5 from '../../../assets/tam_of5.png';
-import tam_of6 from '../../../assets/tam_of6.png';
+
+// Feature overview card images (6-card grid)
+import tam_of1 from '../../../assets/WEBSITE ICON-01.png';
+import tam_of2 from '../../../assets/WEBSITE ICON-05.png';
+import tam_of3 from '../../../assets/WEBSITE ICON-03.png';
+import tam_of4 from '../../../assets/WEBSITE ICON-06.png';
+import tam_of5 from '../../../assets/WEBSITE ICON-02.png';
+import tam_of6 from '../../../assets/WEBSITE ICON-04.png';
+
+// Feature slide icon logos (small logos for the tab nav)
 import multiattendenceLogo from '../../../assets/multiLogo.png';
 import liveLogo from '../../../assets/liveLogo.png';
 import regularizationLogo from '../../../assets/regularizationLogo.png';
 import biometricLogo from '../../../assets/bioLogo.png';
 import payrollLogo from '../../../assets/payrollLogo.png';
+import workflowLogo from '../../../assets/workflowLogo.png';
+
+// Business values icons
 import highlySecure from '../../../assets/highlySecure.png';
 import reliable from '../../../assets/reliable.png';
 import scalable from '../../../assets/scalable.png';
 import userFriendly from '../../../assets/userFriendly.png';
-import tamBanner from '../../../assets/tam-hp2-banner.png';
+
+// Hero section images
+import tamBanner from '../../../assets/web image.png';
 import tamBg from '../../../assets/tam2-bg.png';
-import { Workflow, Users, Calendar, BarChart3, DollarSign } from 'lucide-react';
+
+// Lucide icons for the Workflow tab sidebar
+import {
+  Workflow,
+  Users,
+  Calendar,
+  BarChart3,
+  IndianRupee,
+  Building2,
+  CalendarClock,
+} from 'lucide-react';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+// Testimonial company logos
 import bmg from '../../../assets/bmglogo.png';
-import purpleOptics from '../../../assets/purplelogo.png';
+import purpleOptics from '../../../assets/purplelogo2.png';
+import Do from '../../../assets/client4.png';
+
+
+// Layout components
 import TAM_Footer from '../TAM_Footer/TAM_Footer';
+import ScheduleAdemo from '../../../Containers/RegForms/ScheduleAdemo';
 
 
+// ─────────────────────────────────────────────────────────────
+// SECTION 2 — SCROLL TO TOP BUTTON COMPONENT
+// A fixed green circle button at bottom-right corner.
+// Appears after the user scrolls 400px down.
+// Clicking it smoothly scrolls back to the top of the page.
+// ─────────────────────────────────────────────────────────────
+function ScrollToTopButton() {
+  const [visible, setVisible] = React.useState(false);
 
-
-export default function TAM_Homepage2() {
-
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 600);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+  React.useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 400);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  return (
+    <button
+      className={`tam-scroll-top-btn ${visible ? 'tam-scroll-top-visible' : ''}`}
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      aria-label="Scroll to top"
+    >
+      ↑
+    </button>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// SECTION 2b — COUNT UP FUNCTION FOR STATS
+// ─────────────────────────────────────────────────────────────
+function CountUp({ end, suffix = '', duration = 1500 }) {
+  const [count, setCount] = React.useState(0);
+  const ref = React.useRef(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        let start = 0;
+        const increment = end / (duration / 16);
+        const timer = setInterval(() => {
+          start += increment;
+          if (start >= end) {
+            setCount(end);
+            clearInterval(timer);
+          } else {
+            setCount(Math.floor(start));
+          }
+        }, 16);
+        observer.disconnect();
+      }
+    }, { threshold: 0.5 });
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [end, duration]);
+
+  const displayCount = count.toLocaleString('en-IN');
+  return <span ref={ref}>{displayCount} {suffix}</span>;
+}
+
+// ─────────────────────────────────────────────────────────────
+// SECTION 3 — MAIN HOMEPAGE COMPONENT
+// ─────────────────────────────────────────────────────────────
+export default function TAM_Homepage2() {
+
+  // Preload hero images immediately on mount
+  useEffect(() => {
+    const preloadImages = [tamBg, tamBanner];
+    preloadImages.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
+  // ── 3a. STATE & MODAL HANDLERS ──────────────────────────────
+  // Controls whether the "Schedule a Demo" modal is open or closed
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  // Legacy popup observer for any .popup_initial elements
+ 
+
+
+  // ── 3b. RESPONSIVE RESIZE HANDLER ───────────────────────────
+  // Tracks whether the screen is mobile width (≤768px)
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth <= 768 : false
+  );
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+
+
+
+
+  // ── 3c. SCROLL-REVEAL INTERSECTIONOBSERVER ───────────────────
+  // Watches all elements with reveal-* classes.
+  // Adds 'is-revealed' when they enter the viewport → triggers CSS transition.
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    const elements = document.querySelectorAll(
+      '.reveal-on-scroll, .reveal-left, .reveal-right, .reveal-zoom'
+    );
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+
+  // ── 3d. DATA — FEATURE OVERVIEW CARDS (6-card grid) ──────────
+  // Each object maps to one card in the "Trusted Attendance for Modern Teams" grid
   const features = [
     {
-      title: "AI-enabled Face Recognition",
+      title: 'AI-enabled Face Recognition',
       description:
-        "Enable secure and accurate attendance with advanced AI-based face recognition for seamless check-in and check-out.",
+        'Enable secure and accurate attendance with advanced AI-based face recognition for seamless check-in and check-out.',
       points: [
-        "Accurate Identification",
-        "Real-Time Verification",
-        "Multiple Employees Face Recognition",
+        'Accurate Identification',
+        'Real-Time Verification',
+        'Multiple Employees Face Recognition',
       ],
       image: tam_of1,
     },
     {
-      title: "Geo Fence",
+      title: 'Geo Fence',
       description:
-        "Ensure location-based attendance with intelligent geo-fencing for on-site and remote teams.",
+        'Ensure location-based attendance with intelligent geo-fencing for on-site and remote teams.',
       points: [
-        "Real Time Exit/Entry Alerts",
-        "Create Customized Boundaries",
-        "Fenced Area Clock-ins and outs",
+        'Real Time Exit/Entry Alerts',
+        'Create Customized Boundaries',
+        'Fenced Area Clock-ins and outs',
       ],
       image: tam_of2,
     },
     {
-      title: "Reports/Dashboard",
+      title: 'Reports/Dashboard',
       description:
-        "Get instant insights with interactive dashboards and detailed attendance reports.",
+        'Get instant insights with interactive dashboards and detailed attendance reports.',
       points: [
-        "BI and Analytics Reports",
-        "Real Time Attendance Tracking",
-        "Report Scheduler",
+        'BI and Analytics Reports',
+        'Real Time Attendance Tracking',
+        'Report Scheduler',
       ],
       image: tam_of3,
     },
     {
-      title: "API Integration",
+      title: 'API Integration',
       description:
-        "Connect seamlessly with your existing HRMS and payroll through flexible API integrations.",
+        'Connect seamlessly with your existing HRMS and payroll through flexible API integrations.',
       points: [
-        "Real-Time Workforce Attendance Data",
-        "Access Control Device Integration",
-        "Biometric Device Integration",
+        'Real-Time Workforce Attendance Data',
+        'Access Control Device Integration',
+        'Biometric Device Integration',
       ],
       image: tam_of4,
     },
     {
-      title: "Organizational Charts",
+      title: 'Organizational Charts',
       description:
-        "Visualize reporting structures with interactive organizational charts.",
+        'Visualize reporting structures with interactive organizational charts.',
       points: [
-        "Clear Workforce hierarchy",
-        "Various levels of users",
-        "Roles and Responsibilities",
+        'Clear Workforce hierarchy',
+        'Various levels of users',
+        'Roles and Responsibilities',
       ],
       image: tam_of5,
     },
     {
-      title: "Notification",
+      title: 'Notification',
       description:
-        "Stay updated with smart alerts and real-time notifications for important activities.",
+        'Stay updated with smart alerts and real-time notifications for important activities.',
       points: [
-        "Check-in/out Reminders",
-        "Alerts to reporting officers",
-        "Mobile app, SMS, Email & WhatsApp",
+        'Check-in/out Reminders',
+        'Alerts to reporting officers',
+        'Mobile app, SMS, Email & WhatsApp',
       ],
       image: tam_of6,
     },
   ];
 
-  const [activeSlide, setActiveSlide] = useState(0);
 
+  // ── 3e. DATA — FEATURE SLIDES (tab-style slider) ─────────────
+  // Used in the Features Slider section at the top.
+  // activeSlide tracks which tab is currently selected.
+  const [activeSlide, setActiveSlide] = useState(0);
 
   const slides = [
     {
       id: 1,
       icon: multiattendenceLogo,
-      title: "Multi-Channel Attendance",
+      title: 'Multi-Channel Attendance',
       description:
-        "With No Qu TAM, organizations gain complete multi-channel attendance flexibility. Whether the team operates from the office, remotely, or on the field, TAM provides seamless attendance tailored to every need.",
+        'With No Qu TAM, the organizations gain complete multi-channel attendance flexibility. Whether the team operates from the office, works remotely, or on the field, TAM provides a seamless attendance solution tailored to the needs. Experience hassle-free, accurate, and convenient attendance every time.',
       image: multiattendenceImg,
       points: [
-        "AI-enabled Face Recognition",
-        "QR Scan",
-        "Mobile Tap Button",
-        "Biometric Device",
+        'AI-enabled Face Recognition',
+        'QR Scan',
+        'Mobile Tap Button',
+        'Biometric Device',
+        'AI Video Feed',
       ],
     },
     {
       id: 2,
       icon: liveLogo,
-      title: "Live Tracking",
+      title: 'Live Tracking',
       description:
-        "Track your workforce in real time with No Qu Live Tracking. From field to remote teams, get real-time activity tracking with location proof and geo-fencing rules.",
+        "Track your workforce in real time with No Qu Live Tracking. From on-field to remote teams, get live activity tracking with location proof, geo-tagging, and fencing rules. Live Tracking allows employers to monitor employees’ real-time location and attendance status, ensuring workforce visibility and improving productivity.",
       image: liveImg,
       points: [
-        "Real-time monitoring of field workforce",
-        "Remote employee tracking",
-        "Intermittent location tracking",
-        "On-off location tracking",
+        'Real-time Monitoring of The Field Workforce',
+        'Remote Employee Tracking',
+        'Sporadic/Intermittent Location Tracking',
+        'On-off Location Tracking',
       ],
     },
     {
       id: 3,
       icon: regularizationLogo,
-      title: "Regularization",
+      title: 'Regularization',
       description:
-        "Regularization allows HR or authorized persons to correct attendance records. Missed punches, late check-ins, and related issues can be fixed seamlessly.",
+        'Regularization allows HRs, Admins, or any authorized persons to correct attendance records and self-regularization requests can be raised by employees.Through this process, missed punches and late check-ins can be regularized, ensuring accurate and up-to-date attendance for payroll and compliance.',
       image: regularizationImg,
       points: [
-        "Missed punch regularization",
-        "Late/Early check-in or check-out correction",
-        "Leave / Permissions / Comp-off regularization",
-        "Backdated audit & history management",
+        'Missed Punch Regularization',
+        'Late and Early Check-in/Check-out Regularization',
+        'Leave, Permissions, Week-off, Comp-off, Present, Absent Regularization',
+        'Backdated Attendance Corrections, Audit Trail, and History Management',
       ],
     },
     {
       id: 4,
       icon: biometricLogo,
-      title: "Biometric Device Integration",
+      title: 'Biometric Device Integration',
       description:
-        "Seamless biometric device integration with centralized data sync ensures real-time, accurate attendance and secure identity verification.",
+        'No Qu TAM offers seamless Biometric device integration, enabling businesses to connect their existing devices. Attendance data is captured and synchronized in real time, ensuring accuracy and eliminating manual errors. With secure identity verification and centralized data, organizations gain a reliable and efficient way to monitor workforce attendance while enhancing real-time attendance reports and visibility. ',
       image: biometricImg,
       points: [
-        "Integrated biometric attendance",
-        "Face, Fingerprint & RFID sync",
-        "Seamless device & system sync",
-        "Access control integration",
+        'Integrated Biometric Attendance',
+        'Face, Fingerprint & RFID Device Sync',
+        'Seamless Device & System Sync',
+        'Access Control Integration',
+      ],
+    },
+    {
+      id: 5,
+      icon: workflowLogo,
+      title: 'Workflow',
+      description: 'Workflow modernized attendance requests with a smart, automated flow across HR and reporting managers. From leave and permissions to late check-ins, overtime, comp-offs, and week-offs, every request is tracked with clarity. With built-in alerts, approvals, and escalations, the system ensures seamless processing without delays.',
+      image: workflowImg,
+      points: [
+        'Leave & Permission Management',
+        'Overtime & Comp-off Tracking',
+        'Late Check-in, Early Check-out, and Week-off Requests',
+        'Automated Alerts, Approvals & Escalations',
       ],
     },
   ];
 
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
+  // Derived active slide data
   const active = slides[activeSlide];
 
 
+  // ── 3f. DATA — TESTIMONIALS ───────────────────────────────────
+  // 3 testimonial entries shown in equal-height rotating cards.
+  // currentIndex controls which card is in the center position.
   const testimonials = [
     {
-      text: "We love this App! It’s user-friendly, efficient, and accurate for tracking attendance. The GPS feature provides real-time updates, and the customizable options fit our needs perfectly. Managing teams and generating reports is a breeze.",
-      author: "BEST MONEY GOLD",
-      logo: bmg// Optional: Replace with actual logo path or remove if not needed
+      text: "We love this App! It's user-friendly, efficient, and accurate for tracking attendance. The GPS feature provides real-time updates, and the customizable options fit our needs perfectly. Managing teams and generating reports is a breeze.",
+      author: 'Best Money Gold',
+      logo: bmg,
     },
     {
-      text: "No Qu Attendance has greatly improved our daily workflow with its simple and efficient interface. The support staff are incredibly responsive and always go the extra mile to assist. The app runs smoothly, backed by a solid and secure infrastructure. Frequent updates and new features show the team's Commitment to excellence, and we highly trust No Qu TAM as the best Attendance App for Businesses.",
-      author: "Purple Opticals",
-      logo: purpleOptics
-      // Optional: Replace with actual logo path or remove if not needed
+      text: "No Qu Attendance has greatly improved our daily workflow with its simple and efficient interface. The support staff are incredibly responsive and always go the extra mile to assist. The app runs smoothly, backed by a solid and secure infrastructure. Frequent updates and new features show the team's commitment to excellence, and we highly trust No Qu TAM as the best Attendance App for Businesses.",
+      author: 'Purple Opticals',
+      logo: purpleOptics,
+    },
+    {
+      text: 'No Qu TAM has transformed how we manage attendance across our branches. The biometric integration works flawlessly and the real-time reports save us hours every week. Highly recommended for any growing business.',
+      author: 'Do My Home',
+      logo: Do,
     },
   ];
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
+
+  // ── 3g. DATA — CLIENT LOGOS (infinite marquee) ───────────────
   const clientLogos = [
-    { src: client1, alt: "Client logo", className: "lp-5-client-logo-1" },
-    { src: client2, alt: "Client logo", className: "lp-5-client-logo-2" },
-    { src: client3, alt: "Client logo", className: "lp-5-client-logo-3" },
-    { src: client4, alt: "Client logo", className: "lp-5-client-logo-4" },
-    { src: client5, alt: "Client logo", className: "lp-5-client-logo-5" },
-    { src: client6, alt: "Client logo", className: "lp-5-client-logo-6" },
+    { src: client1, alt: 'Client logo' },
+    { src: client2, alt: 'Client logo' },
+    { src: client3, alt: 'Client logo' },
+    { src: client4, alt: 'Client logo' },
+    { src: client5, alt: 'Client logo' },
+    { src: client6, alt: 'Client logo' },
+    { src: client7, alt: 'Client logo' },
+
+    { src: client9, alt: 'Client logo' },
+    { src: client10, alt: 'Client logo' },
+    { src: client11, alt: 'Client logo' },
+    { src: client12, alt: 'Client logo' },
   ];
 
+
+  // ── 3h. TESTIMONIAL NAVIGATION HANDLERS ──────────────────────
+  // handlePrev / handleNext cycle through the testimonials array
   function handlePrev() {
     setCurrentIndex(prev => (prev === 0 ? testimonials.length - 1 : prev - 1));
   }
@@ -240,102 +477,98 @@ export default function TAM_Homepage2() {
     setCurrentIndex(prev => (prev === testimonials.length - 1 ? 0 : prev + 1));
   }
 
-  const [activeTab, setActiveTab] = useState("workflow");
+
+  // ── 3i. DATA — TABS & TAB CONTENT (Workflow section) ─────────
+  // tabs array drives the sidebar nav buttons.
+  // tabContent object holds the text/image for each tab panel.
+  const [activeTab, setActiveTab] = useState('roles');
 
   const tabs = [
-    { id: "workflow", label: "Workflow", icon: WorkflowIcon, },
-    { id: "roles", label: "Roles & Permissions", icon: Users, },
-    { id: "leave", label: "Leave & Holiday", icon: Calendar, },
-    // { id: "hrms", label: "HRMS", icon: leaveLogo, },
-    { id: "payroll", label: "Payroll", icon: DollarSign, },
+    { id: 'roles', label: 'Roles & Permissions', icon: Users },
+    { id: 'leave', label: 'Leave & Holiday', icon: Calendar },
+    { id: 'shift', label: 'Shift Management', icon: CalendarClock },
+    { id: 'hrms', label: 'HRMS', icon: Building2 },
+    { id: 'payroll', label: 'Payroll', icon: IndianRupee },
   ];
 
   const tabContent = {
-    workflow: {
-      title: "Workflow",
-
-      paragraph:
-        "No Qu modernized attendance requests with a smart automated flow across HR and reporting managers...",
-      features: [
-        "Leave & Permission Management",
-        "Overtime & Comp-off Tracking",
-        "Late Check-in & Week off Requests",
-        "Automated Alerts, Approvals & Escalations",
-      ],
-      image: workflowImg,
-    },
     roles: {
-      title: "Roles & Permissions",
-
+      title: 'Roles & Permissions',
       paragraph:
-        "No Qu ensures secure and structured access with role-based permissions...",
+        'Roles and Permissions ensure secure and structured access with role-based permissions. Define user roles, control data visibility, and streamline approvals to maintain accuracy and accountability across the organization. With flexible configurations, every team gets the right level of access they need.',
       features: [
-        "Role-based Access Control",
-        "Configurable User Permissions",
-        "Secure Data Visibility",
-        "Streamlined Approval Hierarchy",
+        'Role and Location-based Access Control',
+        'Configurable User Permissions',
+        'Secure Data Visibility',
+        'Streamlined Approval Hierarchy',
       ],
       image: rpImg,
     },
     leave: {
-      title: "Leave & Holiday Management",
-
+      title: 'Leave & Holiday Management',
       paragraph:
-        "No Qu simplifies leave management with an intuitive and transparent process...",
+        'No Qu TAM simplifies leave management with an intuitive and transparent process. By configuring leave, holidays, and comp-offs to streamline approvals, every step is effortless. Employees can track and manage their own leave while HR ensures accuracy, compliance, and smooth operations.',
       features: [
-        "Holiday & Comp-off Customization",
-        "Effortless Leave Approvals",
-        "Employee Self-service Leave Tracking",
-        "Transparent Leave Management",
+        'Leave, Holiday & Comp-off',
+        'Effortless Leave Approvals',
+        'Employee Self-service Leave Tracking',
+        'Transparent Leave Management',
       ],
       image: holidayImg,
     },
-    // hrms: {
-    //   title: "HRMS",
-    //   icon:hrmsLogo,
-    //   paragraph:
-    //     "No Qu HRMS is an integrated platform designed to align attendance with every core HR function...",
-    //   features: [
-    //     "Recruitment",
-    //     "Employee Self-service Portal",
-    //     "Performance Management",
-    //     "Asset Management",
-    //   ],
-    //   image: hrmsImg,
-    // },
-    payroll: {
-      title: "Payroll",
-      icon: payrollLogo,
+    shift: {
+      title: 'Shift Management',
       paragraph:
-        "Manage payroll with ease using attendance-integrated automation...",
+        'Shift Management simplifies diverse Attendance Management needs, offering complete flexibility for organizations with standard, flexible, or shift-based work structures. It ensures accurate time tracking, automated calculations, and effortless policy enforcement for every work model.',
       features: [
-        "Bank API Integration",
-        "Salary Management",
-        "Loans & Advances",
-        "Tax Management",
+        'Fixed Schedules & Grace Periods',
+        'Flexible Hours With Core Timet',
+        'Shift Scheduling & Night Shifts',
+        'Over Time, Permission & Break Tracking',
+      ],
+      image: shiftImg,
+    },
+    hrms: {
+      title: 'HRMS',
+      paragraph:
+        'No Qu HRMS is a fully integrated platform designed to align attendance with every core HR function. From payroll readiness to performance tracking, it simplifies all workforce management while maintaining compliance and operational efficiency. Whether teams operate in-office, remotely, or in hybrid environments, No Qu HRMS ensures clarity, control, and consistency across all processes.',
+      features: [
+        'Recruitment',
+        'Employee Self-service Portal',
+        'Performance Management',
+        'Asset Management',
+      ],
+      image: hrmsImg,
+    },
+    payroll: {
+      title: 'Payroll',
+      paragraph:
+        'Manage payroll with ease using attendance-integrated automation. From payroll-ready timesheets to synchronized leave and overtime calculations, No Qu Payroll ensures accuracy, compliance, and faster processing. Built for flexibility, it adapts to every pay cycle, project, or contractor requirement.',
+      features: [
+        'Bank API Integration',
+        'Salary Management',
+        'Loan and Advance Management',
+        'Tax Management',
       ],
       image: payrollImg,
     },
   };
 
+  // Derived current tab data used in the JSX below
   const currentTab = tabContent[activeTab];
 
-  let timeout = null;
 
+  // ── 3j. HANDLERS — TAB CLICK & MOBILE NAV SCROLL ─────────────
+
+  // Horizontal scroll-snap handler for mobile tab content swipe
+  let timeout = null;
   const handleScroll = (e) => {
     const container = e.target;
-
     if (timeout) clearTimeout(timeout);
-
     timeout = setTimeout(() => {
       const width = container.clientWidth;
       const index = Math.round(container.scrollLeft / width);
-
-      container.scrollTo({
-        left: index * width,
-        behavior: "smooth",
-      });
-
+      container.scrollTo({ left: index * width, behavior: 'smooth' });
       if (index >= 0 && index < tabs.length) {
         setActiveTab(tabs[index].id);
       }
@@ -343,167 +576,251 @@ export default function TAM_Homepage2() {
   };
 
   const tabsRef = useRef(null);
+  const navRowRef = useRef(null); // ref used to center active slide tab on mobile
+  const workflowNavRowRef = useRef(null); // ref for workflow mobile nav scrolling
 
-  const handleTabClick = (id, index) => {
+  // Tab button click — updates the active tab panel
+  const handleTabClick = (id) => {
     setActiveTab(id);
-
-    if (tabsRef.current) {
-      const width = tabsRef.current.clientWidth;
-      tabsRef.current.scrollTo({
-        left: width * index,
-        behavior: "smooth",
-      });
-    }
   };
 
+  // Mobile: when activeSlide changes, scroll the nav row to center that button
+  useEffect(() => {
+    const navRow = navRowRef.current;
+    if (!navRow) return;
+    const activeBtn = navRow.children[activeSlide];
+    if (!activeBtn) return;
+    const navWidth = navRow.offsetWidth;
+    const btnLeft = activeBtn.offsetLeft;
+    const btnWidth = activeBtn.offsetWidth;
+    navRow.scrollTo({
+      left: btnLeft - navWidth / 2 + btnWidth / 2,
+      behavior: 'smooth',
+    });
+  }, [activeSlide]);
+
+  // Mobile: scroll the workflow nav row to center active button
+  useEffect(() => {
+    const navRow = workflowNavRowRef.current;
+    if (!navRow) return;
+    const activeIndex = tabs.findIndex(t => t.id === activeTab);
+    if (activeIndex === -1) return;
+    const activeBtn = navRow.children[activeIndex];
+    if (!activeBtn) return;
+    const navWidth = navRow.offsetWidth;
+    const btnLeft = activeBtn.offsetLeft;
+    const btnWidth = activeBtn.offsetWidth;
+    navRow.scrollTo({
+      left: btnLeft - navWidth / 2 + btnWidth / 2,
+      behavior: 'smooth',
+    });
+  }, [activeTab, tabs]);
 
 
-
+  // ── 3k. JSX RETURN ────────────────────────────────────────────
   return (
-    <div className="TAM_Homepage2_wrapper">
-      {/* Hero Section */}
-      <section className="TAM_Homepage2_hero">
-        <div className="TAM_Homepage2_hero_container">
+    <>
+      <Helmet>
+        <title>NoQu TAM: Time and Attendance Management System - AI-Powered Workforce Solutions</title>
+        <meta name="description" content="NoQu TAM is an AI-powered Time and Attendance Management system with facial recognition, live tracking, geo-fencing, and seamless payroll integration for modern workforce management." />
+        <meta property="og:title" content="NoQu TAM: Time and Attendance Management System" />
+        <meta property="og:description" content="AI-powered attendance management with facial recognition, live tracking, geo-fencing, and payroll integration." />
+        <meta property="og:image" content="https://noqu.in/logo.png" />
+        <meta property="og:url" content="https://noqu.in/tam" />
+        <link rel="canonical" href="https://noqu.in/tam" />
+        <meta name="twitter:card" content="NoQu" />
+        <meta name="twitter:title" content="NoQu TAM: Time and Attendance Management" />
+        <meta name="twitter:description" content="AI-powered attendance management with facial recognition, live tracking, and payroll integration." />
+        <meta name="twitter:image" content="https://noqu.in/logo.png" />
+      </Helmet>
+      <div className="TAM_Homepage2_wrapper">
 
-          {/* LEFT CONTENT */}
-          <div className="TAM_Homepage2_hero_content">
-            <h1>
-              The <span className="highlight">Smart AI</span>-Powered Attendance Solution<br />
-              for the Modern Workforce
+      {/* ═══════════════════════════════════════════════════════
+          HERO SECTION
+          Left: headline + subtitle + CTA button
+          Right: banner image on white circle backing
+          Circle and image are shown immediately — no onLoad gate
+          ═══════════════════════════════════════════════════════ */}
+      <section className="TAM_Hero_Section_Wrapper" style={{ position: 'relative' }}>
+        <img src={tamBg} alt="" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }} />
+        <div className="TAM_Hero_Main_Box" style={{ position: 'relative', zIndex: 1 }}>
+
+          {/* Left content — text still has a fast fade-in for feel */}
+          <div className="TAM_Hero_Box_Left">
+            <h1 className="TAM_Hero_Box_Title TAM_Hero_Title_Animate">
+              The <span className="text-green-pill">Smart AI</span>
+              -Powered Attendance Solution for the Modern Workforce
             </h1>
-
-            <p>
-              No Qu TAM enhances <span>Efficiency</span>, improves <span>Productivity</span>,
-              and increases <span>Profitability</span>
+            <p className="TAM_Hero_Box_Subtitle TAM_Hero_Subtitle_Animate">
+              No Qu TAM enhances <strong>Efficiency</strong>, improves{' '}
+              <strong>Productivity</strong>, and increases <strong>Profitability</strong>.
             </p>
-
-            <button className="hero-cta">Schedule Demo</button>
+            <div className="TAM_Hero_Button_Area TAM_Hero_Btn_Animate">
+              <button className="TAM_Hero_Btn_Primary" onClick={openModal}>
+                Schedule your Demo
+              </button>
+            </div>
           </div>
 
-          {/* RIGHT IMAGE */}
-          <div className="TAM_Homepage2_hero_image">
-            <img
-              src={tamBanner}
-              alt="TAM Dashboard"
-            />
-          </div>
-
-        </div>
-      </section>
-
-
-      <section className="TAM_Homepage2_trusted">
-        <div className="lp-5-client-logos-section" style={{ padding: 0, marginTop: isMobile ? '0px' : '50px' }}>
-          <div className="lp5-testimonials-title-wrapper">
-            <h1 className="lp-5-awards-title" style={isMobile ? { width: '90%' } : {}}>Clients</h1>
-          </div>
-          <div className="lp-5-client-logos-container" style={isMobile ? { gap: '0px', marginTop: '0px' } : {}}>
-            <div className="lp-5-separator"></div>
-
-            <div className="lp-5-client-logos-marquee">
-              <div className="lp-5-client-logos-track">
-                {[...clientLogos, ...clientLogos].map((logo, index) => (
-                  <img
-                    key={`client-logo-${index}`}
-                    className={`lp-5-client-logo ${logo.className}`}
-                    alt={logo.alt}
-                    src={logo.src}
-
-
-                  />
-                ))}
+          {/* Right image — All delay/animation removed for instant loading */}
+          <div className="TAM_Hero_Box_Right hero-img-visible">
+            <div className="TAM_Hero_Image_Circle_Backing">
+              <div className="TAM_Hero_Image_Container">
+                <img
+                  src={tamBanner}
+                  alt="AI Attendance Dashboard"
+                  className="TAM_Hero_Inner_Image"
+                />
               </div>
             </div>
+          </div>
 
-            <div className="lp-5-separator"></div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════
+          CLIENTS MARQUEE SECTION
+          Infinite auto-scrolling logo strip.
+          Array is duplicated for seamless loop.
+          Gradient overlays fade the edges.
+          ═══════════════════════════════════════════════════════ */}
+      <section className="TAM_FullWidth_Trusted">
+        <div className="tam-global-heading-wrapper reveal-on-scroll">
+          <h2 className="tam-global-section-title">Clients<span className="tam-global-section-title-blue"></span></h2>
+          <div className="tam-global-title-bar"></div>
+        </div>
+
+        <div className="TAM_Marquee_Outer">
+          <div className="TAM_Edge_Fade_Left"></div>
+          <div className="TAM_Edge_Fade_Right"></div>
+          <div className="TAM_Marquee_Track">
+            {[...clientLogos, ...clientLogos].map((logo, index) => (
+              <div className="TAM_Logo_Box" key={index}>
+                <img
+                  src={logo.src}
+                  alt={logo.alt || 'Client Logo'}
+                  className="TAM_Brand_Logo_Image"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <div className="lp5-testimonials-title-wrapper">
-        <h1 className="lp-5-awards-title">Features</h1>
-      </div>
 
-      <div className='TAM_Homepage2_slider1'>
-        <div className="slider1-container">
+      {/* ═══════════════════════════════════════════════════════
+          FEATURES SLIDER SECTION
+          Top tab buttons select a feature.
+          Content area shows image (left) + description (right).
+          navRowRef used to auto-center active tab on mobile.
+          ═══════════════════════════════════════════════════════ */}
+      <section className="zoho-premium-stationary-section">
+        <div className="zoho-box-container">
+          <div className="tam-global-heading-wrapper reveal-on-scroll">
+            <h2 className="tam-global-section-title">Features <span className="tam-global-section-title-blue"></span></h2>
+            <div className="tam-global-title-bar"></div>
+          </div>
 
-          {/* TABS */}
-          <div className="slider1-tabs-wrapper">
-            <div className="slider1-tabs-flex">
-              {slides.map((slide, index) => {
-                const Icon = slide.icon;
-                return (
-                  <button
-                    key={slide.id}
-                    className={`slider1-tab ${activeSlide === index ? "active" : ""}`}
-                    onClick={() => setActiveSlide(index)}
-                  >
-                    <img src={Icon} size={28} className="slider1-tab-icon" />
-                    <span className="slider1-tab-title">{slide.title}</span>
-                  </button>
-                );
-              })}
+          <div className="zoho-nav-wrapper">
+            {/* Mobile swipe hint text */}
+            <p className="zoho-swipe-instruction">← Swipe to explore →</p>
+
+            {/* Tab navigation buttons */}
+            <nav className="zoho-box-nav-row" ref={navRowRef}>
+              {slides.map((slide, index) => (
+                <button
+                  key={slide.id}
+                  type="button"
+                  className={`zoho-stationary-box ${activeSlide === index ? 'active' : ''}`}
+                  onClick={() => setActiveSlide(index)}
+                >
+                  <span className="zoho-box-label">{slide.title}</span>
+                </button>
+              ))}
+            </nav>
+
+            {/* Dot indicators (mobile) */}
+            <div className="zoho-nav-dots">
+              {slides.map((_, index) => (
+                <div
+                  key={index}
+                  className={`zoho-dot ${activeSlide === index ? 'active' : ''}`}
+                />
+              ))}
             </div>
           </div>
 
-          {/* CONTENT */}
-          <div className="slider1-content">
+          {/* Slide content panels — only active one is displayed */}
+          <div className="zoho-content-stage">
+            {slides.map((slide, index) => (
+              <div
+                key={slide.id}
+                className={`zoho-content-view ${activeSlide === index ? 'show' : ''}`}
+                style={{ display: activeSlide === index ? 'grid' : 'none' }}
+              >
+                {/* Left: feature screenshot */}
+                <div className="zoho-left-image-pane">
+                  <img src={slide.image} alt={slide.title} className="zoho-stationary-img" />
+                </div>
 
-            {/* LEFT IMAGE */}
-            <div className="slider1-image-box">
-              <img src={active.image} alt={active.title} className="slider1-image" />
-            </div>
-
-            {/* RIGHT TEXT CONTENT */}
-            <div className="slider1-text-box">
-              <h2 className="slider1-title">{active.title}</h2>
-              <p className="slider1-description">{active.description}</p>
-
-              {/* <ul className="slider1-points">
-                {active.points.map((p, i) => (
-                  <li key={i}>{p}</li>
-                ))}
-              </ul> */}
-              <ul className="tam-hp-slider2-feature-list">
-                {active.points.map((feat, index) => (
-                  <li key={index} className="tam-hp-slider2-feature-item">
-                    <span className="tam-hp-slider2-check">✓</span>
-                    <span className="tam-hp-slider2-feature-text">{feat}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                {/* Right: title, description, bullet points */}
+                <div className="zoho-right-text-pane">
+                  <h3 className="zoho-feature-title">{slide.title}</h3>
+                  <p className="zoho-feature-desc">{slide.description}</p>
+                  <ul className="zoho-feature-points" style={{ listStyle: 'none', padding: 0, marginTop: '20px' }}>
+                    {slide.points.slice(0, 5).map((point, i) => (
+                      <li key={i} style={{ display: 'flex', gap: '15px', marginBottom: '10px', fontWeight: '700', fontSize: '16px', color: '#1e293b' }}>
+                        <span style={{ color: '#38B000', fontWeight: 'bold' }}>✓</span> {point}
+                      </li>
+                    ))}
+                  </ul>
+                  
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="TAM_homepage-section">
-        <h2 className="TAM_homepage-stats-title">
-          AI Attendance that grows with your business worldwide
-        </h2>
 
-        <a href="#" className="TAM_homepage-learnmore">Learn more</a>
+      {/* ═══════════════════════════════════════════════════════
+          STATS SECTION
+          3 boxes: Clients count / Users count / Countries count
+          ═══════════════════════════════════════════════════════ */}
+      <div className="TAM_homepage-stats-section">
+        <div className="tam-global-heading-wrapper reveal-on-scroll" style={{ padding: '0 20px' }}>
+          <h2 className="tam-global-section-title">
+            AI attendance <span className="tam-global-section-title-blue">that grows with your business worldwide</span>
+          </h2>
+          <div className="tam-global-title-bar"></div>
+        </div>
 
         <div className="TAM_homepage-stats-container">
-          <div className="TAM_homepage-stat-box">
-            <h3 className="TAM_homepage-number TAM_homepage-blue">2000+</h3>
-            <p style={{ fontSize: '14px', marginBottom: '15px', color: 'grey' }}>Clients</p>
+          {/* Stat box: Clients */}
+          <div className="TAM_homepage-stat-box reveal-on-scroll delay-1">
+            <div className="TAM_stat-icon-bg blue-bg"></div>
+            <h3 className="TAM_homepage-number color-blue"><CountUp end={2040} suffix="+" /></h3>
+            <p className="TAM_homepage-stat-label">Clients</p>
             <p className="TAM_homepage-caption">
               Serving diverse organizations with reliable solutions.
             </p>
           </div>
 
-          <div className="TAM_homepage-stat-box">
-            <h3 className="TAM_homepage-number TAM_homepage-green">200000+</h3>
-            <p style={{ fontSize: '14px', marginBottom: '15px', color: 'grey' }}>Users</p>
+          {/* Stat box: Users */}
+          <div className="TAM_homepage-stat-box reveal-on-scroll delay-2">
+            <div className="TAM_stat-icon-bg green-bg"></div>
+            <h3 className="TAM_homepage-number color-green"><CountUp end={205600} suffix="+" /></h3>
+            <p className="TAM_homepage-stat-label">Users</p>
             <p className="TAM_homepage-caption">
-              Supporting professionals with seamless workforce management
+              Supporting professionals with seamless workforce management.
             </p>
           </div>
 
-          <div className="TAM_homepage-stat-box">
-            <h3 className="TAM_homepage-number TAM_homepage-purple">3+</h3>
-            <p style={{ fontSize: '14px', marginBottom: '15px', color: 'grey' }}>Countries</p>
+          {/* Stat box: Countries */}
+          <div className="TAM_homepage-stat-box reveal-on-scroll delay-3">
+            <div className="TAM_stat-icon-bg navy-bg"></div>
+            <h3 className="TAM_homepage-number color-navy"><CountUp end={3} suffix="+" /></h3>
+            <p className="TAM_homepage-stat-label">Countries</p>
             <p className="TAM_homepage-caption">
               Extending trusted AI attendance across global markets.
             </p>
@@ -512,215 +829,319 @@ export default function TAM_Homepage2() {
       </div>
 
 
-
-
-      <div className="lp5-testimonials-title-wrapper">
-        <h1 className="lp-5-awards-title">Testimonials</h1>
-      </div>
-      <section className="lp-5-main-content-section">
-        <div className="lp-5-main-content-card">
-          <div className="lp-5-decorative-circles">
-            <div className="lp-5-circle lp-5-circle-1"></div>
-            <div className="lp-5-circle lp-5-circle-2"></div>
-            <div className="lp-5-circle lp-5-circle-3"></div>
-            <div className="lp-5-circle lp-5-circle-4"></div>
-          </div>
-
-          <div className="lp-5-testimonial-wrapper">
-            <button className="lp-5-testimonial-nav lp-5-prev" onClick={handlePrev}>
-              ‹
-            </button>
-
-            <div className="lp-5-testimonial-content">
-              {testimonials[currentIndex].logo && (
-                <img
-                  src={testimonials[currentIndex].logo}
-                  alt="Company Logo"
-                  className="lp-5-testimonial-logo"
-                  style={isMobile ? { width: '50px', height: '50px' } : {}}
-                />
-              )}
-              <p className="lp-5-testimonial-text" style={isMobile ? { fontSize: '12px' } : {}}>
-                {testimonials[currentIndex].text}
-              </p>
-              <h4 className="lp-5-testimonial-author">
-                {testimonials[currentIndex].author}
-              </h4>
-            </div>
-
-            <button className="lp-5-testimonial-nav lp-5-next" onClick={handleNext}>
-              ›
-            </button>
-          </div>
+      {/* ═══════════════════════════════════════════════════════
+          TESTIMONIALS SECTION
+          Shows 3 equal-height cards at a time.
+          Cards rotate on arrow click (prev / next).
+          Layout per card (top → bottom):
+            • Company logo (circular ring)
+            • Quote paragraph  (flex:1 — stretches to fill)
+            • Company name + ★★★★★ rating (always at bottom)
+          Dot indicators below let users jump to any testimonial.
+          ═══════════════════════════════════════════════════════ */}
+      <div className="tam-testi-section">
+        {/* Section heading */}
+        <div className="tam-global-heading-wrapper reveal-on-scroll">
+          <h2 className="tam-global-section-title">Testimonials <span className="tam-global-section-title-blue"></span></h2>
+          <div className="tam-global-title-bar"></div>
         </div>
-      </section>
 
-      <div className='TAM_Homepage2_slider2'>
-        <div className="tam-hp-slider2-container">
-
-          <div className="tam-hp-slider2-hero">
-            <h1 className="tam-hp-slider2-title">
-              From Clock-Ins to Reports <br /> Your Workforce Simplified
-            </h1>
-          </div>
-
-          <div
-            className="tam-hp-slider2-tabs"
-            onScroll={handleScroll}
+        <div className="tam-testi-main-container">
+          {/* Left Arrow */}
+          <button
+            className="tam-testi-arrow arrow-left"
+            onClick={handlePrev}
+            aria-label="Previous"
           >
-            {tabs.map((tab, index) => {
-              const IconComponent = tab.icon;
+            &#8249;
+          </button>
+
+          {/* Cards row */}
+          <div className="tam-testi-cards-row">
+            {[0, 1, 2].map((offset) => {
+              const idx = (currentIndex + offset) % testimonials.length;
+              const t = testimonials[idx];
+              const isCenter = offset === 1;
+              const isLeft = offset === 0;
+              const isRight = offset === 2;
+
               return (
-                <button
-                  key={tab.id}
-                  onClick={() => handleTabClick(tab.id, index)}
-                  className={`tam-hp-slider2-tab ${activeTab === tab.id ? "tam-hp-slider2-tab-active" : ""
+                <div
+                  key={`${currentIndex}-${offset}`}
+                  className={`tam-testi-card-new tam-testi-card-anim ${isCenter ? 'tam-testi-card-center' : 'tam-testi-card-side'
                     }`}
+                  onClick={isLeft ? handlePrev : isRight ? handleNext : undefined}
+                  title={isLeft ? 'Previous' : isRight ? 'Next' : undefined}
                 >
-                  <IconComponent className='tab-icon' size={28} />
-                  {/* <IconComponent className="tam-hp-slider2-tab-icon" size={26} /> */}
-                  <span className="tam-hp-slider2-tab-label">{tab.label}</span>
-                </button>
+                  {/* Top Logo */}
+                  <div className="tam-testi-logo-ring">
+                    {t.logo && (
+                      <img src={t.logo} alt={t.author} className="tam-testi-logo-img" />
+                    )}
+                  </div>
+
+                  {/* Quote Text */}
+                  <p className="tam-testi-text">“{t.text}”</p>
+
+                  {/* Author & Stars */}
+                  <div className="tam-testi-bottom">
+                    <span className="tam-testi-name">{t.author}</span>
+                    <span className="tam-testi-stars-row">★★★★★</span>
+                  </div>
+                </div>
               );
             })}
-
-          </div>
-          <div className="tam-hp-slider2-indicator">
-            {tabs.map((t) => (
-              <span
-                key={t.id}
-                className={`tam-hp-slider2-dot ${activeTab === t.id ? "active" : ""
-                  }`}
-              />
-            ))}
           </div>
 
-          <div className="tam-hp-slider2-content">
+          {/* Right Arrow */}
+          <button
+            className="tam-testi-arrow arrow-right"
+            onClick={handleNext}
+            aria-label="Next"
+          >
+            &#8250;
+          </button>
+        </div>
 
-            <div className="tam-hp-slider2-features">
-              <h2 className="tam-hp-slider2-section-title">{currentTab.title}</h2>
-              <p className="tam-hp-slider2-paragraph">{currentTab.paragraph}</p>
+        {/* Dot indicators */}
+        <div className="tam-testi-dots">
+          {testimonials.map((_, i) => (
+            <span
+              key={i}
+              className={`tam-testi-dot ${i === currentIndex % testimonials.length ? 'active' : ''
+                }`}
+              onClick={() => setCurrentIndex(i)}
+            />
+          ))}
+        </div>
+      </div>
 
-              <ul className="tam-hp-slider2-feature-list">
-                {currentTab.features.map((feat, index) => (
-                  <li key={index} className="tam-hp-slider2-feature-item">
-                    <span className="tam-hp-slider2-check">✓</span>
-                    <span className="tam-hp-slider2-feature-text">{feat}</span>
-                  </li>
-                ))}
-              </ul>
+
+      {/* ═══════════════════════════════════════════════════════
+          WORKFLOW / TAB SECTION
+          Left sidebar: 5 tab buttons with lucide icons in circles
+          Right content: image + paragraph + feature list
+          Tabs: Roles & Permissions | Leave & Holiday |
+                Shift Management | HRMS | Payroll
+          ═══════════════════════════════════════════════════════ */}
+      <div className="TAM_2030_Brutal_Organic">
+        <div className="tam-container">
+          <div className="tam-global-heading-wrapper reveal-on-scroll">
+            <h1 className="tam-global-section-title">
+              From Clock-Ins <span className="tam-global-section-title-blue">to Reports</span>
+            </h1>
+            <div className="tam-global-title-bar"></div>
+            <p style={{ marginTop: '15px', color: '#64748b', fontSize: '18px', fontWeight: '500' }}>Your Workforce Simplified</p>
+          </div>
+
+          <div className="tam-grid-layout">
+            <aside className="tam-nav-column reveal-left">
+              {tabs.map((tab) => {
+                const IconComponent = tab.icon;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => handleTabClick(tab.id)}
+                    className={`tam-nav-link ${activeTab === tab.id ? 'active' : ''}`}
+                  >
+                    <IconComponent size={24} strokeWidth={2.5} className="tam-nav-icon" />
+                    <span className="tam-nav-text">{tab.label}</span>
+                  </button>
+                );
+              })}
+            </aside>
+
+            {/* RIGHT CONTENT STAGE */}
+            {/* Pre-render all images & content to avoid delay. Active tab gets the .show class. */}
+            <div className="tam-content-stage-wrapper" style={{ width: '100%' }}>
+              {tabs.map((tab) => {
+                const content = tabContent[tab.id];
+                return (
+                  <main
+                    key={tab.id}
+                    className={`tam-content-area ${activeTab === tab.id ? 'show' : ''}`}
+                    style={{
+                      display: activeTab === tab.id ? 'grid' : 'none'
+                    }}
+                  >
+                    <div className="tam-image-viewport">
+                      <img
+                        src={content.image}
+                        alt={content.title}
+                        className="tam-bloom-image"
+                      />
+                    </div>
+
+                    <div className="tam-text-blueprint">
+                      <h2 className="tam-section-title">{content.title}</h2>
+                      <p className="tam-section-desc">{content.paragraph}</p>
+
+                      <div className="tam-feature-blueprint" style={{ marginTop: '20px' }}>
+                        {content.features.map((feat, index) => (
+                          <div key={index} className="tam-feature-line" style={{ display: 'flex', gap: '15px', marginBottom: '10px', fontWeight: '700', fontSize: '16px', color: '#1e293b' }}>
+                            <span style={{ color: '#38B000', fontWeight: 'bold' }}>✓</span> {feat}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </main>
+                );
+              })}
             </div>
-
-            <div className="tam-hp-slider2-image-wrap">
-              <img
-                src={currentTab.image}
-                alt={currentTab.title}
-                className="tam-hp-slider2-image"
-              />
-            </div>
-
           </div>
         </div>
       </div>
-      <div className="tam-homepage2-awards">
-        <div className="lp5-testimonials-title-wrapper">
-          <h1 className="lp-5-awards-title" style={isMobile ? { margin: '0px 20px' } : {}}>Awards & Recognitions</h1>
-        </div>
-        <h2 className="tam-homepage-awards-title">We're leading the competition in every category</h2>
-        <section className="lp-5-awards-section">
-          <div className="lp-5-awards-container" style={{ width: '95%', maxWidth: '95%', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '5%', marginTop: '30px' }}>
-            <div className="tam-award-box">
-              <img src={award2} alt="Award 2" className="tam-award-box" style={isMobile ? { width: '135px' } : {}} />
-            </div>
-            <div className="tam-award-box">
-              <img src={award3} alt="Award 3" className="tam-award-box" style={isMobile ? { width: '135px' } : {}} />
-            </div>
-            <div className="tam-award-box">
-              <img src="https://www.softwaresuggest.com/award_logo/highly-recommended-winter-2024.png" alt="Award 4" className="tam-award-box" style={isMobile ? { width: '135px' } : {}} />
-            </div>
-            <div className="tam-award-box" style={isMobile ? { margin: '15px 0px', marginTop: '25px' } : {}}>
-              <img src={google} alt="Google" style={isMobile ? { width: '105px', margin: '15px 25px' } : { width: '140px' }} />
-              <div className="tam-rating-box">
-                <img src={star1} alt="Star" className="tam-star-image" />
-                <img src={star1} alt="Star" className="tam-star-image" />
-                <img src={star1} alt="Star" className="tam-star-image" />
-                <img src={star1} alt="Star" className="tam-star-image" />
-                <img src={star2} alt="Star" className="tam-star-image" />
-              </div>
-            </div>
-            <div className="tam-award-box" style={isMobile ? { margin: '15px 0px' } : {}}>
-              <img src={playstore} alt="Play Store" style={isMobile ? { width: '105px', margin: '15px 25px' } : { width: '140px' }} />
-              <div className="tam-rating-box">
-                <img src={star1} alt="Star" className="tam-star-image" />
-                <img src={star1} alt="Star" className="tam-star-image" />
-                <img src={star1} alt="Star" className="tam-star-image" />
-                <img src={star1} alt="Star" className="tam-star-image" />
-                <img src={star2} alt="Star" className="tam-star-image" />
-              </div>
-            </div>
 
-            <div className="tam-award-box" style={isMobile ? { margin: '15px 0px' } : {}}>
-              <img src={appstore} alt="App Store" style={isMobile ? { width: '105px', margin: '15px 25px' } : { width: '140px' }} />
-              <div className="tam-rating-box">
-                <img src={star1} alt="Star" className="tam-star-image" />
-                <img src={star1} alt="Star" className="tam-star-image" />
-                <img src={star1} alt="Star" className="tam-star-image" />
-                <img src={star1} alt="Star" className="tam-star-image" />
-                <img src={star2} alt="Star" className="tam-star-image" />
+
+      {/* ═══════════════════════════════════════════════════════
+          AWARDS & RECOGNITIONS SECTION
+          Left: 3 award badge images
+          Right: Google / Play Store / App Store star ratings
+          ═══════════════════════════════════════════════════════ */}
+      <div className="tam-awards-full-row-section">
+        <div className="tam-global-heading-wrapper reveal-on-scroll">
+          <h1 className="tam-global-section-title">
+            Awards & <span className="tam-global-section-title-blue">Recognitions</span>
+          </h1>
+          <div className="tam-global-title-bar"></div>
+          <p style={{ marginTop: '15px', color: '#64748b', fontSize: '18px', fontWeight: '500' }}>We're leading the competition in every category</p>
+        </div>
+
+        <div className="tam-slider-container reveal-on-scroll delay-1">
+          <Swiper
+            modules={[Navigation]}
+            spaceBetween={20}
+            slidesPerView={1}
+            navigation={true}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              900: { slidesPerView: 3 },
+              1200: { slidesPerView: 5 }, // Desktop-la 5 items theriyum
+            }}
+            className="tam-awards-swiper"
+          >
+            {/* 1. G-Pay (Google Rating) */}
+            <SwiperSlide>
+              <div className="tam-award-unit">
+                <img src={google} alt="G-Pay (Google Rating)" className="tam-platform-logo-large" />
+                <div className="tam-star-row">
+                  <img src={star1} alt="Star" /><img src={star1} alt="Star" />
+                  <img src={star1} alt="Star" /><img src={star1} alt="Star" />
+                  <img src={star2} alt="Star" />
+                </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </SwiperSlide>
+
+            {/* 2. Playstore */}
+            <SwiperSlide>
+              <div className="tam-award-unit">
+                <img src={playstore} alt="Play Store" className="tam-platform-logo-large" />
+                <div className="tam-star-row">
+                  <img src={star1} alt="Star" /><img src={star1} alt="Star" />
+                  <img src={star1} alt="Star" /><img src={star1} alt="Star" />
+                  <img src={star2} alt="Star" />
+                </div>
+              </div>
+            </SwiperSlide>
+
+            {/* 3. App Store */}
+            <SwiperSlide>
+              <div className="tam-award-unit">
+                <img src={appstore} alt="App Store" className="tam-platform-logo-large" />
+                <div className="tam-star-row">
+                  <img src={star1} alt="Star" /><img src={star1} alt="Star" />
+                  <img src={star1} alt="Star" /><img src={star1} alt="Star" />
+                  <img src={star2} alt="Star" />
+                </div>
+              </div>
+            </SwiperSlide>
+
+            {/* 4. Highly Recommended Award */}
+            <SwiperSlide>
+              <div className="tam-award-unit">
+                <img
+                  src="https://www.softwaresuggest.com/award_logo/highly-recommended-winter-2024.png"
+                  alt="Highly Recommended Award"
+                  className="tam-award-img-large"
+                />
+              </div>
+            </SwiperSlide>
+
+            {/* 5. DPIIT (Awards 2) */}
+            <SwiperSlide>
+              <div className="tam-award-unit">
+                <img src={award2} alt="DPIIT" className="tam-award-img-large" />
+              </div>
+            </SwiperSlide>
+
+            {/* 6. StartupTN (Awards 3) */}
+            <SwiperSlide>
+              <div className="tam-award-unit">
+                <img src={award3} alt="StartupTN" className="tam-award-img-large" />
+              </div>
+            </SwiperSlide>
+
+            {/* 7. Elcot (Award 1) */}
+            <SwiperSlide>
+              <div className="tam-award-unit">
+                <img src={award1} alt="Elcot" className="tam-award-img-large" />
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
       </div>
 
-      <div className="feature-section">
-
+      {/* ═══════════════════════════════════════════════════════
+          FEATURE CARDS GRID SECTION
+          Heading: "Trusted Attendance for Modern Teams"
+          6-card grid showing key platform capabilities
+          ═══════════════════════════════════════════════════════ */}
+      <div className="feature-section tam-full-width-bg">
         <div className="tam-homepage2-wrapper">
 
-          <h2 className="tam-homepage2-title">
-            Trusted Attendance <br /> for Modern Teams
-          </h2>
+          <div className="tam-global-heading-wrapper">
+            <h2 className="tam-global-section-title">
+              Trusted Attendance for <span className="tam-global-section-title-blue">Modern Teams</span>
+            </h2>
+            <div className="tam-global-title-bar"></div>
+          </div>
 
-          <p className="tam-homepage2-subtitle">
-            No Qu TAM is a trusted AI-powered attendance system that ensures
-            accuracy and compliance for every business. Built on a cloud-based
-            attendance platform, it delivers real-time attendance tracking.
-            With enterprise-grade protection and transparency, it is the most
-            reliable choice for smart attendance management.
+          <p className="tam-homepage2-subtitle-wide">
+            No Qu TAM is a trusted AI-powered attendance system that ensures accuracy
+            and compliance for every business. Built on a cloud-based attendance platform,
+            it delivers real-time attendance tracking with enterprise-grade protection.
           </p>
-          <h3 className="lp-5-awards-title" style={{ fontSize: '22px', marginBottom: '10px', color: '#ffbb08' }}>
-            Simpler, Stronger, Together
-          </h3>
-          <p className="tam-homepage2-subtitle">
+
+          <h3 className="lp-5-awards-title-accent">Simpler, Stronger, Together</h3>
+
+          <p className="tam-homepage2-subtitle-wide">
             No Qu TAM brings everything together in one place, making work easier,
             faster, and more organized.
           </p>
 
-          <div className="lp5-testimonials-title-wrapper" style={{ margin: '30px 0px', fontSize: '22px' }}>
-            <h1 className="lp-5-awards-title" style={{ fontSize: '30px' }}>Features</h1>
+          <div className="tam-global-heading-wrapper" style={{ marginTop: '50px', marginBottom: '30px' }}>
+            <h1 className="tam-global-section-title"> <span className="tam-global-section-title-blue">Features</span></h1>
+            <div className="tam-global-title-bar"></div>
           </div>
+
+          {/* 6-card feature grid — mapped from features array above */}
           <div className="tam-homepage2-container">
             {features.map((f, i) => (
-              <div key={i} className="tam-homepage2-card" aria-labelledby={`feat-${i}-title`}>
+              <div key={i} className={`tam-homepage2-card reveal-zoom delay-${(i % 3) + 1}`}>
                 <div className="tam-homepage2-card-inner">
-
-                  {/* ICON / IMAGE (absolutely positioned for smooth corner transition) */}
                   <div className="tam-homepage2-image-wrapper">
                     <img src={f.image} alt={f.title} className="tam-homepage2-image" />
                   </div>
-
-                  {/* HEADER: title sits below image initially; moves beside image on hover */}
                   <div className="tam-homepage2-header">
-                    <h3 id={`feat-${i}-title`} className="tam-homepage2-feature-title">{f.title}</h3>
+                    <h3 className="tam-homepage2-feature-title">{f.title}</h3>
                   </div>
-
-                  {/* BODY: description + bullets (hidden initially, revealed on hover) */}
                   <div className="tam-homepage2-body">
                     <p className="tam-homepage2-feature-desc">{f.description}</p>
-
                     <ul className="tam-homepage2-feature-points">
                       {f.points.map((p, idx) => (
-                        <li key={idx} className="tam-homepage2-point-item"><span style={{ fontWeight: 600, color: '#ffbb08', fontSize: '20px', marginRight: '6px' }}>-</span> {p}</li>
+                        <li key={idx} className="tam-homepage2-point-item">
+                          <span className="tam-bullet-icon">✓</span> {p}
+                        </li>
                       ))}
                     </ul>
                   </div>
@@ -728,75 +1149,166 @@ export default function TAM_Homepage2() {
               </div>
             ))}
           </div>
+
         </div>
 
-        <div className="tam-hp2-business-section">
-          <h2 className="tam-hp2-business-title">Optimized for Business Success</h2>
+
+        {/* ═══════════════════════════════════════════════════════
+            BUSINESS VALUES SECTION
+            4 pillars: User-friendly / Secure / Scalable / Reliable
+            ═══════════════════════════════════════════════════════ */}
+        <div className="tam-hp2-business-section reveal-on-scroll">
+          <div className="tam-global-heading-wrapper">
+            <h2 className="tam-global-section-title">Optimized for <span className="tam-global-section-title-blue">Business Success</span></h2>
+            <div className="tam-global-title-bar"></div>
+          </div>
 
           <div className="tam-hp2-business-grid">
-            <div className="tam-hp2-business-item">
-              <div className="tam-hp2-business-icon tam-hp2-business-icon-orange"><img src={userFriendly} width={35} /></div>
+
+            {/* Pillar 1: User-friendly */}
+            <div className="tam-hp2-business-item reveal-zoom delay-1">
+              <div className="tam-hp2-business-icon tam-hp2-business-icon-orange">
+                <img src={userFriendly} width={35} alt="User Friendly" />
+              </div>
               <h3 className="tam-hp2-business-item-title">User-friendly</h3>
               <p className="tam-hp2-business-item-desc">
                 Simple to use with an intuitive design that makes adoption quick and easy.
               </p>
             </div>
 
-            <div className="tam-hp2-business-item">
-              <div className="tam-hp2-business-icon tam-hp2-business-icon-orange"><img src={highlySecure} width={35} /></div>
+            {/* Pillar 2: Highly Secure */}
+            <div className="tam-hp2-business-item reveal-zoom delay-2">
+              <div className="tam-hp2-business-icon tam-hp2-business-icon-orange">
+                <img src={highlySecure} width={35} alt="Highly Secure" />
+              </div>
               <h3 className="tam-hp2-business-item-title">Highly Secure</h3>
               <p className="tam-hp2-business-item-desc">
                 Enterprise-grade security ensures data privacy, compliance, and complete protection.
               </p>
             </div>
 
-            <div className="tam-hp2-business-item">
-              <div className="tam-hp2-business-icon tam-hp2-business-icon-orange"><img src={scalable} width={35} /></div>
+            {/* Pillar 3: Scalable */}
+            <div className="tam-hp2-business-item reveal-zoom delay-3">
+              <div className="tam-hp2-business-icon tam-hp2-business-icon-orange">
+                <img src={scalable} width={35} alt="Scalable" />
+              </div>
               <h3 className="tam-hp2-business-item-title">Scalable</h3>
               <p className="tam-hp2-business-item-desc">
                 Adapts effortlessly to businesses of any size, from startups to large enterprises.
               </p>
             </div>
 
-            <div className="tam-hp2-business-item">
-              <div className="tam-hp2-business-icon tam-hp2-business-icon-orange"><img src={reliable} width={35} /></div>
+            {/* Pillar 4: Reliable */}
+            <div className="tam-hp2-business-item reveal-zoom delay-4">
+              <div className="tam-hp2-business-icon tam-hp2-business-icon-orange">
+                <img src={reliable} width={35} alt="Reliable" />
+              </div>
               <h3 className="tam-hp2-business-item-title">Reliable</h3>
               <p className="tam-hp2-business-item-desc">
                 Delivers accurate, real-time attendance and workforce insights you can trust.
               </p>
             </div>
+
           </div>
         </div>
 
-        <section className="lp-5-cta-section">
+
+        <div className="home_page_cta_section_2_content_wrap">
+          <div className="tam-global-heading-wrapper" style={{ textAlign: 'center', marginBottom: '30px' }}>
+            <h2 className="tam-global-section-title" style={{ color: 'black' }}>
+              Your Journey to Smarter <br />
+              <span className="tam-global-section-title-blue">
+                Workforce Management
+              </span>
+            </h2>
+
+          </div>
+
+          <div className="home_page_cta_section_2_btn_group">
+            <button className="home_page_cta_section_2_cta_btn" onClick={openModal}>
+              Request your Demo
+
+              <div className="home_page_cta_section_2_btn_arrow_circle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" strokeWidth="3">
+                  <path d="M5 12h14M12 5l7 7-7 7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round" />
+                </svg>
+              </div>
+            </button>
+          </div>
+        </div>
+
+
+        {/* ═══════════════════════════════════════════════════════
+            CTA / APP DOWNLOAD SECTION
+            Left: headline + description + store badges + phone CTA
+            Right: phone mockup image
+            ═══════════════════════════════════════════════════════ */}
+        <section className="lp-5-cta-section reveal-on-scroll">
           <div className="lp-5-cta-content">
-            <div className="lp-5-cta-left">
-              <h2 className="lp-5-cta-title">Manage Your Workforce From Anywhere</h2>
+
+            {/* Left text & download links */}
+            <div className="lp-5-cta-left reveal-left">
+              <div className="tam-global-heading-wrapper" style={{ textAlign: 'left', marginBottom: '20px' }}>
+                <h2 className="tam-global-section-title" style={{ textAlign: 'left' }}>
+                  Manage Your Workforce <span className="tam-global-section-title-blue">From Anywhere</span>
+                </h2>
+                <div className="tam-global-title-bar" style={{ marginLeft: 0, marginBottom: '25px' }}></div>
+              </div>
               <p className="lp-5-cta-description">
-                Handle attendance, leaves, and employee activities right from your mobile. No Qu TAM helps you manage workforce operations efficiently from real-time attendance tracking to leave monitoring all in one powerful mobile app.
+                Handle attendance, leaves, and employee activities right from your mobile.
+                No Qu TAM helps you manage workforce operations efficiently — from real-time
+                attendance tracking to leave monitoring — all in one powerful mobile app.
               </p>
 
               <div className="lp-5-app-download">
                 <h3 className="lp-5-app-download-title">Get the App</h3>
+
+                {/* App store badges */}
                 <div className="lp-5-store-badges">
-                  <a href="https://play.google.com/store/apps/details?id=com.noqu.app" target='blank'><img src={playStore} alt="Play Store" /></a>
-                  <a href="https://apps.apple.com/us/app/noqu-tam/id6554003975" target='blank'><img src={appStore} alt="App Store" /></a>
+                  <a href="https://play.google.com/store/apps/details?id=com.noqu.app" target="blank">
+                    <img src={playStore} alt="Play Store" />
+                  </a>
+                  <a href="https://apps.apple.com/us/app/noqu-tam/id6554003975" target="blank">
+                    <img src={appStore} alt="App Store" />
+                  </a>
                 </div>
+
+                {/* Phone call CTA */}
                 <div className="lp-5-call">
                   <p className="lp-5-call-text">Need Help? Call Us Now:</p>
-                  <a href="callto:+91 7401600600"><button><img src={call} width={25} /><p>+91 7401 600 600</p></button></a>
+                  <a href="callto:+91 7401600600">
+                    <button>
+                      <img src={call} width={25} alt="Call" />
+                      <p>+91 7401 600 600</p>
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>
 
-            <div className="lp-5-cta-right">
+            {/* Right: app mockup image */}
+            <div className="lp-5-cta-right reveal-right">
               <img className="lp-5-cta-image" src={CTA} alt="No Qu TAM App" />
             </div>
 
           </div>
         </section>
+
       </div>
+
+
+      {/* ═══════════════════════════════════════════════════════
+          FOOTER + SCROLL-TO-TOP BUTTON
+          ScrollToTopButton is a fixed element (outside document flow)
+          ═══════════════════════════════════════════════════════ */}
+
       <TAM_Footer />
+      <ScheduleAdemo isOpen={isModalOpen} onClose={closeModal} />
+
     </div>
+    </>
   );
 }

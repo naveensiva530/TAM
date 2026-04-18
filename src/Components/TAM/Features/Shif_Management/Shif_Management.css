@@ -1,0 +1,209 @@
+/* ============================================================
+   SECTION 3 ANIMATIONS (Replacement for general scroll animations)
+============================================================ */
+.shmf-s3-fade-up {
+    opacity:    0;
+    transform:  translateY(48px);
+    transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.shmf-s3-fade-left {
+    opacity:    0;
+    transform:  translateX(-56px);
+    transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.shmf-s3-fade-right {
+    opacity:    0;
+    transform:  translateX(56px);
+    transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.shmf-s3-fade-up.shmf-s3-visible,
+.shmf-s3-fade-left.shmf-s3-visible,
+.shmf-s3-fade-right.shmf-s3-visible {
+    opacity:   1;
+    transform: translate(0, 0);
+}
+
+/* ============================================================
+   SECTION 3 — shift_features_section
+============================================================ */
+.shmf-section {
+    padding:          100px 5%;
+    background-color: var(--tf-white, #FFFFFF);
+}
+
+.shmf-header {
+    text-align:    center;
+    margin-bottom: 80px;
+}
+
+.shmf-main-title  {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(3rem, 4.5vw, 5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 0px !important;
+    text-align: center;
+    
+}
+
+
+
+.shmf-title-blue {
+    color:       var(--tf-blue, #0077B6);
+    font-weight: 800;
+}
+
+.shmf-main-subtitle  {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.55rem;
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    text-align: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.shmf-container {
+    max-width:      1150px;
+    margin:         0 auto;
+    display:        flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.shmf-row {
+    display:        flex;
+    flex-direction: row;
+    align-items:    center;
+    gap:            80px;
+}
+
+.shmf-image { flex: 1; }
+.shmf-text  { flex: 1; }
+
+.shmf-sub-title {
+    font-family:   'Poppins', sans-serif;
+    font-size:     32px;
+    font-weight:   500;
+    color:         black;
+    margin-bottom: 14px;
+}
+
+.shmf-desc {
+    font-family:   'Inter', sans-serif;
+    font-size:     15px;
+    color:         #475569;
+    line-height:   1.75;
+    margin-bottom: 18px;
+}
+
+.shmf-features-label {
+    font-family:    'Poppins', sans-serif;
+    font-size:      13px;
+    font-weight:    700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color:          #38B000;
+    margin-bottom:  10px;
+}
+
+.shmf-closing {
+    font-family:  'Inter', sans-serif;
+    margin-top:   18px;
+    font-size:    14px;
+    color:        #6B7280;
+    line-height:  1.75;
+    font-style:   italic;
+    border-left:  3px solid #38B000;
+    padding-left: 14px;
+}
+
+.shmf-list { list-style: none; padding: 0; }
+
+.shmf-list li {
+    font-family:  'Inter', sans-serif;
+    font-size:    17px;
+    color:        #475569;
+    margin-bottom:16px;
+    position:     relative;
+    padding-left: 28px;
+    line-height:  1.6;
+}
+
+.shmf-list li::before {
+    content:     "✓";
+    position:    absolute;
+    left:        0;
+    color:       #38B000;
+    font-weight: 900;
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET (max-width: 1100px)
+============================================================ */
+@media (max-width: 1100px) {
+    .shmf-section                   { padding: 70px 5%; }
+    .shmf-container                 { gap: 70px; }
+    .shmf-row                       { gap: 50px; }
+    .shmf-main-title                {
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(3rem, 4.5vw, 5rem);
+        font-weight: 900;
+        line-height: 1.1;
+        margin-bottom: 0px !important;
+        text-align: center;
+    }
+    .shmf-sub-title                 { font-size: 26px; }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE (max-width: 768px)
+============================================================ */
+@media (max-width: 768px) {
+    .shmf-section           { padding: 48px 20px 52px; }
+    .shmf-header            { margin-bottom: 36px; text-align: left; }
+    .shmf-main-title        { font-size: clamp(1.8rem, 5.5vw, 2.6rem); line-height: 1.2; text-align: left; }
+    .shmf-main-subtitle     { font-size: 1.32rem; margin-top: 14px; text-align: left; margin-left: 0; }
+    .shmf-container         { gap: 44px; }
+    .shmf-row               { flex-direction: column; gap: 20px; align-items: stretch; }
+   .shmf-image             { flex: 0 0 auto; width: 100%; order: 1; }
+    .shmf-image img         { 
+        aspect-ratio: 16 / 9;
+        height: unset !important; 
+        width: 100%;
+        object-fit: cover;
+    }
+    .shmf-text              { flex: 0 0 auto; width: 100%; order: 2; }
+    .shmf-sub-title         { font-size: 1.55rem; margin-bottom: 10px; }
+    .shmf-desc              { font-size: 1.32rem; margin-bottom: 14px; line-height: 1.68; }
+    .shmf-features-label    { font-size: 11.5px; margin-bottom: 8px; }
+    .shmf-list li           { font-size: 1.3rem; margin-bottom: 12px; padding-left: 24px; line-height: 1.6; }
+    .shmf-closing           { font-size: 1.25rem; margin-top: 14px; padding-left: 12px; border-left-width: 2px; line-height: 1.65; }
+}
+
+/* ============================================================
+   RESPONSIVE — SMALL MOBILE (max-width: 480px)
+============================================================ */
+@media (max-width: 480px) {
+    .shmf-section           { padding: 36px 16px 40px; }
+    .shmf-header            { margin-bottom: 28px; }
+    .shmf-main-title        { font-size: clamp(1.65rem, 5vw, 2.1rem); }
+    .shmf-main-subtitle     { font-size: 1.25rem; }
+    .shmf-container         { gap: 36px; }
+    .shmf-image img         { 
+        aspect-ratio: 5/ 5;
+        height: unset !important; 
+    }
+    .shmf-sub-title         { font-size: 1.4rem; }
+    .shmf-desc              { font-size: 1.22rem; }
+    .shmf-list li           { font-size: 1.2rem; padding-left: 22px; margin-bottom: 10px; }
+    .shmf-closing           { font-size: 1.15rem; }
+}

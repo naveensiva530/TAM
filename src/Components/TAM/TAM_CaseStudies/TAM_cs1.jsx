@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react'
 import './TAM_cs.css'
-import caseStudy1 from '../../../assets/TAM/caseStudy1.jpeg'
+import caseStudy1 from '../../../assets/banner/caseStudy1.png';
 import { Link } from 'react-router-dom'
+
 import { Helmet } from 'react-helmet-async'
+import TAM_Footer from '../TAM_Footer/TAM_Footer';
+
 const TAM_cs1 = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -29,10 +32,13 @@ const TAM_cs1 = () => {
         </Helmet>
 
     <div className='TAM_cases'>
-        <div className="TAM_cases-img">
-            <img src={caseStudy1} alt="" />
+       <div className="TAM_cases-img">
+             <img src={caseStudy1} alt="" />
         </div>
-        <h1 className='TAM_h1'>Health Care Industry</h1>
+     <h1 className='TAM_h1'>
+           <span className="title-green">Health Care </span>
+            <span className="title-blue">Industry</span>
+     </h1>
         <div className="TAM_cases-content">
             <h5>Background</h5>
             <p>Our Hospitals, committed to 24/7 medical services, grappled with workforce management challenges due to diverse departments. The existing manual attendance tracking system resulted in delays, errors, and difficulties in ensuring adequate staffing, impacting patient care.</p>
@@ -57,6 +63,7 @@ API Integration streamlined data flow, and workflow integration prevented disrup
             </div>
         </div>
     </div>
+     <TAM_Footer />
     </>
   )
 }

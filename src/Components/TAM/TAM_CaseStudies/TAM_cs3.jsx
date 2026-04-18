@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import './TAM_cs.css'
-import caseStudy3 from '../../../assets/TAM/caseStudy3.jpeg'
+import caseStudy3 from '../../../assets/banner/caseStudy3.png';
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
+import TAM_Footer from '../TAM_Footer/TAM_Footer';
 const TAM_cs3 = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -29,9 +30,12 @@ const TAM_cs3 = () => {
 
     <div className='TAM_cases'>
         <div className="TAM_cases-img">
-            <img src={caseStudy3} alt="" />
+             <img src={caseStudy3} alt="" />
         </div>
-        <h1 className='TAM_h1'>Supply Chain and Logistics Industry</h1>
+        <h1 className='TAM_h1'>
+           <span className="title-green">Supply Chain and </span>
+            <span className="title-blue">Logistics Industry</span>
+     </h1>
         <div className="TAM_cases-content">
             <h5>Background</h5>
             <p>A prominent player in the supply chain and logistics sector grappled with workforce management challenges, delayed deliveries, and operational disruptions due to manual processes. The dynamic and extensive logistics network required a transformative solution to optimize operations.</p>
@@ -57,6 +61,8 @@ NoQu TAM's real-time visibility across the logistics network enabled better coor
             </div>
         </div>
     </div>
+     <TAM_Footer />
+
     </>
   )
 }

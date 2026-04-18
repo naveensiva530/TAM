@@ -1,80 +1,235 @@
-.TAM_Video-content{
-    background-color: #fefefe;
+/* ─── Google Fonts ──────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ─── CSS Variables ─────────────────────────────────────────── */
+:root {
+    --font-figtree: 'Figtree', sans-serif;
+    --font-poppins: 'Poppins', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+
+    --text-dark:       #0f172a;
+    --text-soft:       #475569;
+    --text-muted:      #94a3b8;
+    --brand-blue:      #0077B6;
+    --brand-blue-dark: #005f94;
+    --brand-green:     #38B000;
+    --brand-green-dark: #2d7a00;
+    --bg-white:        #ffffff;
+    --border-soft:     rgba(0, 119, 182, 0.12);
+    --shadow-card:     0 4px 20px rgba(0, 0, 0, 0.06);
+    --shadow-hover:    0 12px 32px rgba(0, 0, 0, 0.10);
+    --transition:      all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Wrapper ───────────────────────────────────────────────── */
+.TAM_Video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 45%, #DCFCE7 75%, #e0f7fa 100%);
+    padding: 0 20px 80px;
+    position: relative;
+}
+
+/* ── Header ── */
+.TAM_Video_header {
+    text-align: center;
+    padding-top: 90px;
+    margin-bottom: 50px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.TAM_Video_header.header-animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.TAM_Video .TAM_h1 {
+    font-family: var(--font-figtree);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 0;
+}
+
+.title-dark {
+    color: var(--text-dark);
+}
+
+.title-blue {
+    color: var(--brand-blue);
+}
+
+/* ── Content ── */
+.TAM_Video-content {
+    background-color: var(--bg-white);
     width: 90%;
+    max-width: 1100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 40px;
-    padding: 100px 0px;
-    border: 1px solid rgb(238, 238, 238);
-    border-radius: 10px;
-    padding-top: 130px;
+    padding: 64px 48px;
+    border: 1px solid rgba(0, 119, 182, 0.10);
+    border-radius: 20px;
+    box-shadow: var(--shadow-card);
+    position: relative;
+    z-index: 1;
 }
-.TAM_Video{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-.TAM_Video h1{
-    margin-bottom: 10px;
-}
-.TAM_Video-container{
+
+/* ── Video Container ── */
+.TAM_Video-container {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 15px;
+    gap: 24px;
     width: 100%;
     justify-content: center;
 }
 
-.TAM_Video-box-videomaterial{
-    background-color: #fff;
-    width: 100%;
-    height: 280px;
-    border: 1px solid rgb(238, 238, 238);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    overflow: hidden;
-}
-/* .TAM_Video-box-videomaterial video{
-    width: inherit !important;
-    height: inherit !important;
-} */
-.TAM_Video-box-videomaterial video{
-    width: 280px !important;
-    height: 250px !important;
-}
-
-.TAM_Video-box{
+/* ── Video Box ── */
+.TAM_Video-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 14px;
     width: 300px;
+    background: var(--bg-white);
+    border-radius: 18px;
+    padding: 24px;
+    border: 1px solid var(--border-soft);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateY(30px);
 }
-.TAM_Video-content button{
-    padding: 10px 20px;
+
+.TAM_Video-box.box-animated {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.TAM_Video-box:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--brand-blue);
+}
+
+.TAM_Video-box h2 {
+    font-family: var(--font-poppins);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+    line-height: 1.45;
+    letter-spacing: 0.1px;
+}
+
+/* ── Video Material ── */
+.TAM_Video-box-videomaterial {
+    background-color: var(--bg-white);
+    width: 100%;
+    height: 200px;
+    border: 1px solid var(--border-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.TAM_Video-box:hover .TAM_Video-box-videomaterial {
+    border-color: var(--brand-blue);
+    box-shadow: 0 4px 16px rgba(0, 119, 182, 0.15);
+}
+
+.TAM_Video-box-videomaterial > div {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* ── Button ── */
+.TAM_Video-btn {
+    padding: 14px 36px;
     border: none;
-    border-radius: 25px;
+    border-radius: 50px;
     color: #FFF;
-    background-color: #27375d;
+    background: linear-gradient(135deg, var(--brand-green), var(--brand-green-dark));
+    font-family: var(--font-poppins);
+    font-weight: 600;
     font-size: 15px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
     cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 4px 16px rgba(56, 176, 0, 0.3);
+    letter-spacing: 0.3px;
 }
-@media (max-width: 500px){
-    .TAM_Video-container{
+
+.TAM_Video-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(56, 176, 0, 0.4);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .TAM_Video {
+        padding: 40px 14px 60px;
+    }
+
+    .TAM_Video_header {
+        padding-top: 60px;
+        margin-bottom: 36px;
+    }
+
+    .TAM_Video .TAM_h1 {
+        font-size: clamp(2rem, 7vw, 2.5rem);
+    }
+
+    .TAM_Video-content {
+        padding: 40px 24px;
+        width: 95%;
+        gap: 32px;
+    }
+
+    .TAM_Video-container {
+        gap: 20px;
+    }
+
+    .TAM_Video-box {
+        width: 260px;
+    }
+}
+
+@media (max-width: 500px) {
+    .TAM_Video-container {
         flex-direction: column;
     }
+
+    .TAM_Video-box {
+        width: 100%;
+        max-width: 360px;
+    }
+
     .TAM_Video-content {
-        background-color: #e9e9e9;
-        width: -webkit-fill-available;
-        border: 1px solid rgb(238, 238, 238);
-        padding-top: 30px;
+        padding: 32px 16px;
+        width: 100%;
+        border-radius: 14px;
     }
 }

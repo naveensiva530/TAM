@@ -1,0 +1,263 @@
+/* ============================================================
+   SECTION 3 — LEAVE_FEATURES_SECTION
+============================================================ */
+.lh-features-section {
+    padding:    100px 6%;
+    background: var(--tf-white, #FFFFFF);
+}
+
+.lh-features-section-intro {
+    text-align: center;
+    max-width:  900px;
+    margin:     0 auto 80px;
+}
+
+.lh-features-section-headline {
+    font-family:   'Poppins', sans-serif;
+    font-size:     clamp(3rem, 4.5vw, 5rem);
+    font-weight:   900;
+    line-height:   1.1;
+    margin-bottom: 0px !important;
+    text-align:    center;
+}
+
+.lh-features-headline-blue  { color: var(--tf-blue, #0077B6); }
+
+.lh-features-section-subtext {
+    font-family:  'Inter', sans-serif;
+    font-size:    1.55rem;
+    color:        #475569;
+    line-height:  1.7;
+    margin-bottom:1rem;
+    text-align:   center;
+    max-width:    900px;
+    margin-left:  auto;
+    margin-right: auto;
+}
+
+.lh-features-headline-bar {
+    width:         60px;
+    height:        4px;
+    background:    var(--tf-blue, #0077B6);
+    margin:        18px auto 24px;
+    border-radius: 4px;
+}
+
+.lh-features-cards-panel {
+    display:        flex;
+    flex-direction: column;
+    gap:            0;
+    max-width:      1200px;
+    margin:         0 auto;
+}
+
+.lh-features-step-row {
+    display:               grid;
+    grid-template-columns: 140px 1fr;
+    gap:                   0;
+    position:              relative;
+}
+
+.lh-features-step-row:not(:last-child)::after {
+    content:    '';
+    position:   absolute;
+    left:       68px;
+    top:        100px;
+    bottom:     -1px;
+    width:      2px;
+    background: #E5E7EB;
+}
+
+.lh-features-step-number-col {
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    padding-top:    1rem;
+    position:       relative;
+    z-index:        1;
+}
+
+.lh-features-step-circle {
+    width:           80px;
+    height:          80px;
+    border-radius:   50%;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+    box-shadow:      0 8px 24px rgba(0,0,0,0.1);
+    transition:      transform 0.3s ease, box-shadow 0.3s ease;
+}
+.lh-features-step-circle:hover { transform: scale(1.08); box-shadow: 0 12px 32px rgba(0,0,0,0.18); }
+
+.lh-features-circle-green { background: linear-gradient(135deg, #38B000, #5ACD1A); }
+.lh-features-circle-blue  { background: linear-gradient(135deg, #0077B6, #00A8E8); }
+.lh-features-circle-dark  { background: linear-gradient(135deg, #1F2937, #374151); }
+
+.lh-features-step-circle-text { font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 900; color: #FFFFFF; line-height: 1; }
+
+.lh-features-step-card-body {
+    background:     var(--tf-white, #FFFFFF);
+    border:         1.5px solid #F1F5F9;
+    padding:        4rem 4.5rem;
+    margin:         0 0 3rem 3rem;
+    box-shadow:     0 4px 24px rgba(0,0,0,0.05);
+    transition:     all 0.3s ease;
+    display:        flex;
+    flex-direction: column;
+    gap:            0;
+}
+.lh-features-step-card-body:hover { box-shadow: 0 16px 48px rgba(0,0,0,0.1); border-color: #E5E7EB; transform: translateX(6px); }
+
+.lh-features-step-card-header {
+    display:        flex;
+    align-items:    center;
+    gap:            1.4rem;
+    margin-bottom:  2.8rem;
+    padding-bottom: 2rem;
+    border-bottom:  1.5px solid #F1F5F9;
+}
+
+.lh-features-step-icon-box {
+    width:           54px;
+    height:          54px;
+    border-radius:   16px;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+    transition:      transform 0.3s ease;
+}
+.lh-features-step-card-body:hover .lh-features-step-icon-box { transform: rotate(5deg) scale(1.08); }
+
+.lh-features-iconbox-green { background: #F0FDF4; color: #38B000; }
+.lh-features-iconbox-blue  { background: #EFF6FF; color: #0077B6; }
+.lh-features-iconbox-dark  { background: #F3F4F6; color: #374151; }
+
+.lh-features-step-card-title { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; color: #0f172a; line-height: 1.2; }
+
+.lh-features-step-body-grid {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   3.5rem;
+    align-items:           start;
+}
+
+.lh-features-step-img-col { display: flex; flex-direction: column; }
+
+.lh-features-step-img-wrap { width: 100%; height: 490px; border-radius: 16px; overflow: hidden; }
+.lh-features-step-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease;
+}
+.lh-features-step-card-body:hover .lh-features-step-img-wrap img { transform: scale(1.03); }
+
+.lh-features-step-points-col { display: flex; flex-direction: column; gap: 0; }
+
+.lh-features-step-key-label {
+    font-family:    'Poppins', sans-serif;
+    font-size:      2.1rem;
+    font-weight:    800;
+    color:          #9CA3AF;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom:  1.4rem;
+}
+
+.lh-features-step-points-list {
+    list-style:     none;
+    display:        flex;
+    flex-direction: column;
+    gap:            1.2rem;
+    margin-bottom:  2.4rem;
+}
+.lh-features-step-points-list li {
+    display: flex; align-items: center; gap: 1.2rem;
+    font-family: 'Inter', sans-serif; font-size: 1.45rem; font-weight: 600;
+    color: #1F2937; transition: transform 0.2s ease;
+}
+.lh-features-step-points-list li:hover { transform: translateX(4px); }
+
+.lh-features-point-icon {
+    width:           48px;
+    height:          48px;
+    border-radius:   10px;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+    transition:      all 0.3s ease;
+}
+.lh-features-point-icon-green { background: #F0FDF4; color: #38B000; }
+.lh-features-point-icon-blue  { background: #EFF6FF; color: #0077B6; }
+.lh-features-step-points-list li:hover .lh-features-point-icon-green { background: #38B000; color: white; }
+.lh-features-step-points-list li:hover .lh-features-point-icon-blue  { background: #0077B6; color: white; }
+
+.lh-features-step-desc-block { display: flex; flex-direction: column; gap: 1.4rem; padding-top: 2rem; border-top: 1.5px solid #F1F5F9; }
+.lh-features-step-desc-text  { font-family: 'Inter', sans-serif; font-size: 1.55rem; color: #374151; line-height: 1.8; font-weight: 500; }
+.lh-features-step-sub-desc {
+    font-family:   'Inter', sans-serif;
+    font-size:     1.45rem;
+    font-weight:   500;
+    color:         #374151;
+    line-height:   1.8;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1.5px solid #F1F5F9;
+}
+
+/* Responsive adjustments for Section 3 */
+@media (max-width: 1100px) {
+    .lh-features-section          { padding: 70px 4%; }
+    .lh-features-step-row         { grid-template-columns: 70px 1fr; }
+    .lh-features-step-row:not(:last-child)::after { left: 33px; }
+    .lh-features-step-circle      { width: 60px; height: 60px; }
+    .lh-features-step-circle-text { font-size: 1.8rem; }
+    .lh-features-step-card-body   { padding: 3rem 2.5rem; margin: 0 0 2.5rem 1.5rem; }
+    .lh-features-step-body-grid   { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .lh-features-step-img-wrap { 
+        aspect-ratio: 4 / 5;
+        height: unset; 
+    }
+    .lh-features-step-key-label   { font-size: 1.6rem; }
+    .lh-features-step-points-list li { font-size: 1.3rem; }
+    .lh-features-point-icon       { width: 40px; height: 40px; }
+    .lh-features-step-desc-text   { font-size: 1.35rem; }
+}
+
+@media (max-width: 768px) {
+    .lh-features-section              { padding: 48px 20px; }
+    .lh-features-section-intro        { margin-bottom: 40px; }
+    .lh-features-section-headline     { font-size: 2.4rem; letter-spacing: -0.5px; }
+    .lh-features-section-subtext      { font-size: 1.4rem; text-align: justify; }
+
+    .lh-features-step-row             { grid-template-columns: 48px 1fr; margin-bottom: 1.5rem; }
+    .lh-features-step-row:not(:last-child)::after { left: 23px; top: 60px; }
+
+    .lh-features-step-circle          { width: 48px; height: 48px; }
+    .lh-features-step-circle-text     { font-size: 1.3rem; }
+
+    .lh-features-step-card-body       { padding: 1.5rem; margin: 0 0 2rem 1.2rem; }
+    .lh-features-step-card-header     { gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; }
+    .lh-features-step-icon-box        { width: 40px; height: 40px; }
+    .lh-features-step-icon-box svg    { width: 20px; height: 20px; }
+    .lh-features-step-card-title      { font-size: 1.6rem; }
+
+    .lh-features-step-body-grid       { grid-template-columns: 1fr; gap: 1.5rem; }
+    
+    .lh-features-step-img-col         { order: -1; }
+     .lh-features-step-img-wrap { 
+        aspect-ratio: 12/ 14;
+        height: unset; 
+    }
+
+    .lh-features-step-points-col      { order: 2; border-top: 1.5px solid #F1F5F9; padding-top: 1.5rem; }
+    .lh-features-step-key-label       { font-size: 1.3rem; margin-bottom: 1rem; }
+    .lh-features-step-points-list     { gap: 1rem; margin-bottom: 1.5rem; }
+    .lh-features-step-points-list li  { font-size: 1.25rem; gap: 1rem; align-items: flex-start; }
+    
+    .lh-features-point-icon           { width: 32px; height: 32px; flex-shrink: 0; }
+    .lh-features-point-icon svg       { width: 14px; height: 14px; }
+    
+    .lh-features-step-desc-block      { padding-top: 1.5rem; }
+    .lh-features-step-desc-text       { font-size: 1.25rem; }
+}

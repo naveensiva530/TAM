@@ -5,7 +5,7 @@ import logo from '../../../assets/logo.png'
 import call from '../../../assets/call.png'
 import email1 from '../../../assets/email1.svg'
 import { Link } from 'react-router-dom';
-import TAM_mobile_nav from '../../Navbar/TAM_mobile_nav'
+import TAM_mobile_nav from '../../Navbar/TAM_mobile_nav';
 import TAM_form from '../../../Containers/RegForms/TAM_form';
 
 const TAM_Navbar = () => {

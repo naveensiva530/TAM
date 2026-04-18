@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import './TAM_cs.css'
-import caseStudy4 from '../../../assets/TAM/caseStudy4.jpeg'
+import caseStudy4 from '../../../assets/banner/caseStudy4.png';
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
+import TAM_Footer from '../TAM_Footer/TAM_Footer';
 const TAM_cs4 = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -29,10 +30,13 @@ const TAM_cs4 = () => {
         </Helmet>
 
     <div className='TAM_cases'>
-        <div className="TAM_cases-img">
-            <img src={caseStudy4} alt="" />
+       <div className="TAM_cases-img">
+             <img src={caseStudy4} alt="" />
         </div>
-        <h1 className='TAM_h1'>Construction Industry</h1>
+        <h1 className='TAM_h1'>
+           <span className="title-green">Construction</span>
+            <span className="title-blue">Industry</span>
+     </h1>
         <div className="TAM_cases-content">
             <h5>Background</h5>
             <p>Facing the unique challenges of orchestrating tasks, personnel, and timelines in the dynamic construction environment, our industry sought a transformative solution to elevate its operations to unprecedented heights.</p>
@@ -58,6 +62,7 @@ NoQu TAM's real-time visibility across the logistics network enabled better coor
             </div>
         </div>
     </div>
+     <TAM_Footer />
     </>
   )
 }

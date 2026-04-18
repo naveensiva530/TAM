@@ -38,10 +38,10 @@ import locator from '../../assets/locator.png'
     }, []);
 
   return (
-    <div class="box">
+    <div className="box">
       <h1>Use mobile devices to manage employee work hours and Live Tracking.</h1>
-        <div class="scroller" data-speed="fast">
-        <ul class="tag-list scroller__inner">
+        <div className="scroller" data-speed="fast">
+        <ul className="tag-list scroller__inner">
             
             <li><Usecase img={liveLocation} heading="Live Location Tracker" content="Realize Effective Workforce Oversight with Geo-Fencing and Live Location Tracking "/></li>
             <li><Usecase img={integrations} heading="Integration" content="Revolutionize workplace with workflow integration"/></li>

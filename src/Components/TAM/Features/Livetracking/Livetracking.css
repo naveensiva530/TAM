@@ -166,7 +166,7 @@
     .ltf-step-circle-text      { font-size: 1.8rem; }
     .ltf-step-card-body        { padding: 3rem 2.5rem; margin: 0 0 2.5rem 1.5rem; }
     .ltf-step-body-grid        { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-    .ltf-step-img-wrap         { height: 600px; }
+    .ltf-step-img-wrap         { height: 420px; }
     .ltf-step-points-list li   { font-size: 1.3rem; }
     .ltf-point-icon            { width: 40px; height: 40px; }
     .ltf-step-desc-text        { font-size: 1.35rem; }

@@ -127,6 +127,9 @@ const TAM_CaseStudies = () => {
                 <span className="tf-hero-title-dark">Case </span>
                 <span className="tf-hero-title-green">Studies</span>
               </h1>
+              <p className="tf-hero-subtitle">
+                Explore our diverse case studies and discover how NoQu's solutions transform industries worldwide.
+              </p>
             </div>
           </div>
           <div className="tf-hero-right">

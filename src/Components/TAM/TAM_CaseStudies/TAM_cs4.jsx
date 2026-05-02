@@ -4,15 +4,23 @@ import caseStudy4 from '../../../assets/banner/caseStudy4.png';
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import TAM_Footer from '../TAM_Footer/TAM_Footer';
+
+import pdfFile from '../../../assets/cs4.pdf';
+
+
+const handleClick = () => {
+    const link = document.createElement('a');
+    link.href = pdfFile;
+    link.download = 'case-study.pdf';
+    link.click();
+};
+
+
 const TAM_cs4 = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
       }, []);
-      const handleClick = () => {
-        const pdfUrl = 'assets/cs4.pdf';
-        const mimeType = 'application/pdf';
-        window.open(pdfUrl, '_newtab', `mime=${mimeType}`);
-    };
+     
   return (
     <>
 

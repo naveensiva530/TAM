@@ -185,6 +185,7 @@
 }
 
 
+
 /* ============================================================
    RESPONSIVE — TABLET (max-width: 1100px)
 ============================================================ */
@@ -218,7 +219,7 @@
         height: unset; 
     }
     .wff-card.active .wff-card-img { 
-        aspect-ratio: 9 /6;
+        aspect-ratio: 9 /7;
         height: unset; 
     }
     .wff-card-body        { padding: 22px 20px 28px; }
@@ -235,6 +236,7 @@
 ============================================================ */
 @media (max-width: 480px) {
     /* ── SECTION 3 ── */
+    
     .wff-section    { padding: 40px 0 60px; }
     .wff-container  { padding: 0 20px; }
 }

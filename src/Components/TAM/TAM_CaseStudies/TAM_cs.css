@@ -28,10 +28,7 @@
   to   { opacity: 1; }
 }
 
-@keyframes overlaySlideIn {
-  from { opacity: 0; transform: translateY(-50%) translateX(-60px); }
-  to   { opacity: 1; transform: translateY(-50%) translateX(0); }
-}
+
 
 @keyframes shimmer {
   0%   { background-position: -200% center; }
@@ -84,31 +81,6 @@
 
 
 
-/* ── Overlay Badge ── */
-.TAM_cases-img-overlay {
-  position: absolute;
-  top: 50%;
-  left: 40px;
-  transform: translateY(-50%);
-  padding: 18px 32px;
-  border-radius: 4px 16px 16px 4px;
-  z-index: 2;
-  animation: overlaySlideIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0px;
-}
-
-.TAM_cases-img-overlay h2 {
-  color: black;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 56px;
-  margin: 0;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
 
 /* ── Page Title ── */
 .TAM_cases h1 {
@@ -336,7 +308,7 @@
 @media (max-width: 1024px) {
 
   .TAM_cases-img {
-    height: 250px;
+    height: 325px;
     overflow: hidden;
     margin-top: 0;        /* ← add */
     position: relative;   /* ← add */

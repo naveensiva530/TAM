@@ -120,7 +120,7 @@ const TamPricing = () => {
 
                     {/* Header */}
                     <div className="pricing-hd">
-                        
+                        <h1>Pricing</h1>
                       
                     </div>
 

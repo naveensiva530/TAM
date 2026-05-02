@@ -188,10 +188,7 @@ html {
 ::-webkit-scrollbar-thumb {
   background: #ffbb08;
 }
-
-/* ==========================================================================
-   3. HERO SECTION
-   ========================================================================== */
+/* HERO SECTION */
 .TAM_Hero_Section_Wrapper {
   width: 100%;
   height: 95vh;
@@ -201,53 +198,8 @@ html {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  transform: translateZ(0);
-}
-
-/* Hero background image - instant load, no fade */
-.TAM_Hero_Section_Wrapper > img {
-  opacity: 1 !important;
-  visibility: visible !important;
-  animation: none !important;
-  transition: none !important;
-}
-
-@keyframes heroTextIn {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.TAM_Hero_Box_Title.TAM_Hero_Title_Animate {
-  animation: none;
-}
-
-.TAM_Hero_Box_Subtitle.TAM_Hero_Subtitle_Animate {
-  animation: none;
-}
-
-.TAM_Hero_Button_Area.TAM_Hero_Btn_Animate {
-  animation: none;
-}
-
-/* Hero image — always visible, no delay, no transition */
-.TAM_Hero_Box_Right,
-.TAM_Hero_Box_Right.hero-img-visible,
-.TAM_Hero_Image_Circle_Backing,
-.TAM_Hero_Image_Container,
-.TAM_Hero_Inner_Image,
-.TAM_Hero_Box_Left {
-  opacity: 1 !important;
-  animation: none !important;
-  transition: none !important;
-  visibility: visible !important;
-  transform: none !important;
+  position: relative;
+  will-change: transform; /* perf: GPU layer */
 }
 
 .TAM_Hero_Main_Box {
@@ -267,13 +219,13 @@ html {
 }
 
 .text-green-pill {
-  background-color: #38B000;
-  color: white;
-  padding: 6px 39px;
-  border-radius: 50px;
+  
+  color: #38B000;
+  
+ 
   display: inline-block;
   margin-right: 8px;
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .TAM_Hero_Box_Title {
@@ -306,7 +258,12 @@ html {
   font-weight: 700;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.TAM_Hero_Btn_Primary:hover {
+  background-color: #2d9200;
+  transform: translateY(-2px) scale(1.03);
 }
 
 .TAM_Hero_Box_Right {
@@ -331,13 +288,12 @@ html {
   position: absolute;
   width: 680px;
   height: 670px;
-  background: radial-gradient(circle, #ffffff 60%, rgba(255, 255, 255, 0) 100%);
+  background: radial-gradient(circle, #fff 60%, rgba(255,255,255,0) 100%);
   border-radius: 50%;
   bottom: -300px;
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
-  box-shadow: none;
 }
 
 .TAM_Hero_Image_Container {
@@ -354,44 +310,66 @@ html {
   height: auto;
   max-height: 120vh;
   display: block;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
   transform: scale(1.02);
   margin-bottom: -120px;
 }
 
-.TAM_Hero_Btn_Primary:hover {
-  background-color: #2d9200;
-  transform: translateY(-2px) scale(1.03);
-}
-
-@media screen and (max-width: 991px) {
+/* ── TABLET: 768px – 991px (same layout as mobile) ── */
+@media screen and (min-width: 768px) and (max-width: 991px) {
   .TAM_Hero_Section_Wrapper {
     height: auto;
-    padding: 120px 0 0 0 !important;
+    padding: 120px 0 0 0;
     flex-direction: column;
   }
-
   .TAM_Hero_Main_Box {
-    flex-direction: column !important;
-    padding: 0 !important;
+    flex-direction: column;
+    padding: 0 32px;
   }
-
   .TAM_Hero_Box_Left {
     text-align: center;
     margin-bottom: 50px;
   }
-
   .TAM_Hero_Image_Circle_Backing::before {
-    width: 320px !important;
-    height: 300px !important;
-    bottom: -100px;
+    width: 560px;
+    height: 560px;
+    bottom: -220px;
   }
-
   .TAM_Hero_Inner_Image {
-    width: 90% !important;
-    margin-bottom: -55px;
+    width: 75%;
+    margin-bottom: -130px;
   }
 }
+
+/* ── MOBILE: max 767px ── */
+@media screen and (max-width: 767px) {
+  .TAM_Hero_Section_Wrapper {
+    height: auto;
+    padding: 120px 0 0 0;
+    flex-direction: column;
+  }
+  .TAM_Hero_Main_Box {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  .TAM_Hero_Box_Left {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .TAM_Hero_Image_Circle_Backing::before {
+    width: 260px;
+    height: 280px;
+    bottom: -150px;
+  }
+  .TAM_Hero_Inner_Image {
+    width: 90%;
+    margin-bottom: -80px;
+  }
+}
+
+/*----------------------------------------------------------------------------------*/
+
+
 
 /* ==========================================================================
    FULL WIDTH CLIENT LOGOS - SEAMLESS MARQUEE
@@ -713,6 +691,10 @@ html {
   }
 }
 
+
+
+/*------------------------------------------------------------------------------------------*/
+
 /* ==========================================================================
    STATISTICS SECTION
    ========================================================================== */
@@ -726,49 +708,6 @@ html {
   font-family: 'Figtree', 'Inter', 'Poppins', sans-serif;
 }
 
-.TAM_homepage-stats-header {
-  text-align: center;
-  margin-bottom: 60px;
-  padding: 0 20px;
-}
-
-.TAM_homepage-stats-title {
-  font-size: clamp(30px, 4vw, 32px);
-  font-weight: 800;
-  color: #0f172a;
-  max-width: 850px;
-  margin: 0 auto;
-  line-height: 1.1;
-  letter-spacing: -1px;
-}
-
-.TAM_homepage-title-bar {
-  width: 60px;
-  height: 4px;
-  background: #38B000;
-  margin: 20px auto;
-  border-radius: 10px;
-}
-
-.TAM_homepage-learnmore {
-  color: #0077B6;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 18px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
-}
-
-.TAM_homepage-learnmore span {
-  transition: transform 0.3s ease;
-}
-
-.TAM_homepage-learnmore:hover span {
-  transform: translateX(5px);
-}
-
 .TAM_homepage-stats-container {
   width: 100%;
   max-width: 1400px;
@@ -776,13 +715,13 @@ html {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  padding: 10px 10px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .TAM_homepage-stat-box {
   background: #F9FAFB;
   padding: 30px 20px;
-  width: 400px;
   height: 250px;
   text-align: center;
   position: relative;
@@ -813,17 +752,9 @@ html {
   font-family: 'Poppins', sans-serif;
 }
 
-.color-blue {
-  color: #0077B6;
-}
-
-.color-green {
-  color: #38B000;
-}
-
-.color-navy {
-  color: #0f172a;
-}
+.color-blue  { color: #0077B6; }
+.color-green { color: #38B000; }
+.color-navy  { color: #0f172a; }
 
 .TAM_homepage-stat-label {
   font-size: 20px;
@@ -841,18 +772,47 @@ html {
   font-weight: 700;
 }
 
+/* Tablet (769px – 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .TAM_homepage-stats-section {
+    padding: 80px 0;
+  }
+
+  .TAM_homepage-stats-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    padding: 10px 30px;
+    max-width: 720px;
+  }
+
+  .TAM_homepage-stat-box {
+    height: auto;
+    min-height: 200px;
+    padding: 30px 20px;
+  }
+
+  /* Center the lone 3rd card in the 2-col grid */
+  .TAM_homepage-stat-box:last-child {
+    grid-column: 1 / -1;
+    max-width: 340px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .TAM_homepage-number {
+    font-size: 40px;
+    letter-spacing: -2px;
+  }
+
+  .TAM_homepage-stat-label {
+    font-size: 18px;
+  }
+}
+
+/* Mobile (≤ 768px) */
 @media screen and (max-width: 768px) {
   .TAM_homepage-stats-section {
     padding: 60px 0;
-  }
-
-  .TAM_homepage-stats-header {
-    margin-bottom: 40px;
-  }
-
-  .TAM_homepage-stats-title {
-    font-size: 24px !important;
-    line-height: 1.2;
   }
 
   .TAM_homepage-stats-container {
@@ -868,7 +828,6 @@ html {
     width: 100%;
     max-width: 400px;
     height: auto;
-    min-height: auto;
     padding: 40px 25px;
     box-sizing: border-box;
   }
@@ -885,9 +844,11 @@ html {
 
   .TAM_homepage-caption {
     font-size: 15px;
-    max-width: 100%;
   }
 }
+/*------------------------------------------------------------------------------------------*/
+
+
 
 /* ==========================================================================
    FEATURE SECTION
@@ -1083,6 +1044,64 @@ html {
   }
 }
 
+/* ── Tablet fix: 769px – 1024px ── */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .tam-homepage2-container {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    justify-items: center !important;
+    gap: 20px !important;
+  }
+
+  .tam-homepage2-card {
+    flex: unset !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    height: 350px !important;
+  }
+
+  /* If the last card is alone on its row, center it */
+  .tam-homepage2-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 400px;
+    justify-self: center;
+  }
+
+  /* Hover/active reveal for tablet */
+  .tam-homepage2-card:hover .tam-homepage2-image-wrapper,
+  .tam-homepage2-card:active .tam-homepage2-image-wrapper {
+    width: 60px !important;
+    height: 60px !important;
+    top: 25px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .tam-homepage2-card:hover .tam-homepage2-header,
+  .tam-homepage2-card:active .tam-homepage2-header {
+    top: 95px !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding: 0 10px !important;
+    text-align: center !important;
+  }
+
+  .tam-homepage2-card:hover .tam-homepage2-feature-title,
+  .tam-homepage2-card:active .tam-homepage2-feature-title {
+    text-align: center !important;
+    color: #0077B6 !important;
+    font-size: 18px !important;
+  }
+
+  .tam-homepage2-card:hover .tam-homepage2-body,
+  .tam-homepage2-card:active .tam-homepage2-body {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+  }
+}
+
 @media (max-width: 768px) {
   .tam-homepage2-wrapper {
     padding: 0 15px !important;
@@ -1224,6 +1243,10 @@ html {
     margin: 5px 0 !important;
   }
 }
+
+
+/*------------------------------------------------------------------------------------------*/
+
 
 /* ==========================================================================
    ZOHO PREMIUM STATIONARY SECTION
@@ -1486,7 +1509,7 @@ html {
     left: 0;
     width: 40px;
     height: 50px;
-    background: linear-gradient(to left, transparent, #f8fafc);
+   
     z-index: 1001;
     pointer-events: none;
   }
@@ -1498,7 +1521,7 @@ html {
     right: 0;
     width: 60px;
     height: 50px;
-    background: linear-gradient(to right, transparent, #f8fafc);
+   
     z-index: 1001;
     pointer-events: none;
   }
@@ -1733,7 +1756,7 @@ html {
   }
 
   .tam-nav-column {
-    gap: 10px;
+    gap: 25px;
     margin-bottom: 80px;
   }
 
@@ -1769,13 +1792,18 @@ html {
     order: -1;
   }
 
-  .tam-feature-blueprint {
-    grid-template-columns: 1fr;
-    max-width: 320px;
-    margin: 0 auto;
-    text-align: left;
-  }
+ 
+.tam-feature-blueprint {
+  grid-template-columns: 1fr;
+  max-width: 320px;
+  margin: 0 auto;
+  text-align: left;
+  align-self: flex-start;        /* ADD THIS */
+  margin-left: 0;                /* ADD THIS — overrides auto margin, pins to left */
 }
+}
+
+
 
 /* ==========================================================================
    UPDATED AWARDS & RECOGNITIONS SECTION (WITH SLIDER)
@@ -2100,11 +2128,12 @@ html {
     height: auto;
     margin: 0;
     padding: 0;
-    object-fit: cover;
+    object-fit: contain !important;
   }
 
   .lp-5-store-badges {
     display: flex;
+    
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
@@ -2231,274 +2260,27 @@ html {
   }
 }
 
-/* ==========================================================================
-   TESTIMONIALS - WIDE & CINEMATIC STYLE
-   ========================================================================== */
-.lp5-testimonials-title-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-bottom: 40px;
-  width: 100%;
-}
 
-.lp-5-awards-title {
-  font-size: 34px;
-  font-weight: 800;
-  color: #0f172a;
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  text-transform: capitalize;
-}
-
-.title-underline {
-  width: 50px;
-  height: 4px;
-  background: #38B000;
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-.lp-5-main-content-section {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 20px 60px 20px;
-}
-
-.lp-5-main-content-card {
-  position: relative;
-  width: 100%;
-  min-height: 340px;
-  border-radius: 2px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  background: #0f172a;
-}
-
-.lp-5-card-image-layer {
-  position: absolute;
-  inset: 0;
-  background-image: url('https://i.pinimg.com/1200x/15/e5/25/15e5258a587acb177e14b9f4b5f4cb8d.jpg');
-  background-size: cover;
-  background-position: center;
-  z-index: 1;
-  transform: scale(1.05);
-}
-
-.lp-5-card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg,
-      rgba(40, 42, 15, 0.55) 0%,
-      rgba(15, 23, 42, 0.35) 40%,
-      rgba(15, 23, 42, 0.55) 90%);
-  z-index: 2;
-}
-
-.lp-5-testimonial-wrapper {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 40px 60px;
-  gap: 20px;
-}
-
-.lp-5-testimonial-content {
-  flex: 1;
-  text-align: center;
-  max-width: 850px;
-  margin: 0 auto;
-}
-
-.lp-5-logo-container {
-  margin-bottom: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative !important;
-  z-index: 99 !important;
-  background: #ffffff;
-  width: 80px;
-  height: 80px;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 50%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-}
-
-.lp-5-client-logo {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-  opacity: 1;
-  position: relative !important;
-  z-index: 100 !important;
-}
-
-.lp-5-quote-text {
-  font-size: 20px;
-  color: #FFFFFF;
-  line-height: 1.5;
-  font-style: italic;
-  font-weight: 500;
-  font-family: 'Figtree', sans-serif;
-  margin-bottom: 20px;
-}
-
-.lp-5-author-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.lp-5-author-name {
-  display: inline-block;
-  font-size: 18px;
-  font-weight: 700;
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  background-color: #38B000;
-  padding: 8px 16px;
-  border-radius: 0px;
-}
-
-.lp-5-stars {
-  color: #FFB000;
-  font-size: 12px;
-  margin-top: 6px;
-}
-
-.lp-5-nav-btn {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  font-size: 32px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(8px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  z-index: 100;
-}
-
-.lp-5-nav-btn:hover {
-  background: #0077B6;
-  border-color: #0077B6;
-  transform: scale(1.1);
-}
-
-@media screen and (max-width: 768px) {
-  .lp-5-awards-title {
-    font-size: 26px;
-  }
-
-  .lp-5-main-content-card {
-    min-height: auto;
-    padding: 30px 0;
-  }
-
-  .lp-5-testimonial-wrapper {
-    padding: 20px 10px;
-    min-height: 320px;
-  }
-
-  .lp-5-nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    font-size: 24px;
-    background: rgba(255, 255, 255, 0.15);
-  }
-
-  .lp-5-prev {
-    left: 5px;
-  }
-
-  .lp-5-next {
-    right: 5px;
-  }
-
-  .lp-5-testimonial-content {
-    padding: 0 40px;
-  }
-
-  .lp-5-logo-container {
-    width: 65px;
-    height: 65px;
-    margin-bottom: 15px;
-  }
-
-  .lp-5-quote-text {
-    font-size: 16px;
-    line-height: 1.4;
-  }
-
-  .lp-5-author-name {
-    font-size: 14px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .lp-5-testimonial-content {
-    padding: 0 35px;
-  }
-
-  .lp-5-nav-btn {
-    width: 34px;
-    height: 34px;
-  }
-}
-
-.tam-testi-slider-wrap {
-  flex-direction: column;
-  gap: 10px;
-}
-
-.tam-testi-arrow {
-  align-self: center;
-}
-
-.tam-testi-card-side,
-.tam-testi-card-center {
-  transform: scale(1);
-  opacity: 1;
-}
-
-.tam-scroll-top-btn {
-  bottom: 20px;
-  right: 20px;
-  width: 42px;
-  height: 42px;
-  font-size: 18px;
-}
 
 /* ==========================================================================
-   TESTIMONIALS SECTION — MONDAY.COM STYLE
+   TESTIMONIALS SECTION — FINAL FIX
    ========================================================================== */
+
 .tam-testi-section {
   background: #FFFFFF;
   padding: 50px 20px;
   text-align: center;
   font-family: 'Figtree', 'Inter', 'Poppins', sans-serif;
   overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+  
+  /* NO z-index here — floating buttons will layer above naturally */
 }
+
+
+ 
 
 .tam-testi-heading-wrap .lp-5-awards-title {
   color: #0f172a !important;
@@ -2522,6 +2304,8 @@ html {
   margin: 0 auto;
   gap: 15px;
   position: relative;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .tam-testi-arrow {
@@ -2553,31 +2337,20 @@ html {
   flex: 1;
   justify-content: center;
   align-items: stretch;
+  min-width: 0;
 }
 
-/* ── Card-change animation (fires on each arrow click) ─────── */
+/* ── Card animation ────────────────────────────────────────── */
 @keyframes testiCardFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px) scale(0.97);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
 }
 
 .tam-testi-card-anim {
   animation: testiCardFadeIn 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Side cards re-scale after animation settles */
-.tam-testi-card-side.tam-testi-card-anim {
-  animation: testiCardFadeIn 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-/* Clickable side cards */
+/* ── Side card interactions ────────────────────────────────── */
 .tam-testi-card-side {
   cursor: pointer;
 }
@@ -2585,7 +2358,6 @@ html {
 .tam-testi-card-side:hover {
   opacity: 1 !important;
   transform: scale(0.98) !important;
-
   transition: all 0.25s ease;
 }
 
@@ -2601,47 +2373,32 @@ html {
   text-align: left;
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   min-height: 250px;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
-/* ── CENTER card — green top accent (unchanged) ────────────── */
+/* ── CENTER card ───────────────────────────────────────────── */
 .tam-testi-card-center {
   border-top: 4px solid #38B000;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18), 0 6px 16px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.18), 0 6px 16px rgba(0,0,0,0.10);
   transform: scale(1.04);
   z-index: 5;
 }
 
-/* ── SIDE cards (1st & 3rd) — soft blue tint ───────────────── */
+/* ── SIDE cards ────────────────────────────────────────────── */
 .tam-testi-card-side {
   background: #EFF6FF;
   border: 1px solid #BFDBFE;
-  border-left: px solid #0077B6;
   opacity: 0.85;
   transform: scale(0.96);
 }
 
-/* Side card text */
-.tam-testi-card-side .tam-testi-text {
-  color: #374151;
-}
+.tam-testi-card-side .tam-testi-text      { color: #374151; }
+.tam-testi-card-side .tam-testi-name      { color: #0077B6; }
+.tam-testi-card-side .tam-testi-stars-row { color: #F59E0B; }
+.tam-testi-card-side .tam-testi-logo-ring { border: 2px solid #BFDBFE; background: #DBEAFE; }
 
-/* Side card author name */
-.tam-testi-card-side .tam-testi-name {
-  color: #0077B6;
-}
-
-/* Side card stars — warm gold to contrast with blue tint */
-.tam-testi-card-side .tam-testi-stars-row {
-  color: #F59E0B;
-}
-
-/* Side card logo ring — light blue ring */
-.tam-testi-card-side .tam-testi-logo-ring {
-  border: 2px solid #BFDBFE;
-  background: #DBEAFE;
-}
-
-/* ── Card Content ────────────────────────────────────────── */
+/* ── Card content ──────────────────────────────────────────── */
 .tam-testi-logo-ring {
   width: 48px;
   height: 48px;
@@ -2688,7 +2445,7 @@ html {
   letter-spacing: 1px;
 }
 
-/* ── Dots ─────────────────────────────────────────────────── */
+/* ── Dots ──────────────────────────────────────────────────── */
 .tam-testi-dots {
   display: flex;
   justify-content: center;
@@ -2711,47 +2468,83 @@ html {
   border-radius: 10px;
 }
 
-/* ── MOBILE ──────────────────────────────────────────────── */
-@media (max-width: 991px) {
-  .tam-testi-card-side {
-    display: none;
+/* ══════════════════════════════════════════════════════════════
+   TABLET  768px – 991px
+   ══════════════════════════════════════════════════════════════ */
+@media (min-width: 768px) and (max-width: 991px) {
+  .tam-testi-section { padding: 45px 20px; }
+
+ 
+  .tam-testi-card-new {
+    flex: 0 1 33%;
+    min-height: 250px;
+    padding: 20px 18px;
   }
 
-  .tam-testi-card-new {
-    flex: 0 1 80%;
-  }
+  .tam-testi-card-center { transform: scale(1.02); }
+  .tam-testi-card-side   { transform: scale(0.97); opacity: 0.9; }
+
+  .tam-testi-arrow { width: 38px; height: 38px; font-size: 22px; }
 }
 
-@media (max-width: 600px) {
+/* ══════════════════════════════════════════════════════════════
+   MOBILE  ≤ 767px
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
   .tam-testi-section {
-    padding: 40px 15px;
+    padding: 40px 20px;
   }
 
   .tam-testi-main-container {
-    gap: 10px;
+    gap: 8px;
+    max-width: 100%;
+  }
+
+  /* Hide side cards */
+  .tam-testi-card-side { display: none; }
+
+  /* Card fills space between arrows — centers naturally */
+  .tam-testi-card-new {
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 220px;
+    padding: 20px 15px;
+    box-sizing: border-box;
+  }
+
+  /* Remove scale on mobile — was causing off-center & overflow */
+  .tam-testi-card-center {
+    transform: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
   }
 
   .tam-testi-arrow {
     width: 36px;
     height: 36px;
     font-size: 20px;
+    flex-shrink: 0;
+    min-width: 36px;
   }
 
-  .tam-testi-card-new {
-    flex: 0 1 100%;
-    min-height: 220px;
-    padding: 20px 15px;
-  }
-
-  .tam-testi-text {
-    font-size: 12px;
-  }
+  .tam-testi-text { font-size: 13px; }
+  .tam-testi-dots { margin-top: 20px; }
 }
 
+/* ══════════════════════════════════════════════════════════════
+   SMALL MOBILE  ≤ 400px
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 400px) {
+  .tam-testi-section { padding: 35px 12px; }
 
+  .tam-testi-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    min-width: 32px;
+  }
 
-
-
+  .tam-testi-text { font-size: 12px; }
+}
 
 
 .home_page_cta_section_2_content_wrap {
@@ -2903,6 +2696,304 @@ html {
 }
 
 @media screen and (max-width: 768px) {
+  .tam-global-section-title {
+    font-size: 26px !important;
+  }
+}
+
+
+/* ==========================================================================
+   CTA SECTION — lp-5-cta-section
+   ========================================================================== */
+.lp-5-cta-section {
+  width: 100%;
+  margin: 50px auto;
+  border-radius: 0px;
+  overflow: hidden;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* ==========================================================================
+   CTA CONTENT WRAPPER
+   ========================================================================== */
+.lp-5-cta-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+
+/* ==========================================================================
+   CTA LEFT COLUMN
+   ========================================================================== */
+.lp-5-cta-left {
+  width: 50%;
+  padding: 60px 50px;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   CTA DESCRIPTION TEXT
+   ========================================================================== */
+.lp-5-cta-description {
+  font-size: 17px;
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  font-family: 'Figtree', sans-serif;
+}
+
+/* ==========================================================================
+   APP DOWNLOAD BLOCK
+   ========================================================================== */
+.lp-5-app-download {
+  margin-top: 10px;
+}
+
+.lp-5-app-download-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ==========================================================================
+   STORE BADGES ROW
+   ========================================================================== */
+.lp-5-store-badges {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.lp-5-store-badges a img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.lp-5-store-badges a img:hover {
+  transform: translateY(-3px);
+}
+
+/* ==========================================================================
+   PHONE CALL CTA
+   ========================================================================== */
+.lp-5-call {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.lp-5-call-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #475569;
+  margin: 0;
+  font-family: 'Figtree', sans-serif;
+}
+
+.lp-5-call a button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #38B000;
+  color: #ffffff;
+  border: none;
+  border-radius: 100px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.lp-5-call a button:hover {
+  background-color: #2d9200;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(56, 176, 0, 0.3);
+}
+
+.lp-5-call a button p {
+  margin: 0;
+}
+
+/* ==========================================================================
+   CTA RIGHT COLUMN
+   ========================================================================== */
+.lp-5-cta-right {
+  width: 50%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  line-height: 0;
+}
+
+.lp-5-cta-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* ==========================================================================
+   GLOBAL HEADING — used inside CTA left
+   ========================================================================== */
+.tam-global-heading-wrapper {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.tam-global-section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.tam-global-section-title-blue {
+  color: #0077b6;
+}
+
+.tam-global-title-bar {
+  width: 70px;
+  height: 4px;
+  background: #0077b6;
+  margin: 15px auto 0;
+  border-radius: 10px;
+}
+
+/* ==========================================================================
+   SCROLL REVEAL ANIMATIONS — used on section, left, right
+   ========================================================================== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+  will-change: transform, opacity;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: transform, opacity;
+}
+
+.reveal-left.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: transform, opacity;
+}
+
+.reveal-right.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ==========================================================================
+   RESPONSIVE — TABLET (769px – 1024px)
+   ========================================================================== */
+@media screen and (max-width: 1024px) {
+  .lp-5-cta-content {
+    flex-direction: column;
+  }
+
+  .lp-5-cta-left {
+    width: 100%;
+    padding: 40px 30px;
+    text-align: center;
+  }
+
+  .lp-5-store-badges {
+    justify-content: center;
+  }
+
+  .lp-5-call {
+    justify-content: center;
+  }
+
+  .lp-5-cta-right {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE — MOBILE (≤ 768px)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  .lp-5-cta-section {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .lp-5-cta-content {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+  }
+
+  .lp-5-cta-left {
+    width: 100%;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .lp-5-store-badges {
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .lp-5-store-badges a img {
+    height: 40px;
+  }
+
+  .lp-5-call {
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .lp-5-cta-right {
+    width: 100%;
+    display: block;
+    line-height: 0;
+  }
+
+  .lp-5-cta-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    object-fit: cover;
+  }
+
   .tam-global-section-title {
     font-size: 26px !important;
   }

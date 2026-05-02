@@ -162,6 +162,13 @@
         text-align: center;
     }
     .shmf-sub-title                 { font-size: 26px; }
+     .shmf-image img         { 
+        aspect-ratio: 9 / 9;
+        height: unset !important; 
+        width: 100%;
+        object-fit: cover;
+    }
+    
 }
 
 /* ============================================================

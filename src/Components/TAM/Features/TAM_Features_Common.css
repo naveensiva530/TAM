@@ -326,14 +326,15 @@
 @media (max-width: 1100px) {
     /* HERO */
     .tf-hero-main        { flex-direction: column; height: auto; min-height: unset; }
-    .tf-hero-left        { flex: none; order: 0; padding: 80px 40px 40px; width: 100%; box-sizing: border-box; }
-    .tf-hero-right       { order: 1; width: 100%; height: 60dvh; top: 0; flex: none; }
-    .tf-hero-right img   { object-position: center top; }
-    .tf-hero-title       { font-size: 3.4rem; letter-spacing: -1.5px; }
-    .tf-hero-subtitle    { font-size: 1.55rem; }
-    .tf-demo-btn         { font-size: 1.45rem; padding: 1.2rem 3rem; }
-
-    .tf-hero-mini-cards  { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .tf-hero-left        { flex: none; order: 0; padding: 80px 40px 40px; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .tf-hero-center-stack { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .tf-hero-right       { order: 1; width: 99%; height: 80dvh; top: 0; flex: none; }
+    .tf-hero-right img   { object-position: 100% center ;width: 100%; height: 100%; object-fit: cover; }
+    .tf-hero-title       { font-size: 3.4rem; letter-spacing: -1.5px; text-align: center; }
+    .tf-hero-subtitle    { font-size: 1.55rem; text-align: center; }
+    .tf-hero-cta-area    { width: 100%; }
+    .tf-demo-btn         { font-size: 1.45rem; padding: 1.2rem 3rem; justify-content: center; }
+    .tf-hero-mini-cards  { grid-template-columns: repeat(3, 1fr); gap: 14px; width: 100%; }
     .tf-mini-card        { padding: 1rem 1.2rem; }
     .tf-mini-card-label  { font-size: 1rem; }
 
@@ -377,7 +378,7 @@
     .tf-hero-right {
         order: 1;
         width: 100%;
-     height: 70vw;        /* 55vw இருந்தது — increase பண்ணு */
+     height: 70vw;       
     max-height: 400px; 
         top: 0;
         flex: none;
@@ -387,7 +388,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-     object-position:100% center;     /* subject top-ல் இருந்தா */
+     object-position:100% center;    
         
         display: block;
     }

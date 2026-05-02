@@ -2,7 +2,14 @@ import React, { useEffect } from 'react'
 import './TAM_cs.css'
 import caseStudy1 from '../../../assets/banner/caseStudy1.png';
 import { Link } from 'react-router-dom'
+import pdfFile from '../../../assets/cs1.pdf';
 
+const handleClick = () => {
+    const link = document.createElement('a');
+    link.href = pdfFile;
+    link.download = 'case-study.pdf';
+    link.click();
+};
 import { Helmet } from 'react-helmet-async'
 import TAM_Footer from '../TAM_Footer/TAM_Footer';
 
@@ -10,11 +17,7 @@ const TAM_cs1 = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
       }, []);
-    const handleClick = () => {
-        const pdfUrl = 'assets/cs1.pdf';
-        const mimeType = 'application/pdf';
-        window.open(pdfUrl, '_newtab', `mime=${mimeType}`);
-    };
+   
   return (
     <>
 

@@ -8,11 +8,13 @@ import pdfFile from '../../../assets/cs2.pdf';
 
 
 const handleClick = () => {
-    const link = document.createElement('a');
-    link.href = pdfFile;
-    link.download = 'case-study.pdf';
+    const link = document.createElement("a");
+    link.href = "/pdf/cs2.pdf";
+    link.download = "case-study.pdf";
+    document.body.appendChild(link);
     link.click();
-};
+    document.body.removeChild(link);
+};;
 
 const TAM_cs2 = () => {
     useEffect(() => {

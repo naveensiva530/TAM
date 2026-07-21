@@ -7,11 +7,14 @@ import TAM_Footer from '../TAM_Footer/TAM_Footer';
 const TAM_cs7 = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
-      }, []);
-      const handleClick = () => {
-        const pdfUrl = 'assets/cs7.pdf';
-        const mimeType = 'application/pdf';
-        window.open(pdfUrl, '_newtab', `mime=${mimeType}`);
+    }, []);
+    const handleClick = () => {
+        const link = document.createElement("a");
+        link.href = "/pdf/cs7.pdf";
+        link.download = "case-study.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
   return (
     <>

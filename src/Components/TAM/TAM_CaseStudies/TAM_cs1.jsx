@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom'
 import pdfFile from '../../../assets/cs1.pdf';
 
 const handleClick = () => {
-    const link = document.createElement('a');
-    link.href = pdfFile;
-    link.download = 'case-study.pdf';
+    const link = document.createElement("a");
+    link.href = "/pdf/cs1.pdf";
+    link.download = "case-study.pdf";
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
 };
 import { Helmet } from 'react-helmet-async'
 import TAM_Footer from '../TAM_Footer/TAM_Footer';

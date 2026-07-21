@@ -9,10 +9,12 @@ import pdfFile from '../../../assets/cs5.pdf';
 
 
 const handleClick = () => {
-    const link = document.createElement('a');
-    link.href = pdfFile;
-    link.download = 'case-study.pdf';
+    const link = document.createElement("a");
+    link.href = "/pdf/cs5.pdf";
+    link.download = "case-study.pdf";
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
 };
 
 const TAM_cs5 = () => {

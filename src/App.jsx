@@ -17,7 +17,7 @@ import TAM_Support from './Components/TAM/TAM_Support/TAM_Support'
 import CareerForm from './Containers/RegForms/CareerForm'
 import ChannelPartnerForm from './Containers/RegForms/ChannelPartnerForm'
 import ScheduleAdemo from './Containers/RegForms/ScheduleAdemo'
-import {  Routes, Route, Navigate } from 'react-router-dom';
+import {  Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import TAM_cs1 from './Components/TAM/TAM_CaseStudies/TAM_cs1'
 import TAM_cs2 from './Components/TAM/TAM_CaseStudies/TAM_cs2'
@@ -89,6 +89,15 @@ function App() {
   const [shorticons, setShorticons] = useState(true)
   const [callicon, setCallicon] = useState(false)
   const location = useLocation();
+  const navigate = useNavigate();
+
+  // On page refresh → always go to TAM page (first image)
+  useEffect(() => {
+    const navEntries = performance.getEntriesByType('navigation');
+    if (navEntries.length > 0 && navEntries[0].type === 'reload') {
+      navigate('/', { replace: true });
+    }
+  }, []);
   
   useEffect(() => {
     if (location.pathname === '/lp') {
@@ -100,7 +109,8 @@ function App() {
     }
   }, [location.pathname]);
   useEffect(() => {
-    if (location.pathname === '/tam-time-and-attendance-management'
+    if (location.pathname === '/'
+      || location.pathname === '/tam-time-and-attendance-management'
       || location.pathname === '/tam-support'
       || location.pathname === '/tam'
       || location.pathname === '/tam-casestudies'
@@ -210,7 +220,7 @@ function App() {
           </div>
         }
         <Routes>
-          <Route index element={<Home />}></Route>
+          <Route index element={<TAM_Homepage2 />}></Route>
           <Route path='/home' element={<Home />}></Route>
           <Route path='/channel-partner' element={<ChannelPartner />}></Route>
           <Route path='/channel-partner-form' element={<ChannelPartnerForm />}></Route>

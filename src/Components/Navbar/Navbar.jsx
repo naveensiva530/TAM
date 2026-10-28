@@ -21,6 +21,7 @@ const Navbar = () => {
   const closeModal = () => setIsModalOpen(false);
 
   const tamPaths = [
+    '/',
     '/tam-time-and-attendance-management',
     '/tam-support',
     '/tam-casestudies',
